@@ -1,4 +1,3 @@
-import Menu from "features/Menu/ui";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Modal from "shared/ui/Modal";
