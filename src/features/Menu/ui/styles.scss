@@ -1,0 +1,59 @@
+@import "styles/mixins.scss";
+
+.nav {
+  --textColor: var(--c-main-text);
+
+  --height: var(--decoration-height);
+  --width: 100%;
+  --top: 100%;
+  --marginT: 2px;
+  --whiteSpace: nowrap;
+
+  --weight: var(--f-weight-semiBold);
+  --textSize: var(--f-size-14);
+
+
+  &__list {
+    @include flex-gap(60px);
+    @include reset-list;
+  }
+
+  &__link {
+    color: var(--textColor);
+    text-decoration: none;
+  }
+
+  &__text {
+    position: relative;
+
+    font-size: var(--textSize);
+    font-weight: var(--weight);
+
+    white-space: var(--whiteSpace);
+
+      &:after {
+        content: " ";
+        display: block;
+        width: var(--width);
+        height: var(--height);
+        margin-top: var(--marginT);
+
+        top: var(--top);
+        position: absolute;
+
+        background: currentColor;
+
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform .4s cubic-bezier(.23,1,.32,1),transform-origin 0s .4s;
+      }
+
+      &:hover{
+        &:after {
+        transform: scaleX(1);
+        transform-origin: right center;
+      }
+    }
+  }
+
+}

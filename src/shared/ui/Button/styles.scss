@@ -1,0 +1,5 @@
+@import "styles/mixins.scss";
+
+.button {
+  @include reset-button;
+}

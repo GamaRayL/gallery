@@ -1,0 +1,33 @@
+@mixin flex-gap($gap) {
+  display: flex;
+  gap: $gap;
+}
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+}
+
+@mixin reset-button {
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+
+  appearance: none;
+}
