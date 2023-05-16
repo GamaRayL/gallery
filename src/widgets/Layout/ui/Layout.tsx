@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Header from "widgets/Header/ui/Header";
-import { ILayout } from "widgets/Layout/lib/types";
 import { Modal } from "shared/ui";
+import { ILayout } from "widgets/Layout/lib/types";
 
 const Layout: FC<ILayout> = ({ children }) => {
   return (
