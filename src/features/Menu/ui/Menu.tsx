@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Montserrat } from 'next/font/google';
 import { BiSearch } from "react-icons/bi";
-import Button from "shared/ui/Button";
+import { Button } from "shared/ui";
 
 const montserrat = Montserrat({
   subsets: ["cyrillic"],

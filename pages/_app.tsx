@@ -1,7 +1,7 @@
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import Head from "next/head";
-import Layout from "widgets/Layout/ui";
+import Layout from "widgets/Layout/ui/Layout";
 import "styles/global.scss";
 
 const montserrat = Montserrat({

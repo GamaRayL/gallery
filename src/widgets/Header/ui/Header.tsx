@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Menu from "features/Menu/ui";
+import Menu from "features/Menu/ui/Menu";
 
 const Header: FC = () => {
 

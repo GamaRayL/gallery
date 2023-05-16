@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
-import { IButton } from "shared/lib/types";
 import Link from "next/link";
 import classNames from "classnames";
+import { IButton } from "shared/lib/types";
 
 const Button: FC<IButton> = (props) => {
   const {

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import Modal from "shared/ui/Modal";
+import Modal from "shared/ui/Modal/Modal";
 
 const Home = () => {
   const { pathname } = useRouter();
