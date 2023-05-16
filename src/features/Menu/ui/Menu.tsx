@@ -28,7 +28,7 @@ const Menu = () => {
           </Link>
         </li>
         <li className="nav__item">
-          <Button icon={<BiSearch size={24} name="Search" />} />
+          <Button icon={<BiSearch name="Search" size={20} />} />
         </li>
       </ul>
     </nav >

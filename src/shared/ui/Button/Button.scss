@@ -1,5 +1,85 @@
 @import "styles/mixins.scss";
 
 .button {
+  --width: 100%;
+  --maxWidth: 300px;
+  --paddingX: 16px;
+  --textColor: var(--c-white);
+  --bgColor: var(--c-black);
+  --borderRadius: var(--border-radius);
+
+  --iconOffsetX: 8px;
+
+  // --hoverTextColor: var();
+  // --hoverBgColor: var();
+  // --hoverBorderColor: var();
+  // --hoverIconColor: var();
+
+  // --focusTextColor: var();
+  // --focusBgColor: var();
+  // --focusBorderColor: var();
+  // --focusIconColor: var();
+
+  // --activeTextColor: var();
+  // --activeBgColor: var();
+  // --activeBorderColor: var();
+  // --activeIconColor: var();
+
+  // --disabledTextColor: var();
+  // --disabledBgColor: var();
+  // --disabledBorderColor: var();
+  // --disabledIconColor: var();
+
+
   @include reset-button;
+  @include flex-center(inline-flex);
+
+  position: relative;
+  overflow: hidden;
+  width: var(--width);
+  max-width: var(--maxWidth);
+  padding-inline: var(--paddingX);
+  text-decoration: none;
+  color: var(--textColor);
+  background-color: var(--bgColor);
+  border-radius: var(--borderRadius);
+  will-change: transform;
+  cursor: pointer;
+
+  &--only-icon {
+    --width: auto;
+    --paddingX: 0;
+  }
+
+  &--transparent {
+    --textColor: var(--c-black);
+    --bgColor: transparent;
+
+    // --hoverTextColor: var();
+    // --hoverBgColor: transparent;
+    // --hoverDropShadow: 0 0 0 transparent;
+    // --hoverIconColor: var();
+
+    // --focusTextColor: var();
+    // --focusBgColor: transparent;
+    // --focusIconColor: var();
+
+    // --activeTextColor: var();
+    // --activeBgColor: transparent;
+    // --activeIconColor: var();
+  }
+
+  &__body {
+    @include flex-center;
+    @include square;
+
+    position: relative;
+    z-index: 1;
+    column-gap: var(--iconOffsetX);
+    pointer-events: none;
+  }
+
+  &__label {
+    color: var(--textColor);
+  }
 }

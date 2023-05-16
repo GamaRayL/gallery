@@ -31,3 +31,14 @@
 
   appearance: none;
 }
+
+@mixin flex-center($display: flex) {
+  display: $display;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin square($size: 100%) {
+  width: $size;
+  height: $size;
+}

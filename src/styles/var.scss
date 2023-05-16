@@ -2,12 +2,20 @@
   // Block model
   --site-min-width: 360px;
 
-  // Colors
-  --c-background: #FFCE01;
-  --c-main-text: #000;
+
+  // Decoration
+  --c-yellow: #FFCE01;
+  --c-black: #000;
+  --c-white: #FFF;
+
+  --border-radius-2: 50%;
+
+  --decoration-height: 2px;
+
 
   // Animation
   --base-transition-duration: .4s;
+
 
   // Typographic
   --base-font-size: 16px;
@@ -17,9 +25,5 @@
   --f-size-14: 14px;
 
   --f-weight-semiBold: 600;
-
-
-  // Decoration
-  --decoration-height: 2px;
 
 }

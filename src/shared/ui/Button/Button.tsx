@@ -14,10 +14,9 @@ const Button: FC<IButton> = (props) => {
     iconPosition = "after",
     type = "button",
     href = "",
-    isTransparent = false,
+    isTransparent = true,
     isDisabled = false
   } = props;
-
 
   const bodyMarkup = useMemo(() => {
     return (

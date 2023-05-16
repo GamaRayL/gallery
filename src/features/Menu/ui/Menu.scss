@@ -12,6 +12,9 @@
   --weight: var(--f-weight-semiBold);
   --textSize: var(--f-size-14);
 
+  &__item {
+    display: flex
+  }
 
   &__list {
     @include flex-gap(60px);
