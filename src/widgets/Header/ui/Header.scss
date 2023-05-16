@@ -1,5 +1,10 @@
 .header {
-  width: 100%;
+  --width: 100%;
+  --padding: 40px;
+
+
   position: fixed;
-  padding: 40px;
+
+  width: var(--width);
+  padding: var(--padding);
 }

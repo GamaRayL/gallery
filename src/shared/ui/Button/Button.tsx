@@ -17,6 +17,7 @@ const Button: FC<IButton> = (props) => {
     isTransparent = true,
     isDisabled = false
   } = props;
+  const isLink = Boolean(href);
 
   const bodyMarkup = useMemo(() => {
     return (
@@ -37,8 +38,6 @@ const Button: FC<IButton> = (props) => {
     ["aria-label"]: ariaLabel,
     onClick: onClick,
   };
-
-  const isLink = false;
 
   return isLink
     ? <Link {...args} href={href}>{bodyMarkup}</Link>

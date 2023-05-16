@@ -15,3 +15,8 @@ export interface IButton {
   isTransparent?: boolean;
   onClick?: (event: ButtonClickEvent) => void;
 }
+
+export interface ICustomLink {
+  pathname: string;
+  label: string;
+}

@@ -19,7 +19,6 @@ const Home = () => {
             home.scrollBy(40, 0);
           }
           if (event.deltaY < 0) {
-
             home.scrollBy(-40, 0);
           }
         }
