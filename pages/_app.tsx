@@ -11,14 +11,14 @@ const montserrat = Montserrat({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <title>NextJS Gallery</title>
-      </Head>
-      <Layout>
-        <div className={montserrat.className}>
+      <div className={montserrat.className}>
+        <Head>
+          <title>NextJS Gallery</title>
+        </Head>
+        <Layout>
           <Component {...pageProps} />
-        </div>
-      </Layout>
+        </Layout>
+      </div>
     </>
   );
 }

@@ -1,8 +1,11 @@
-import { items } from "features/Menu/lib/items";
+import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { items } from "features/Menu/lib/items";
 import { Button, CustomLink } from "shared/ui";
 
 const Menu = () => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
   return (
     <nav className="nav">
       <ul className="nav__list">
@@ -15,7 +18,8 @@ const Menu = () => {
           </li>
         ))}
         <li className="nav__item">
-          <Button icon={<BiSearch name="Search" size={20} />} />
+          {/* {isActive && <Modal />} */}
+          <Button onClick={() => setIsActive(!isActive)} icon={<BiSearch name="Search" size={20} />} />
         </li>
       </ul>
     </nav >

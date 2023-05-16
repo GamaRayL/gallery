@@ -20,3 +20,7 @@ export interface ICustomLink {
   pathname: string;
   label: string;
 }
+
+export interface IModal {
+  color?: string;
+}

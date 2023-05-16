@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Link from "next/link";
-import { montserrat } from "shared/lib/fonts";
 import { ICustomLink } from "shared/lib/types";
 
 const CustomLink: FC<ICustomLink> = (props) => {
@@ -8,7 +7,7 @@ const CustomLink: FC<ICustomLink> = (props) => {
 
   return (
     <Link
-      className={`link ${montserrat.className}`}
+      className="link"
       href={pathname}
     >
       <span className="link__label">{label}</span>
