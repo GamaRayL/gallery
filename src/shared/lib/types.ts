@@ -23,6 +23,7 @@ export interface ICustomLink {
 
 export interface IModal {
   color?: string;
+  children?: ReactNode;
 }
 
 export interface IInput {

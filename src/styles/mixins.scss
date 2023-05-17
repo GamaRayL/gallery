@@ -32,9 +32,9 @@
   appearance: none;
 }
 
-@mixin flex-center($display: flex) {
+@mixin flex($display: flex, $justify-content: center) {
   display: $display;
-  justify-content: center;
+  justify-content: $justify-content;
   align-items: center;
 }
 

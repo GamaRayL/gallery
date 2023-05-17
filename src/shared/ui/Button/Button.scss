@@ -32,7 +32,7 @@
 
 
   @include reset-button;
-  @include flex-center(inline-flex);
+  @include flex(inline-flex);
   transition: none;
 
   position: relative;
@@ -71,7 +71,7 @@
   }
 
   &__body {
-    @include flex-center;
+    @include flex;
     @include square;
 
     position: relative;

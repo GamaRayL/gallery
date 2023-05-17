@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { ChangeEvent, useEffect, useState } from "react";
-import { Input } from "shared/ui";
+import { useEffect } from "react";
 
 const Home = () => {
   const { pathname } = useRouter();
@@ -29,7 +28,7 @@ const Home = () => {
   }, [pathname]);
 
   return (
-    <div className="home" style={{ display: "flex", height: "97.5vh" }}>
+    <div className="home" style={{ display: "flex", height: "100vh" }}>
 
       {/* <div style={{ width: 400, margin: 100 }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis harum, rerum dolor cum soluta quis quidem, itaque magni ullam accusantium iusto, nostrum cupiditate perferendis illum. Non vel nam quam nihil.

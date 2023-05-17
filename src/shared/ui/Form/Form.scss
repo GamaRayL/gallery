@@ -1,0 +1,7 @@
+@import "styles/mixins.scss";
+
+.form {
+  @include flex($justify-content: space-between);
+
+  
+}
