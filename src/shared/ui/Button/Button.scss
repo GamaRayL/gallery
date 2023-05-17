@@ -33,6 +33,7 @@
 
   @include reset-button;
   @include flex-center(inline-flex);
+  transition: none;
 
   position: relative;
   overflow: hidden;

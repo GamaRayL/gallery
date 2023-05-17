@@ -2,7 +2,6 @@
 @import "styles/mixins.scss";
 @import "styles/index.scss";
 
-
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +23,10 @@ html {
   min-height: 100vh;
   height: 100% !important;
 
-  font: var(--base-font-weight) var(--base-font-size)/var(--base-line-height);
+  font-weight: var(--base-font-weight);
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  font-family: 'Montserrat';
 }
 
 body {
@@ -36,6 +38,7 @@ body {
   scroll-behavior: smooth;
 
   font: inherit;
+  font-size: var(--base-font-size);
 
   color: var(--c-black);
   background-color: var(--c-yellow);
@@ -96,6 +99,11 @@ label,
 ::after,
 ::placeholder {
   transition: var(--base-transition-duration);
+}
+
+button,
+input {
+    font-family: inherit;
 }
 
 // button,

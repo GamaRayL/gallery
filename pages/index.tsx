@@ -1,8 +1,10 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { Input } from "shared/ui";
 
 const Home = () => {
   const { pathname } = useRouter();
+
 
   useEffect(() => {
     if (pathname === "/") {
@@ -28,7 +30,8 @@ const Home = () => {
 
   return (
     <div className="home" style={{ display: "flex", height: "97.5vh" }}>
-      <div style={{ width: 400, margin: 100 }}>
+
+      {/* <div style={{ width: 400, margin: 100 }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis harum, rerum dolor cum soluta quis quidem, itaque magni ullam accusantium iusto, nostrum cupiditate perferendis illum. Non vel nam quam nihil.
       </div>
       <div style={{ width: 400, margin: 100 }}>
@@ -45,7 +48,7 @@ const Home = () => {
       </div>
       <div style={{ width: 400, margin: 100 }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis harum, rerum dolor cum soluta quis quidem, itaque magni ullam accusantium iusto, nostrum cupiditate perferendis illum. Non vel nam quam nihil.
-      </div>
+      </div> */}
     </div>
   );
 };

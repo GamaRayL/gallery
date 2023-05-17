@@ -6,8 +6,15 @@ class Store {
   }
 
   isSearch = false;
+  counter = 0;
 
-  
+  increase() {
+    this.counter += 1;
+  }
+
+  toggleOverlay() {
+    this.isSearch = !this.isSearch;
+  }
 }
 
 const store = new Store();
