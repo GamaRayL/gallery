@@ -1,7 +1,10 @@
+@import "styles/mixins.scss";
+
 .header {
   --width: 100%;
-  --padding: 40px;
+  --padding: 40px 80px 0 80px;
 
+  @include flex($justify-content: space-between);
 
   position: fixed;
 

@@ -11,11 +11,27 @@ const Layout: FC<ILayout> = observer(({ children }) => {
   return (
     <>
       <AnimatePresence>
+        {store.isSearch &&
+          <motion.div
+            initial={{ x: -300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 0, opacity: 0 }}
+            transition={{
+              type: "tween",
+            }}
+          >
+            <Modal>
+              <Form />
+            </Modal>
+          </motion.div>
+        }
+      </AnimatePresence>
+      <AnimatePresence>
         {!store.isSearch &&
           <motion.div
             initial={{ y: -300, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 0, opacity: 0 }}
+            exit={{ x: 300, opacity: 0 }}
             transition={{
               type: "tween",
               duration: .5,
@@ -25,24 +41,7 @@ const Layout: FC<ILayout> = observer(({ children }) => {
           </motion.div>
         }
       </AnimatePresence>
-      <AnimatePresence>
-        {store.isSearch &&
-          <motion.div
-            initial={{ x: -300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 0, opacity: 0 }}
-            transition={{
-              type: "tween",
-              duration: .2
-            }}
-          >
-            <Modal>
-              <Form />
-            </Modal>
-          </motion.div>
-        }
-      </AnimatePresence>
-      <main>{children}</main>
+      <main style={{ padding: "0 80px" }}>{children}</main>
     </>
   );
 });

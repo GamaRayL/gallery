@@ -23,7 +23,6 @@ html {
   min-height: 100vh;
   height: 100% !important;
 
-  font-weight: var(--base-font-weight);
   font-size: var(--base-font-size);
   line-height: var(--base-line-height);
   font-family: 'Montserrat';
@@ -105,9 +104,3 @@ button,
 input {
     font-family: inherit;
 }
-
-// button,
-// input,
-// textarea {
-//   font: inherit;
-// }

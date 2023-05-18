@@ -5,7 +5,6 @@ import { Button, CustomLink } from "shared/ui";
 import { items } from "features/Menu/lib/items";
 
 const Menu = observer(() => {
-  console.log(store.isSearch);
   return (
     <nav className="nav">
       <ul className="nav__list">
