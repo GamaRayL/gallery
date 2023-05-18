@@ -10,4 +10,10 @@
 
   width: var(--width);
   padding: var(--padding);
+
+  &__logo {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+  }
 }
