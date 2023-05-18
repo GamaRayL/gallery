@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, MouseEvent, ReactElement, ReactNode, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, MouseEvent, ReactElement, ReactNode, RefObject, SetStateAction } from "react";
 
 type ButtonClickEvent = MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
 
@@ -29,6 +29,7 @@ export interface IModal {
 export interface IInput {
   size?: number;
   value: string;
+  inputRef?: RefObject<HTMLInputElement>;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   setValue?: Dispatch<SetStateAction<string>>;
 }
