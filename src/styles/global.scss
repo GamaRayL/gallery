@@ -40,7 +40,6 @@ body {
   font-size: var(--base-font-size);
 
   color: var(--c-black);
-  background-color: var(--c-yellow);
 }
 
 #root {
@@ -53,9 +52,13 @@ svg {
   fill: currentColor;
 }
 
+.bgHome {
+  background: var(--c-yellow);
+}
 
-
-
+.bgOthers {
+  background: var(--c-gray);
+}
 
 // a,
 // button {

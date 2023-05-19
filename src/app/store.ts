@@ -6,15 +6,26 @@ class Store {
   }
 
   isSearch = false;
-  counter = 0;
-
-  increase() {
-    this.counter += 1;
-  }
+  columns = 4;
 
   toggleOverlay() {
     this.isSearch = !this.isSearch;
   }
+
+  setColumns(value: number) {
+    this.columns = value;
+  }
+
+  increaseColumns() {
+    if (this.columns === 6) return;
+    this.columns += 1;
+  }
+
+  decreaseColumns() {
+    if (this.columns === 1) return;
+    this.columns -= 1;
+  }
+
 }
 
 const store = new Store();

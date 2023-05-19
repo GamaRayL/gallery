@@ -1,0 +1,38 @@
+.input-range {
+  --bgColor: var(--c-black);
+  --borderRadius: 5px;
+
+  --height: 3px;
+  --widthThumb: 12px;
+  --heightThumb: 12px;
+
+  --hoverWidthThumb: 16px;
+  --hoverHeightThumb: 16px;
+
+  --transition: .1s;
+
+
+  appearance: none;
+  cursor: pointer;
+
+  height: var(--height);
+
+  background: var(--bgColor);
+  border-radius: var(--borderRadius);
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+
+    width: var(--widthThumb);
+    height: var(--heightThumb);
+
+    background: var(--bgColor);
+
+    transition: var(--transition);
+  }
+
+  &:hover::-webkit-slider-thumb {
+    width: var(--hoverWidthThumb);
+    height: var(--hoverHeightThumb);
+  }
+}

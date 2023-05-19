@@ -2,7 +2,7 @@
 
 .header {
   --width: 100%;
-  --padding: 40px 80px 0 80px;
+  --padding: 40px 0;
 
   @include flex($justify-content: space-between);
 
@@ -13,7 +13,7 @@
 
   &__logo {
     position: absolute;
-    right: 60px;
+    right: 80px;
     top: 20px;
   }
 }

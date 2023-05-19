@@ -4,3 +4,6 @@ export { default as CustomLink } from "./CustomLink/CustomLink";
 export { default as Input } from "./Input/Input";
 export { default as Container } from "./Container/Container";
 export { default as Card } from "./Card/Card";
+export { default as InputRange } from "./InputRange/InputRange";
+export { default as Grid } from "./Grid/Grid";
+export { default as Checkbox } from "./Checkbox/Checkbox";

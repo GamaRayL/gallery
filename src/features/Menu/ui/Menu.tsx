@@ -17,7 +17,10 @@ const Menu = observer(() => {
           </li>
         ))}
         <li className="nav__item">
-          <Button onClick={() => store.toggleOverlay()} icon={<BiSearch name="Search" size={20} />} />
+          <Button
+            icon={<BiSearch name="Search" size={20} />}
+            onClick={() => store.toggleOverlay()}
+          />
         </li>
       </ul>
     </nav >

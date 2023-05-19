@@ -1,0 +1,29 @@
+.collection {
+  --paddingTCollection: 100px;
+  --marginB: 40px;
+
+  --fontSize: var(--f-size-80);
+  --fontWeight: var(--f-weight-medium);
+
+  --bgColor: var(--c-gray);
+
+
+  padding-top: var(--paddingTCollection);
+
+  &__title {
+    font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
+
+    margin-bottom: var(--marginB);
+  }
+
+  &__filter {
+    margin-bottom: var(--marginB);
+
+    background: var(--bgColor);
+
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+}

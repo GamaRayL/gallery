@@ -1,0 +1,50 @@
+@import "styles/mixins.scss";
+
+.filter{
+  --borderColor: var(--c-black);
+  --fontSizeBtn: var(--f-size-16);
+  --fontWeightBtn: var(--f-weight-medium);
+
+  --gridTemplateColumns: repeat(24, 1fr);
+
+  --grColField: 1/9;
+  --grColDisplay: 10/16;
+  --grColExpand: 16/25;
+
+  --gapDisplay: 25px;
+
+  --paddingY: 24px 0;
+
+  display: grid;
+  grid-template-columns: var(--gridTemplateColumns);
+
+  padding: var(--paddingY);
+
+  border-bottom: 3px solid var(--borderColor);
+
+  &__form {
+    @include flex($justify-content: space-between);
+  }
+
+  &__field {
+    grid-column: var(--grColField);
+  }
+
+  &__display {
+    display: flex;
+    grid-column: var(--grColDisplay);
+    justify-self: center;
+    align-items: center;
+    gap: var(--gapDisplay);
+  }
+
+  &__expand {
+    grid-column: var(--grColExpand);
+    justify-self: flex-end;
+  }
+
+  &__btn {
+    font-size: var(--fontSizeBtn);
+    font-weight: var(--fontWeightBtn);
+  }
+}

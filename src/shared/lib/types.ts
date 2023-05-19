@@ -29,7 +29,30 @@ export interface IModal {
 export interface IInput {
   size?: number;
   value: string;
+  placeholder?: string;
   inputRef?: RefObject<HTMLInputElement>;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   setValue?: Dispatch<SetStateAction<string>>;
+}
+
+export interface IInputRange {
+  value?: number;
+  min?: number;
+  max?: number;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface IGrid {
+  children?: ReactNode;
+  className?: string;
+  columns?: number;
+}
+
+export interface IContainer {
+  children?: ReactNode;
+}
+
+export interface ICheckbox {
+  label?: string;
+  count?: string;
 }

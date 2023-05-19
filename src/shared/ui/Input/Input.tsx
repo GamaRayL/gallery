@@ -4,7 +4,7 @@ import { IInput } from "shared/lib/types";
 import Button from "shared/ui/Button/Button";
 
 const Input: FC<IInput> = (props) => {
-  const { value, inputRef, setValue, onChange, size } = props;
+  const { value, inputRef, setValue, onChange, size, placeholder } = props;
   const pRef = useRef<HTMLParagraphElement>(null);
   const [width, setWidth] = useState("320px");
 
@@ -35,7 +35,7 @@ const Input: FC<IInput> = (props) => {
           "--f-size": `${size}px`
         } as CSSProperties}
         className="input"
-        placeholder="Поиск"
+        placeholder={placeholder || "Поиск"}
         ref={inputRef}
         value={value}
         onChange={onChange}

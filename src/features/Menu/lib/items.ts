@@ -6,7 +6,7 @@ export const items = [
   },
   {
     id: 2,
-    pathname: "/",
+    pathname: "/collection",
     label: "Коллекция"
   },
   {

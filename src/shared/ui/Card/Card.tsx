@@ -9,7 +9,7 @@ const Card = () => {
       className="card">
       <div className="card__body">
         <div className="card__image">
-          <Image src={"/p.jpg"} fill style={{ objectFit: "cover" }} alt="Picture" className="test" />
+          <Image src={"/p.jpg"} fill style={{ objectFit: "cover" }} priority sizes="400" alt="Picture" className="test" />
         </div>
         <div className="card__title"></div>
       </div>

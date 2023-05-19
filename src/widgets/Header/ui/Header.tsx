@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Menu } from "features";
 import { PictureFilled } from "@ant-design/icons";
-import { Button } from "shared/ui";
+import { Button, Container } from "shared/ui";
 
 const Header: FC = () => {
   const [height, setHeight] = useState(100);
@@ -13,7 +13,7 @@ const Header: FC = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       <header className="header">
         <Menu />
         <Button
@@ -21,9 +21,9 @@ const Header: FC = () => {
           icon={<PictureFilled style={{ fontSize: 60 }} />}
           href="/"
         />
-      </header>
+      </header >
       <div className="header__helper" style={{ height: `${height || 100}px` }}></div>
-    </>
+    </Container >
   );
 };
 

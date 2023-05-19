@@ -1,0 +1,57 @@
+@import "styles/mixins.scss";
+
+.checkbox {
+  --width: 22px;
+  --height: 22px;
+
+  --widthChecked: 8px;
+  --heightChecked: 8px;
+
+  --color: var(--c-black);
+  --colorCount: var(--c-gray);
+  --borderWidth: 3px;
+  --borderRadius: 4px;
+  --borderRadiusChecked: 2px;
+
+  --fontWeight: var(--f-weight-medium);
+  --fontSize: var(--f-size-14);
+
+
+  cursor: pointer;
+
+  display: flex;
+  gap: 10px;
+  width: fit-content;
+
+  &__input {
+    display: none;
+  }
+
+  &__input:checked + .checkbox__icon::after {
+    content: "";
+    display: block;
+    background: var(--color);
+    border-radius: var(--borderRadiusChecked);
+    width: var(--widthChecked);
+    height: var(--heightChecked);
+  }
+
+  &__icon {
+    @include flex;
+
+    width: var(--width);
+    height: var(--height);
+
+    border: var(--borderWidth) solid var(--color);;
+    border-radius: var(--borderRadius);
+  }
+
+  &__label {
+    font-weight: var(--fontWeight);
+  }
+
+  &__count {
+    font-size: var(--fontSize);
+    opacity: 0.5;
+  }
+}
