@@ -2,8 +2,9 @@ import store from "app/store";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { ChangeEvent, FC, useRef, useState } from "react";
-import { BiCategory, BiFilter, BiSearch, BiSquare, BiUpArrow } from "react-icons/bi";
-import { Button, Checkbox, Container, Grid, Input, InputRange } from "shared/ui";
+import { BiCategory, BiFilter, BiSearch, BiSquare } from "react-icons/bi";
+import { Button, Container, Grid, Input, InputRange } from "shared/ui";
+import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 
 const Filter: FC = observer(() => {
 
@@ -88,74 +89,9 @@ const Filter: FC = observer(() => {
         <div className="expand">
           <Container>
             <Grid columns={23}>
-              <div className="expand__item">
-                <Button
-                  className="expand__btn"
-                  icon={<BiUpArrow size={22} />}
-                  justify="space-between"
-                >
-                  Художник
-                  <span className="expand__count">1234</span>
-                </Button>
-                <div>
-                  <Checkbox
-                    className="expand__checkbox"
-                    label="Конопацкая Галина Павловна"
-                    count="1444" />
-                  <Checkbox
-                    className="expand__checkbox"
-                    label="Августович Алексей Иванович"
-                    count="1444" />
-                  <Checkbox
-                    className="expand__checkbox"
-                    label="Августович Юрий Алексеевич"
-                    count="1444" />
-                </div>
-              </div>
-              <div className="expand__item">
-                <Button
-                  className="expand__btn"
-                  icon={<BiUpArrow size={22} />}
-                  justify="space-between"
-                >
-                  Техника
-                  <span className="expand__count">1234</span>
-                </Button>
-                <Checkbox
-                  className="expand__checkbox"
-                  label="холст/масло"
-                  count="1444" />
-                <Checkbox
-                  className="expand__checkbox"
-                  label="картон/масло"
-                  count="1444" />
-                <Checkbox
-                  className="expand__checkbox"
-                  label="оргалит/масло"
-                  count="1444" />
-              </div>
-              <div className="expand__item">
-                <Button
-                  className="expand__btn"
-                  icon={<BiUpArrow size={22} />}
-                  justify="space-between"
-                >
-                  Год
-                  <span className="expand__count">14</span>
-                </Button>
-                <Checkbox
-                  className="expand__checkbox"
-                  label="1856 - 1866"
-                  count="1444" />
-                <Checkbox
-                  className="expand__checkbox"
-                  label="1867 - 1877"
-                  count="1444" />
-                <Checkbox
-                  className="expand__checkbox"
-                  label="1878 - 1888"
-                  count="1444" />
-              </div>
+              <ExpandItem />
+              <ExpandItem />
+              <ExpandItem />
             </Grid>
           </Container>
         </div>
