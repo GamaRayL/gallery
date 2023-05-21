@@ -60,7 +60,7 @@ const Home = observer(() => {
                 Добро пожаловать в частную галерею <br /> Омара Омарова!</p>
               <Button
                 className="home__button"
-                href="/s"
+                href="/collection"
                 iconPosition="before"
                 icon={<BiRightArrowAlt size={28} className="home__icon" />}
               >

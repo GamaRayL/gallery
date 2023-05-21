@@ -1,11 +1,12 @@
+import classNames from "classnames";
 import { FC } from "react";
 import { ICheckbox } from "shared/lib/types";
 
 const Checkbox: FC<ICheckbox> = (props) => {
-  const { label, count } = props;
+  const { label, count, className } = props;
 
   return (
-    <label className="checkbox">
+    <label className={classNames(className, "checkbox")}>
       <input className="checkbox__input" type="checkbox" name="checkbox" />
       <div className="checkbox__icon"></div>
       {label && <span className="checkbox__label">{label}</span>}

@@ -34,7 +34,7 @@ const Form = () => {
         />
         <Button
           icon={<BiX size={52} />}
-          onClick={() => store.toggleOverlay()}
+          onClick={() => store.toggleSearchOverlay()}
         />
       </div>
       <motion.hr

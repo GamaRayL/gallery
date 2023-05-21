@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { CSSProperties, FC, useMemo } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import { IButton } from "shared/lib/types";
@@ -11,6 +11,7 @@ const Button: FC<IButton> = (props) => {
     ariaLabel,
     title,
     icon,
+    justify,
     iconPosition = "after",
     type = "button",
     href = "",
@@ -21,13 +22,16 @@ const Button: FC<IButton> = (props) => {
 
   const bodyMarkup = useMemo(() => {
     return (
-      <span className="button__body">
+      <span
+        className="button__body"
+        style={{ "--justify": `${justify || "normal"}` } as CSSProperties}
+      >
         {(icon && iconPosition === "before") && icon}
         {children && <span className="button__label">{children}</span>}
         {(icon && iconPosition === "after") && icon}
       </span>
     );
-  }, [icon, iconPosition, children]);
+  }, [justify, icon, iconPosition, children]);
 
   const args = {
     className: classNames(className, "button", {

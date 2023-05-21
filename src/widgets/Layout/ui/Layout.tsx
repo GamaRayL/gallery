@@ -53,6 +53,7 @@ const Layout: FC<ILayout> = observer(({ children }) => {
       <AnimatePresence>
         {!store.isSearch &&
           <motion.div
+            style={{ marginRight: "calc(-1*(100vw - 100%))" }}
             variants={containerVariants}
             initial="hidden"
             animate="visible"

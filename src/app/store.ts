@@ -6,10 +6,15 @@ class Store {
   }
 
   isSearch = false;
+  isFilter = false;
   columns = 4;
 
-  toggleOverlay() {
+  toggleSearchOverlay() {
     this.isSearch = !this.isSearch;
+  }
+
+  toggleFilterOverlay() {
+    this.isFilter = !this.isFilter;
   }
 
   setColumns(value: number) {

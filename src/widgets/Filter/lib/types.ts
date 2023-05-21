@@ -1,3 +1,3 @@
-export interface IFilter {
-  className?: string;
-}
+// export interface IFilter {
+//   className?: string;
+// }

@@ -19,7 +19,7 @@ const Menu = observer(() => {
         <li className="nav__item">
           <Button
             icon={<BiSearch name="Search" size={20} />}
-            onClick={() => store.toggleOverlay()}
+            onClick={() => store.toggleSearchOverlay()}
           />
         </li>
       </ul>

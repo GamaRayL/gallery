@@ -8,6 +8,7 @@ export interface IButton {
   type?: "button" | "submit" | "reset";
   href?: string;
   title?: string;
+  justify?: string;
   ariaLabel?: string;
   isDisabled?: boolean;
   icon?: ReactElement;
@@ -55,4 +56,5 @@ export interface IContainer {
 export interface ICheckbox {
   label?: string;
   count?: string;
+  className?: string;
 }
