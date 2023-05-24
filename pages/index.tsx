@@ -1,7 +1,7 @@
 import { Home } from "pages_flat";
 
-const index = () => {
+const HomePage = () => {
   return <Home />;
 };
 
-export default index;
+export default HomePage;

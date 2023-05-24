@@ -1,17 +1,28 @@
+import { FC } from "react";
 import { motion } from "framer-motion";
+import { ICard } from "shared/lib/types";
+import classNames from "classnames";
 import Image from "next/image";
 
-const Card = () => {
+const Card: FC<ICard> = ({ children, className, onClick, loader, src }) => {
   return (
-    <motion.div whileHover={{ scale: 1.05 }}
+    <motion.div
+      className={classNames(className, "card")}
+      whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-      className="card">
-      <div className="card__body">
-        <div className="card__image">
-          <Image src={"/p.jpg"} fill style={{ objectFit: "cover" }} priority sizes="400" alt="Picture" className="test" />
-        </div>
-        <div className="card__title"></div>
+      transition={{ type: "tween", stiffness: 400, damping: 17 }}
+      onClick={onClick}
+    >
+      <div className="card__helper">
+        <Image
+          className="card__image"
+          loader={loader}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          src={src}
+          alt="Card"
+          fill
+        />
+        {children}
       </div>
     </motion.div>
   );

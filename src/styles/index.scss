@@ -7,10 +7,13 @@
 @import "features/Menu/ui/Menu.scss";
 @import "pages_flat/Home/ui/Home.scss";
 @import "./blocks/input-wrapper.scss";
-@import "shared/ui/Card/Card.scss";
+@import "pages_flat/Home/HomeCard/ui/HomeCard.scss";
 @import "pages_flat/Collection/ui/Collection.scss";
 @import "widgets/Filter/ui/Filter.scss";
 @import "shared/ui/InputRange/InputRange.scss";
 @import "shared/ui/Grid/Grid.scss";
 @import "shared/ui/Container/Container.scss";
 @import "shared/ui/Checkbox/Checkbox.scss";
+@import "shared/ui/Card/Card.scss";
+@import "pages_flat/Artwork/ui/Artwork.scss";
+@import "pages_flat/Artwork/ui/Carousel.scss";

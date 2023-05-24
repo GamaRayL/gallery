@@ -1,9 +1,9 @@
 import { Collection } from "pages_flat";
 
-const collection = () => {
+const CollectionPage = () => {
   return (
     <Collection />
   );
 };
 
-export default collection;
+export default CollectionPage;

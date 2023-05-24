@@ -8,7 +8,9 @@ const Checkbox: FC<ICheckbox> = (props) => {
   return (
     <label className={classNames(className, "checkbox")}>
       <input className="checkbox__input" type="checkbox" name="checkbox" />
-      <div className="checkbox__icon"></div>
+      <div>
+        <div className="checkbox__icon"></div>
+      </div>
       {label && <span className="checkbox__label">{label}</span>}
       {count && <span className="checkbox__count">{count}</span>}
     </label>

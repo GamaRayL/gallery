@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
-import { Button, Card, Container } from "shared/ui";
+import { Button, Container } from "shared/ui";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import store from "app/store";
+import { HomeCard } from "pages_flat/Home/HomeCard";
 
 const Home = observer(() => {
   const { pathname } = useRouter();
@@ -87,9 +88,9 @@ const Home = observer(() => {
               }}
               className="card-container"
             >
-              <Card />
-              <Card />
-              <Card />
+              <HomeCard />
+              <HomeCard />
+              <HomeCard />
             </motion.div>
           }
         </AnimatePresence>

@@ -6,7 +6,6 @@ import Form from "shared/ui/Form/Form";
 import store from "app/store";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
-
 const containerVariants = {
   hidden: {
     y: -300,
@@ -29,6 +28,7 @@ const containerVariants = {
 };
 
 const Layout: FC<ILayout> = observer(({ children }) => {
+
   return (
     <>
       <AnimatePresence>

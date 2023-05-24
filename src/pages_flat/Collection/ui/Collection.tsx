@@ -1,10 +1,13 @@
 import store from "app/store";
+import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { array, variants } from "pages_flat/Collection/lib/utils";
 import { FC, useEffect } from "react";
-import { Container, Grid } from "shared/ui";
+import { Card, Container, Grid } from "shared/ui";
 import { Filter } from "widgets";
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+
 
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();
@@ -17,32 +20,65 @@ const Collection: FC = observer(() => {
       body.style.overflowX = "hidden";
       body.style.overflowY = "auto";
 
+      body.style.background = "#DDDDDD";
+
       header.style.position = "absolute";
     }
+
   }, [pathname]);
+
 
   return (
     <section className="collection">
       <Container>
-        <h1 className="collection__title">Коллекция</h1>
+        <motion.h1
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          className="collection__title">
+          Коллекция
+        </motion.h1>
       </Container>
 
-      <section className="collection__filter">
+      <motion.section
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        custom={{ delay: .8 }}
+        className="collection__filter"
+      >
         <Filter />
-      </section>
+      </motion.section>
 
       <Container>
-        <p style={{ marginBottom: "60px" }}>Результат</p>
+        <motion.p
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          custom={{ delay: .9, }}
+          className="collection__result"
+        >
+          Результат
+        </motion.p>
       </Container>
 
-      <Container>
-        <Grid columns={store.columns}>
-          {array.map(i => (
-            <div key={i} style={{ width: 200, height: 200, background: "black", border: "1px solid white" }}>Блок</div>
-          ))}
-        </Grid>
-      </Container>
-    </section>
+      <motion.div
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        custom={{ delay: .9, y: -100 }}
+      >
+        <Container>
+          <Grid columns={store.columns}>
+            {array.map(i => (
+              <Link key={i.id} href={`/collection/${i.id}`}>
+                <Card loader={store.getImageBySize} src={i.image} />
+              </Link>
+            ))}
+          </Grid>
+        </Container>
+      </motion.div>
+    </section >
   );
 });
 

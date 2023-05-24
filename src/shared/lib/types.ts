@@ -1,3 +1,4 @@
+import { ImageLoaderProps } from "next/image";
 import { ChangeEvent, Dispatch, MouseEvent, ReactElement, ReactNode, RefObject, SetStateAction } from "react";
 
 type ButtonClickEvent = MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
@@ -57,4 +58,12 @@ export interface ICheckbox {
   label?: string;
   count?: string;
   className?: string;
+}
+
+export interface ICard {
+  children?: ReactNode;
+  className?: string;
+  src: string;
+  loader?: ((src: ImageLoaderProps) => string);
+  onClick?: (event: MouseEvent) => void;
 }

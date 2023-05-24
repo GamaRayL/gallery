@@ -27,7 +27,7 @@
     display: none;
   }
 
-  &__input:checked + .checkbox__icon::after {
+  &__input:checked + div > .checkbox__icon::after {
     content: "";
     display: block;
     background: var(--color);
