@@ -1,5 +1,5 @@
 import { ImageLoaderProps } from "next/image";
-import { ChangeEvent, Dispatch, MouseEvent, ReactElement, ReactNode, RefObject, SetStateAction } from "react";
+import { ChangeEvent, Dispatch, MouseEvent, ReactElement, ReactNode, Ref, RefObject, SetStateAction } from "react";
 
 type ButtonClickEvent = MouseEvent<HTMLButtonElement | HTMLAnchorElement>;
 

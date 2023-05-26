@@ -2,8 +2,8 @@ import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { BiSearch, BiX } from "react-icons/bi";
 import { Button } from "shared/ui";
 import Input from "shared/ui/Input/Input";
-import store from "app/store";
 import { motion } from "framer-motion";
+import store from "store";
 
 const Form = () => {
   const [value, setValue] = useState("");

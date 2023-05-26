@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { OrbitControls } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
-import store from "app/store";
 import { observer } from "mobx-react-lite";
 import { array } from "pages_flat/Collection/lib/utils";
 import { Suspense, useEffect, useState } from "react";
+import store from "store";
 import { TextureLoader } from "three";
 
 const ArtObject = () => {

@@ -1,9 +1,9 @@
-import store from "app/store";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { ChangeEvent, FC, useRef, useState } from "react";
 import { BiCategory, BiFilter, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
+import store from "store";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 
 const Filter: FC = observer(() => {

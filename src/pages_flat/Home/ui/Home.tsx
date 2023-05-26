@@ -4,8 +4,9 @@ import { BiRightArrowAlt } from "react-icons/bi";
 import { Button, Container } from "shared/ui";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { observer } from "mobx-react-lite";
-import store from "app/store";
 import { HomeCard } from "pages_flat/Home/HomeCard";
+import store from "store";
+import { Layout } from "widgets";
 
 const Home = observer(() => {
   const { pathname } = useRouter();
@@ -40,63 +41,65 @@ const Home = observer(() => {
   }, [pathname]);
 
   return (
-    <Container>
-      <section className="home" >
-        <AnimatePresence>
-          {!store.isSearch &&
-            <motion.div
-              className="home__info"
-              initial={{ x: -10, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -10, opacity: 0 }}
-              transition={{
-                type: "tween",
-                duration: .5,
-              }}
-            >
-              <h1 className="home__title">
-                Откройте <br /> для себя <br /> галерею картин
-              </h1>
-              <p className="home__paragraph">
-                Добро пожаловать в частную галерею <br /> Омара Омарова!</p>
-              <Button
-                className="home__button"
-                href="/collection"
-                iconPosition="before"
-                icon={<BiRightArrowAlt size={28} className="home__icon" />}
+    <Layout title="Главная" description="Главная страница частной галереи Омара Муртузалиевича">
+      <Container>
+        <section className="home" >
+          <AnimatePresence>
+            {!store.isSearch &&
+              <motion.div
+                className="home__info"
+                initial={{ x: -10, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -10, opacity: 0 }}
+                transition={{
+                  type: "tween",
+                  duration: .5,
+                }}
               >
-                В коллекцию
-              </Button>
-            </motion.div >
-          }
-        </AnimatePresence>
-        <AnimatePresence>
-          {!store.isSearch &&
-            <motion.div
-              style={{
-                display: "flex",
-                gap: 60,
-                alignItems: "center",
-                paddingRight: "220px"
-              }}
-              initial={{ x: 300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 300, opacity: 0 }}
-              transition={{
-                type: "tween",
-                duration: .5,
-              }}
-              className="card-container"
-            >
-              <HomeCard />
-              <HomeCard />
-              <HomeCard />
-            </motion.div>
-          }
-        </AnimatePresence>
-        <motion.div className="progress-bar" style={{ scaleX }} />
-      </section >
-    </Container>
+                <h1 className="home__title">
+                  Откройте <br /> для себя <br /> галерею картин
+                </h1>
+                <p className="home__paragraph">
+                  Добро пожаловать в частную галерею <br /> Омара Омарова!</p>
+                <Button
+                  className="home__button"
+                  href="/collection"
+                  iconPosition="before"
+                  icon={<BiRightArrowAlt size={28} className="home__icon" />}
+                >
+                  В коллекцию
+                </Button>
+              </motion.div >
+            }
+          </AnimatePresence>
+          <AnimatePresence>
+            {!store.isSearch &&
+              <motion.div
+                style={{
+                  display: "flex",
+                  gap: 60,
+                  alignItems: "center",
+                  paddingRight: "220px"
+                }}
+                initial={{ x: 300, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 300, opacity: 0 }}
+                transition={{
+                  type: "tween",
+                  duration: .5,
+                }}
+                className="card-container"
+              >
+                <HomeCard />
+                <HomeCard />
+                <HomeCard />
+              </motion.div>
+            }
+          </AnimatePresence>
+          <motion.div className="progress-bar" style={{ scaleX }} />
+        </section >
+      </Container>
+    </Layout>
   );
 });
 

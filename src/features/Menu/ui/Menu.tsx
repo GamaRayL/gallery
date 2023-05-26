@@ -1,8 +1,8 @@
 import { BiSearch } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
-import store from "app/store";
 import { Button, CustomLink } from "shared/ui";
 import { items } from "features/Menu/lib/items";
+import store from "store";
 
 const Menu = observer(() => {
   return (

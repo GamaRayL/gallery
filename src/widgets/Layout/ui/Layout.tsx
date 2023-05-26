@@ -3,9 +3,10 @@ import Header from "widgets/Header/ui/Header";
 import { Container, Modal } from "shared/ui";
 import { ILayout } from "widgets/Layout/lib/types";
 import Form from "shared/ui/Form/Form";
-import store from "app/store";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
+import store from "store";
+import { Meta } from "widgets/Layout/Meta";
 const containerVariants = {
   hidden: {
     y: -300,
@@ -27,10 +28,11 @@ const containerVariants = {
   }
 };
 
-const Layout: FC<ILayout> = observer(({ children }) => {
+const Layout: FC<ILayout> = observer((props) => {
+  const { children, title, description } = props;
 
   return (
-    <>
+    <Meta title={title} description={description}>
       <AnimatePresence>
         {store.isSearch &&
           <motion.div
@@ -65,7 +67,7 @@ const Layout: FC<ILayout> = observer(({ children }) => {
       </AnimatePresence>
 
       <main>{children}</main>
-    </>
+    </Meta>
   );
 });
 
