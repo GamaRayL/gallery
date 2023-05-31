@@ -13,7 +13,7 @@ const Filter: FC = observer(() => {
   const btnSize = 26;
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState("");
-  const storeTest = useContext(MobxContext) as ArtworkStore;
+  const {setSearchParam} = useContext(MobxContext) as ArtworkStore;
 
   const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);
@@ -34,7 +34,7 @@ const Filter: FC = observer(() => {
 
   const onSubmitSearchArtwork = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    storeTest.setSearchParam(value);
+    setSearchParam(value);
   };
 
   const onClickScrollHandler = () => {

@@ -28,9 +28,9 @@ class ArtworkStore {
     this.setArtworks(data.artworks);
   };
 
-  setSearchParam(param: string) {
+  setSearchParam = (param: string) => {
     this.searchParam = param;
-  }
+  };
 }
 
 export default ArtworkStore;
