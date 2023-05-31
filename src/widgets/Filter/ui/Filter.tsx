@@ -1,9 +1,10 @@
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { MobxContext } from "pages/_app";
-import { ChangeEvent, FC, useContext, useRef, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
 import { BiCategory, BiFilter, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
+import ArtworkStore from "store/artworkStore";
 import store from "store/store";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 
@@ -12,7 +13,7 @@ const Filter: FC = observer(() => {
   const btnSize = 26;
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState("");
-  // const { setSearchParam } = useContext(MobxContext);
+  const { setSearchParam }: ArtworkStore | undefined = useContext(MobxContext);
 
   const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);
@@ -31,12 +32,11 @@ const Filter: FC = observer(() => {
     store.decreaseColumns();
   };
 
-  // const onSubmitSearchArtwork = (event) => {
-  //   event.preventDefault();
-  //   console.log(value);
+  const onSubmitSearchArtwork = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  //   setSearchParam(value);
-  // };
+    setSearchParam(value);
+  };
 
   const onClickScrollHandler = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
@@ -55,7 +55,7 @@ const Filter: FC = observer(() => {
       <Container>
         <div className={classNames("filter")} ref={ref}>
           <div className="filter__field">
-            <form className="filter__form" /* onSubmit={onSubmitSearchArtwork} */>
+            <form className="filter__form" onSubmit={onSubmitSearchArtwork}>
               <Input
                 value={value}
                 setValue={setValue}
@@ -63,7 +63,7 @@ const Filter: FC = observer(() => {
                 placeholder="Найти картину"
                 onChange={onChangeInputHandler}
               />
-              <Button icon={<BiSearch size={btnSize} />} />
+              <Button type="submit" icon={<BiSearch size={btnSize} />} />
             </form>
           </div>
           <div className="filter__display">

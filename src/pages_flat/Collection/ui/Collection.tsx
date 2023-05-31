@@ -23,7 +23,6 @@ const Collection: FC = observer(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
     const header = document.querySelector(".header") as HTMLElement;
 
-
     if (pathname == "/collection") {
       body.style.overflowX = "hidden";
       body.style.overflowY = "auto";

@@ -6,6 +6,7 @@ const CollectionPage = () => <Collection />;
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const artworks = await CollectionService.getAll();
+
   return {
     props: {
       artworks

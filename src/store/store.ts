@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import { IArtwork } from "pages_flat/Collection/lib/types";
 
 class Store {
   constructor () {
@@ -11,9 +10,6 @@ class Store {
   isOrbitControls = false;
   columns = 4;
 
-  // setArtists(artists) {
-  //   this.artworks = artists;
-  // }
 
   setColumns(value: number) {
     this.columns = value;

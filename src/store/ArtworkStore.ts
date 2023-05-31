@@ -2,24 +2,16 @@ import { makeAutoObservable } from "mobx";
 import { IArtwork, IArtworksData } from "pages_flat/Collection/lib/types";
 
 class ArtworkStore {
-  constructor () {
-    makeAutoObservable(this);
-  }
-
   artworks: IArtwork[] = [];
   searchParam = "";
 
-  setSearchParam(param: string) {
-    this.searchParam = param;
+  constructor () {
+    makeAutoObservable(this);
   }
 
   setArtworks(artworks: IArtwork[]) {
     this.artworks = artworks;
   }
-
-  // fetchArtworks = async () => {
-  //   return await CollectionService.getAll();
-  // };
 
   get filteredArtworks() {
     return this.artworks.filter(({ name }) =>
@@ -36,12 +28,9 @@ class ArtworkStore {
     this.setArtworks(data.artworks);
   };
 
-  // fetchAndSetArtworksOnClient = async () => {
-  //   const newArtworks = await Promise.resolve([...artworks, ...clientArtworks]);
-  //   console.log(newArtworks);
-  //   this.setArtworks(newArtworks);
-  // };
-
+  setSearchParam(param: string) {
+    this.searchParam = param;
+  }
 }
 
 export default ArtworkStore;
