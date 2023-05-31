@@ -7,23 +7,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "api-omarov.ru"],
+    minimumCacheTTL: 90,
   },
-
-  // webpack(config) {
-  //   config.module.rules.push({
-  //     test: /\.svg$/i,
-  //     issuer: { and: [/\.(ts)x?$/] },
-  //     use: [
-  //       {
-  //         loader: "@svgr/webpack",
-  //         options: {
-  //           svgoConfig: { plugins: [{ removeViewBox: false }] },
-  //         },
-  //       },
-  //     ],
-  //   });
-
-  //   return config;
-  // },
 };

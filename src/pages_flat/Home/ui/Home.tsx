@@ -5,7 +5,7 @@ import { Button, Container } from "shared/ui";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { HomeCard } from "pages_flat/Home/HomeCard";
-import store from "store";
+import store from "store/store";
 import { Layout } from "widgets";
 
 const Home = observer(() => {

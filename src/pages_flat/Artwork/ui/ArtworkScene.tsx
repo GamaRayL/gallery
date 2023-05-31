@@ -4,7 +4,7 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { observer } from "mobx-react-lite";
 import { array } from "pages_flat/Collection/lib/utils";
 import { Suspense, useEffect, useState } from "react";
-import store from "store";
+import store from "store/store";
 import { TextureLoader } from "three";
 
 const ArtObject = () => {
@@ -35,10 +35,18 @@ const ArtObject = () => {
   }
 
   return (
-    <mesh scale={[scaledWidth, scaledHeight, 0.05]}>
-      <planeGeometry />
-      <meshBasicMaterial map={texture} />
-    </mesh>
+    <group>
+      <group scale={[scaledWidth, scaledHeight, 1]}>
+        <mesh scale={[1, 1, 10]}>
+          <boxGeometry args={[1, 1]} />
+          <meshBasicMaterial color="black" />
+        </mesh>
+        <mesh position={[0, 0, 6]}>
+          <planeGeometry args={[1, 1]} />
+          <meshBasicMaterial map={texture} />
+        </mesh>
+      </group>
+    </group>
   );
 };
 
@@ -53,11 +61,12 @@ const ArtworkScene = observer(() => {
     {domLoaded &&
       <Suspense fallback={null}>
         <Canvas
+          shadows
           camera={{ position: [0, 0, 500] }}
-          style={{ zIndex: 2, width: "100%", height: "100%", objectFit: "contain", position: "absolute" }}
+        // style={{ zIndex: 2, width: "100%", height: "100%", objectFit: "contain", position: "absolute" }}
         >
           {store.isOrbitControls &&
-            <OrbitControls enableRotate={false} minDistance={100} />}
+            <OrbitControls minDistance={100} maxDistance={550} />}
           <ArtObject />
         </Canvas>
       </Suspense >

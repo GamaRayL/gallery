@@ -1,15 +1,11 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Button, Card, Container, Grid } from "shared/ui";
+import { Button, Container, Grid } from "shared/ui";
 import dynamic from 'next/dynamic';
 import { observer } from "mobx-react-lite";
 import { RiSearchEyeLine } from "react-icons/ri";
-import { array } from "pages_flat/Collection/lib/utils";
-import Link from "next/link";
-import Image from "next/image";
-import ImageCarousel from "pages_flat/Artwork/ui/Carousel";
 import Carousel from "pages_flat/Artwork/ui/Carousel";
-import store from "store";
+import store from "store/store";
 import { Layout } from "widgets";
 
 const DynamicArt = dynamic(() => import('./ArtworkScene'), {
@@ -18,8 +14,6 @@ const DynamicArt = dynamic(() => import('./ArtworkScene'), {
 
 const Artwork = observer(() => {
   const { pathname } = useRouter();
-  const newArray = array;
-  // const texture = useLoader(TextureLoader, array[1].image);
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;

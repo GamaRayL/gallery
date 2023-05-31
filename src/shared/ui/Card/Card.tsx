@@ -8,9 +8,9 @@ const Card: FC<ICard> = ({ children, className, onClick, loader, src }) => {
   return (
     <motion.div
       className={classNames(className, "card")}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 0.9 }}
       whileTap={{ scale: 1 }}
-      transition={{ type: "tween", stiffness: 400, damping: 17 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
       onClick={onClick}
     >
       <div className="card__helper">
@@ -18,8 +18,8 @@ const Card: FC<ICard> = ({ children, className, onClick, loader, src }) => {
           className="card__image"
           // placeholder="blur"
           // blurDataURL={src}
-          loader={loader}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          // loader={loader}
+          sizes="(min-width: 768px) 100vw"
           src={src}
           alt="Card"
           fill

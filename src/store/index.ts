@@ -1,58 +1,29 @@
-import { makeAutoObservable } from "mobx";
-import { ImageLoaderProps } from "next/image";
+import { enableStaticRendering } from "mobx-react-lite";
+import { IArtworksData } from "pages_flat/Collection/lib/types";
+import ArtworkStore from "store/ArtworkStore";
 
-class Store {
-  constructor () {
-    makeAutoObservable(this);
-  }
+// включить статический рендеринг только на сервере
+enableStaticRendering(typeof window === "undefined");
 
-  isSearch = false;
-  isFilter = false;
-  isOrbitControls = false;
-  columns = 4;
+let clientStore: ArtworkStore;
 
-  toggleSearchOverlay() {
-    this.isSearch = !this.isSearch;
-  }
+const initStore = (initData: IArtworksData) => {
+  // проверка: если клиентский store уже есть, иначе создаём его
+  const store = clientStore ?? new ArtworkStore();
 
-  toggleFilterOverlay() {
-    this.isFilter = !this.isFilter;
-  }
+  // если получили данные по запросу (из _app), то проводим гидрацию данных
+  if (initData) store.hydrate(initData);
 
-  setColumns(value: number) {
-    this.columns = value;
-  }
+  // если серверный компонент, то возвращаем store
+  if (typeof window === "undefined") return store;
 
-  increaseColumns() {
-    if (this.columns === 6) return;
-    this.columns += 1;
-  }
+  // если клиентского store нет, то присвоим ему store
+  if (!clientStore) clientStore = store;
 
-  decreaseColumns() {
-    if (this.columns === 1) return;
-    this.columns -= 1;
-  }
+  return store;
+};
 
-  toggleOrbitControls() {
-    this.isOrbitControls = !this.isOrbitControls;
-  }
-
-  getImageBySize = ({ src }: ImageLoaderProps) => {
-    switch (true) {
-      case (this.columns >= 5):
-        return `http://localhost:5000/_next/image?url=${src}&w=384&q=75`;
-      case (this.columns >= 3):
-        return `http://localhost:5000/_next/image?url=${src}&w=640&q=75`;
-      case (this.columns == 2):
-        return `http://localhost:5000/_next/image?url=${src}&w=1080&q=75`;
-      case (this.columns == 1):
-        return `http://localhost:5000/_next/image?url=${src}&w=1920&q=75`;
-      default:
-        return `http://localhost:5000/_next/image?url=${src}&w=3840&q=75`;
-    }
-  };
+export function useStore(initData: IArtworksData) {
+  // передаём данные, для создания хранилища
+  return initStore(initData);
 }
-
-const store = new Store();
-
-export default store;

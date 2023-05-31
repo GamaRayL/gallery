@@ -1,11 +1,5 @@
 import { Home } from "pages_flat";
 
-const HomePage = () => {
-  return (
-    <>
-      <Home />
-    </>
-  );
-};
+const HomePage = () => <Home />;
 
 export default HomePage;
