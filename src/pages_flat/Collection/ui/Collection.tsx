@@ -7,16 +7,14 @@ import { IArtwork } from "pages_flat/Collection/lib/types";
 import { variants } from "pages_flat/Collection/lib/utils";
 import { FC, useContext, useEffect } from "react";
 import { Card, Container, Grid } from "shared/ui";
+import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
 import { Filter, Layout } from "widgets";
 
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();
   const columns = store.columns;
-  const {
-    totalArtworks,
-    filteredArtworks,
-  }: any = useContext(MobxContext);
+  const { totalArtworks, filteredArtworks } = useContext(MobxContext) as IArtworkStore;
 
 
   useEffect(() => {

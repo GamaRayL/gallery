@@ -4,7 +4,7 @@ import { MobxContext } from "pages/_app";
 import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
 import { BiCategory, BiFilter, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
-import ArtworkStore, { IArtworkStore } from "store/artworkStore";
+import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 
@@ -13,7 +13,7 @@ const Filter: FC = observer(() => {
   const btnSize = 26;
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState("");
-  const {setSearchParam} = useContext(MobxContext) as ArtworkStore;
+  const { setSearchParam } = useContext(MobxContext) as IArtworkStore;
 
   const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);

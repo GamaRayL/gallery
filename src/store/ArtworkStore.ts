@@ -1,6 +1,18 @@
 import { makeAutoObservable } from "mobx";
 import { IArtwork, IArtworksData } from "pages_flat/Collection/lib/types";
 
+export interface IArtworkStore {
+  artworks: IArtwork[];
+  searchParam: string;
+
+  setArtworks(values: IArtwork[]): void;
+  setSearchParam(value: string): void;
+  get filteredArtworks(): IArtwork[];
+  get totalArtworks(): number;
+  hydrate(value: IArtworksData): void;
+}
+
+
 class ArtworkStore {
   artworks: IArtwork[] = [];
   searchParam = "";
@@ -9,9 +21,14 @@ class ArtworkStore {
     makeAutoObservable(this);
   }
 
+
   setArtworks(artworks: IArtwork[]) {
     this.artworks = artworks;
   }
+
+  setSearchParam = (param: string) => {
+    this.searchParam = param;
+  };
 
   get filteredArtworks() {
     return this.artworks.filter(({ name }) =>
@@ -26,10 +43,6 @@ class ArtworkStore {
   hydrate = (data: IArtworksData) => {
     if (!data) return;
     this.setArtworks(data.artworks);
-  };
-
-  setSearchParam = (param: string) => {
-    this.searchParam = param;
   };
 }
 
