@@ -10,4 +10,7 @@ module.exports = {
     domains: ["res.cloudinary.com", "api-omarov.ru"],
     minimumCacheTTL: 90,
   },
+  experimental: {
+    largePageDataBytes: 128 * 100000,
+  },
 };

@@ -5,7 +5,7 @@ const API_URL = 'https://api-omarov.ru';
 
 axios.defaults.baseURL = API_URL;
 
-export const CollectionService = {
+export const collectionService = {
   async getAll() {
     const { data } = await axios.get<IArtwork[]>('/artworks');
     return data;

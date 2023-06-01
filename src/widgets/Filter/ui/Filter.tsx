@@ -13,7 +13,13 @@ const Filter: FC = observer(() => {
   const btnSize = 26;
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState("");
-  const { setSearchParam } = useContext(MobxContext) as IArtworkStore;
+  const {
+    setSearchParam,
+    uniqueArtists,
+    uniqueTechniques,
+    toggleArtistParam,
+    artistParam
+  } = useContext(MobxContext) as IArtworkStore;
 
   const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.value);
@@ -47,6 +53,21 @@ const Filter: FC = observer(() => {
       : body.style.overflowY = "auto";
 
     !store.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const onClickSelectHandler = (id: number/* , name: string */) => {
+    // if (id) {
+    toggleArtistParam(id);
+    // }
+  };
+
+  const onCheckedHandler = (id: number, name: string) => {
+    if (id) {
+      // return true;
+      return artistParam.includes(id);
+    } else if (name) {
+      return false;
+    }
   };
 
   return (
@@ -97,9 +118,19 @@ const Filter: FC = observer(() => {
         <div className="expand">
           <Container>
             <Grid columns={23}>
-              <ExpandItem />
-              <ExpandItem />
-              <ExpandItem />
+              <ExpandItem
+                title="Художник"
+                items={uniqueArtists}
+                onChecked={onCheckedHandler}
+                onClick={onClickSelectHandler}
+              />
+              <ExpandItem
+                title="Техника"
+                items={uniqueTechniques}
+                onChecked={onCheckedHandler}
+                onClick={onClickSelectHandler}
+              />
+              {/* <ExpandItem items={uniqueArtists} title="Годы создания"/> */}
             </Grid>
           </Container>
         </div>

@@ -16,7 +16,6 @@ const Collection: FC = observer(() => {
   const columns = store.columns;
   const { totalArtworks, filteredArtworks } = useContext(MobxContext) as IArtworkStore;
 
-
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
     const header = document.querySelector(".header") as HTMLElement;
@@ -31,6 +30,15 @@ const Collection: FC = observer(() => {
     }
 
   }, [pathname]);
+
+  const getCorrectEnding = (value: number) => {
+    const n = value % 10;
+    const n1 = value % 100;
+    if (n1 > 10 && n < 20) return `${value} картина`;
+    if (n > 1 && n < 5) return `${value} картина`;
+    if (n === 1) return `${value} картин`;
+    return `${value} картины`;
+  };
 
 
   return (
@@ -64,7 +72,7 @@ const Collection: FC = observer(() => {
             custom={{ delay: .9, }}
             className="collection__result"
           >
-            {totalArtworks}
+            {filteredArtworks.length} - число картин
           </motion.p>
         </Container>
 

@@ -1,0 +1,7 @@
+.expand {
+  --fontSize: var(--f-size-16);
+
+  &__btn-showAll {
+    font-size: var(--fontSize);
+  }
+}
