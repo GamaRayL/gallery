@@ -31,7 +31,7 @@ const Collection: FC = observer(() => {
 
   }, [pathname]);
 
-  const getCorrectEnding = (value: number) => {
+  const getCorrectEnd = (value: number) => {
     const n = value % 10;
     const n1 = value % 100;
     if (n1 > 10 && n < 20) return `${value} картина`;

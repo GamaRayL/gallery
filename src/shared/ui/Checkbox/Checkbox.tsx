@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { motion } from "framer-motion";
-import { FC } from "react";
+import { FC, MouseEvent } from "react";
 import { ICheckbox } from "shared/lib/types";
 
 const Checkbox: FC<ICheckbox> = (props) => {
@@ -19,6 +19,7 @@ const Checkbox: FC<ICheckbox> = (props) => {
         type="checkbox"
         name="checkbox"
         defaultChecked={checked}
+        onClick={(event) => event.stopPropagation()}
       />
       <div>
         <div className="checkbox__icon"></div>

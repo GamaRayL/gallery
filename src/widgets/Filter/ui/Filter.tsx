@@ -55,13 +55,12 @@ const Filter: FC = observer(() => {
     !store.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const onClickSelectHandler = (id: number/* , name: string */) => {
-    // if (id) {
+  const onClickSelectHandler = (id: number, name: string) => {
     toggleArtistParam(id);
-    // }
+    console.log(id, name);
   };
 
-  const onCheckedHandler = (id: number, name: string) => {
+  const onCheckHandler = (id: number, name: string) => {
     if (id) {
       // return true;
       return artistParam.includes(id);
@@ -121,14 +120,14 @@ const Filter: FC = observer(() => {
               <ExpandItem
                 title="Художник"
                 items={uniqueArtists}
-                onChecked={onCheckedHandler}
+                onChecked={onCheckHandler}
                 onClick={onClickSelectHandler}
               />
               <ExpandItem
                 title="Техника"
                 items={uniqueTechniques}
-                onChecked={onCheckedHandler}
-                onClick={onClickSelectHandler}
+                onChecked={onCheckHandler}
+              // onClick={onClickSelectHandler}
               />
               {/* <ExpandItem items={uniqueArtists} title="Годы создания"/> */}
             </Grid>
