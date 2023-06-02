@@ -2,15 +2,15 @@
 //   className?: string;
 // }
 
-interface IItem {
-  id?: number;
-  name: string;
+export interface IItem {
+  id: number;
+  label: string;
   count: number;
 }
 
 export interface IExpandItem {
   items: IItem[];
   title: string;
-  onChecked?: any;
-  onClick?: any;
+  onCheck?: (item: IItem) => boolean;
+  onClick?: (item: IItem) => void;
 }

@@ -6,6 +6,7 @@ import { BiCategory, BiFilter, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
+import { IItem } from "widgets/Filter/lib/types";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 
 
@@ -15,10 +16,12 @@ const Filter: FC = observer(() => {
   const [value, setValue] = useState("");
   const {
     setSearchParam,
+    toggleArtistParam,
+    toggleTechniqueParam,
     uniqueArtists,
     uniqueTechniques,
-    toggleArtistParam,
-    artistParam
+    artistParam,
+    techniqueParam
   } = useContext(MobxContext) as IArtworkStore;
 
   const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -55,18 +58,22 @@ const Filter: FC = observer(() => {
     !store.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const onClickSelectHandler = (id: number, name: string) => {
-    toggleArtistParam(id);
-    console.log(id, name);
+  const onSelectArtistHandler = (item: IItem) => {
+    console.log(item);
+    toggleArtistParam(item.id);
   };
 
-  const onCheckHandler = (id: number, name: string) => {
-    if (id) {
-      // return true;
-      return artistParam.includes(id);
-    } else if (name) {
-      return false;
-    }
+  const onSelectTechniqueHandler = (item: IItem) => {
+    toggleTechniqueParam(item.label);
+  };
+
+
+  const onCheckArtistHandler = (item: IItem) => {
+    return artistParam.includes(item.id);
+  };
+
+  const onCheckTechniqueHandler = (item: IItem) => {
+    return techniqueParam.includes(item.label);
   };
 
   return (
@@ -120,14 +127,14 @@ const Filter: FC = observer(() => {
               <ExpandItem
                 title="Художник"
                 items={uniqueArtists}
-                onChecked={onCheckHandler}
-                onClick={onClickSelectHandler}
+                onCheck={onCheckArtistHandler}
+                onClick={onSelectArtistHandler}
               />
               <ExpandItem
                 title="Техника"
                 items={uniqueTechniques}
-                onChecked={onCheckHandler}
-              // onClick={onClickSelectHandler}
+                onCheck={onCheckTechniqueHandler}
+                onClick={onSelectTechniqueHandler}
               />
               {/* <ExpandItem items={uniqueArtists} title="Годы создания"/> */}
             </Grid>

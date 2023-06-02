@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { FC, useState } from "react";
-import { BiCaretDown, BiChevronDown, BiChevronUp, BiChevronsDown, BiDownArrow, BiSortDown, BiUpArrow, BiUpsideDown } from "react-icons/bi";
+import { BiChevronDown, BiChevronUp, BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { Button, Checkbox } from "shared/ui";
 import { IExpandItem } from "widgets/Filter/lib/types";
 
-const ExpandItem: FC<IExpandItem> = ({ items, title, onChecked, onClick }) => {
+const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
   const [isShow, setShow] = useState(false);
   const [isShowAll, setShowAll] = useState(false);
 
@@ -41,15 +41,14 @@ const ExpandItem: FC<IExpandItem> = ({ items, title, onChecked, onClick }) => {
       >
         {items
           .slice(0, isShowAll ? -1 : 4)
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map(({ id, name, count }) => (
+          .sort((a, b) => a.label.localeCompare(b.label))
+          .map((item) => (
             <Checkbox
-              key={id || name}
+              {...item}
+              key={item.id}
               className="expand__checkbox"
-              label={name}
-              count={count}
-              checked={onChecked(id, name)}
-              onClick={() => onClick(id, name)}
+              checked={onCheck && onCheck(item)}
+              onClick={onClick && (() => onClick(item))}
             />
           ))
         }

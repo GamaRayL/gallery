@@ -14,7 +14,7 @@ import { Filter, Layout } from "widgets";
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();
   const columns = store.columns;
-  const { totalArtworks, filteredArtworks } = useContext(MobxContext) as IArtworkStore;
+  const { filteredArtworks } = useContext(MobxContext) as IArtworkStore;
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;

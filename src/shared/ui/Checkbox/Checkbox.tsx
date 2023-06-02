@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { motion } from "framer-motion";
-import { FC, MouseEvent } from "react";
+import { FC } from "react";
 import { ICheckbox } from "shared/lib/types";
 
 const Checkbox: FC<ICheckbox> = (props) => {
@@ -24,7 +24,7 @@ const Checkbox: FC<ICheckbox> = (props) => {
       <div>
         <div className="checkbox__icon"></div>
       </div>
-      {label && <span className="checkbox__label">{label}</span>}
+      <span className="checkbox__label">{label || "-"}</span>
       {count && <span className="checkbox__count">{count}</span>}
     </motion.label>
   );
