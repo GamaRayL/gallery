@@ -34,9 +34,10 @@ const Collection: FC = observer(() => {
   const getCorrectEnd = (value: number) => {
     const n = value % 10;
     const n1 = value % 100;
-    if (n1 > 10 && n < 20) return `${value} картина`;
-    if (n > 1 && n < 5) return `${value} картина`;
-    if (n === 1) return `${value} картин`;
+    if (n1 > 10 && n1 < 20) return `${value} картин`;
+    if (n > 1 && n < 5) return `${value} картины`;
+    if (n === 1) return `${value} картина`;
+    if (value == 0) return `${value} картин`;
     return `${value} картины`;
   };
 
@@ -72,7 +73,7 @@ const Collection: FC = observer(() => {
             custom={{ delay: .9, }}
             className="collection__result"
           >
-            {filteredArtworks.length} - число картин
+            {getCorrectEnd(filteredArtworks.length)}
           </motion.p>
         </Container>
 
