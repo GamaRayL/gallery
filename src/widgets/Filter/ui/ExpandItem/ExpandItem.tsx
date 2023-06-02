@@ -21,7 +21,7 @@ const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
   };
 
   return (
-    <div className="expand__item">
+    <div className="expand">
       <Button
         className="expand__btn"
         icon={isShow ? <BiUpArrow size={22} /> : <BiDownArrow size={22} />}
@@ -32,11 +32,11 @@ const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
         <span className="expand__count">{items.length}</span>
       </Button>
       <motion.div
-        initial={{ y: -60, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
-          type: "tween",
-          duration: .8,
+          type: "spring",
+          delay: .4,
         }}
       >
         {items

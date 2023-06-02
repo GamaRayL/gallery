@@ -12,8 +12,8 @@ export const variants: Variants = {
       type: "tween",
       duration: .5,
       delay: custom.delay
-    }
-  })
+    },
+  }),
 };
 
 export const array = [

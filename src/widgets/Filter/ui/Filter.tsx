@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { MobxContext } from "pages/_app";
 import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
-import { BiCategory, BiFilter, BiSearch, BiSquare } from "react-icons/bi";
+import { BiArrowFromLeft, BiArrowFromRight, BiCategory, BiFilter, BiRightArrowAlt, BiRightTopArrowCircle, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
@@ -21,7 +21,8 @@ const Filter: FC = observer(() => {
     uniqueArtists,
     uniqueTechniques,
     artistParam,
-    techniqueParam
+    techniqueParam,
+    filteredArtworks
   } = useContext(MobxContext) as IArtworkStore;
 
   const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -76,6 +77,14 @@ const Filter: FC = observer(() => {
     return techniqueParam.includes(item.label);
   };
 
+  const onClickTotalHandler = () => {
+    const body = document.querySelector("body") as HTMLBodyElement;
+
+    body.style.overflowY = "auto";
+
+    store.toggleFilterOverlay();
+  };
+
   return (
     <>
       <Container>
@@ -121,9 +130,9 @@ const Filter: FC = observer(() => {
       </Container>
 
       {store.isFilter &&
-        <div className="expand">
+        <div>
           <Container>
-            <Grid columns={23}>
+            <Grid className="expand-container" columns={23}>
               <ExpandItem
                 title="Художник"
                 items={uniqueArtists}
@@ -139,6 +148,16 @@ const Filter: FC = observer(() => {
               {/* <ExpandItem items={uniqueArtists} title="Годы создания"/> */}
             </Grid>
           </Container>
+          <Button
+            iconPosition="after"
+            justify="flex-end"
+            icon={<BiRightArrowAlt size="40" color="white" />}
+            className="filter__btn--total"
+            onClick={onClickTotalHandler}
+          >
+            <span className="filter__label">результат </span>
+            <span className="filter__label--total">{filteredArtworks.length}</span>
+          </Button>
         </div>
       }
     </>

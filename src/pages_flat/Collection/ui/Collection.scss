@@ -35,4 +35,15 @@
     top: var(--top);
     z-index: var(--zIndex);
   }
+
+  &__btn--up {
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    transition: .2s;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
 }
