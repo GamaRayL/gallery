@@ -2,9 +2,9 @@ import { createContext } from "react";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
-import { useStore } from "store";
 import ArtworkStore, { IArtworkStore } from "store/artworkStore";
 import "styles/global.scss";
+import { useStore } from "store";
 
 const montserrat = Montserrat({
   subsets: ["cyrillic"],

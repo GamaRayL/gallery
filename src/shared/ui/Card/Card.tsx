@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { motion } from "framer-motion";
 import { ICard } from "shared/lib/types";
 import classNames from "classnames";
 import Image from "next/image";
 
-const Card: FC<ICard> = ({ children, className, onClick, loader, src }) => {
+const Card: FC<ICard> = ({ children, setCardInfo, year, className, name, onClick, loader, src }) => {
+
   return (
     <motion.div
       className={classNames(className, "card")}
@@ -12,6 +13,7 @@ const Card: FC<ICard> = ({ children, className, onClick, loader, src }) => {
       whileTap={{ scale: 1 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       onClick={onClick}
+      onMouseOver={() => setCardInfo({ name: name, year: year })}
     >
       <div className="card__helper">
         <Image

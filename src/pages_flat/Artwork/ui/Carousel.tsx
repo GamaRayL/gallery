@@ -1,7 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 import { MotionProps, motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { array } from "pages_flat/Collection/lib/utils";
 import Image from "next/image";
 import classNames from "classnames";
 
@@ -31,13 +30,13 @@ const Carousel: FC<ICarousel> = ({ className }) => {
   return (
     <motion.div ref={carouselRef} whileTap={{ cursor: "grabbing" }} className={classNames(className, "carousel")}>
       <motion.div drag="x" dragConstraints={{ right: 0, left: -width }} className="carousel__inner">
-        {array.map(i => {
+        {/* {array.map(i => {
           return (
             <motion.div className="carousel__item" key={i.id} >
               <Image className="carousel__image" src={i.image} alt="" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </motion.div>
           );
-        })}
+        })} */}
       </motion.div>
       {/* <motion.img
         src={array[currentImage].image}

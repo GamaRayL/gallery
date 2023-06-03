@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { OrbitControls } from "@react-three/drei";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { observer } from "mobx-react-lite";
-import { array } from "pages_flat/Collection/lib/utils";
 import { Suspense, useEffect, useState } from "react";
 import store from "store/store";
 import { TextureLoader } from "three";
 
-const ArtObject = () => {
-  const texture = useLoader(TextureLoader, array[8].image);
+const ArtObject = ({ art }: { art: string; }) => {
+  const texture = useLoader(TextureLoader, art);
   const { image } = texture;
   const textureAspectRatio = image.width / image.height;
   const container = document.querySelector(".artwork__image-conatiner") as HTMLElement;
@@ -50,7 +48,7 @@ const ArtObject = () => {
   );
 };
 
-const ArtworkScene = observer(() => {
+const ArtworkScene = ({ art }: { art: string; }) => {
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
@@ -67,12 +65,12 @@ const ArtworkScene = observer(() => {
         >
           {store.isOrbitControls &&
             <OrbitControls minDistance={100} maxDistance={550} />}
-          <ArtObject />
+          <ArtObject art={art} />
         </Canvas>
       </Suspense >
     }
   </>
   );
-});
+};
 
 export default ArtworkScene;

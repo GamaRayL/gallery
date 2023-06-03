@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,9 +6,7 @@ import { MobxContext } from "pages/_app";
 import { IArtwork } from "pages_flat/Collection/lib/types";
 import { variants } from "pages_flat/Collection/lib/utils";
 import { FC, useContext, useEffect, useRef, useState } from "react";
-import { BiUpArrowAlt, BiUpArrowCircle } from "react-icons/bi";
-import { FiArrowUpCircle } from "react-icons/fi";
-import { RiArrowUpCircleFill, RiArrowUpCircleLine, RiShieldCrossFill } from "react-icons/ri";
+import { RiArrowUpCircleFill} from "react-icons/ri";
 import { Button, Card, Container, Grid } from "shared/ui";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
@@ -16,8 +14,10 @@ import { Filter, Layout } from "widgets";
 
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();
+  const [isInfo, setInfo] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const columns = store.columns;
+  const [cardInfo, setCardInfo] = useState<{ name: string; year: string; }>();
   const { filteredArtworks } = useContext(MobxContext) as IArtworkStore;
 
   useEffect(() => {
@@ -49,9 +49,9 @@ const Collection: FC = observer(() => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-
   return (
     <Layout title="Коллекция" description="Раздел 'Коллекции' сайта частной галереи. Присутствует фильтр.">
+
       <section className="collection" ref={ref}>
         <Container>
           <motion.h1
@@ -97,19 +97,68 @@ const Collection: FC = observer(() => {
                 <Grid columns={columns}>
                   {
                     filteredArtworks.length
-                      ? filteredArtworks.map(({ id, name, images }: IArtwork) => (
-                        <div style={{ textAlign: "center" }} key={id}>
+                      ? filteredArtworks.map(({ id, name, images, year }: IArtwork) => (
+                        <div
+                          style={{ textAlign: "center" }}
+                          onMouseMove={() => setInfo(true)}
+                          onMouseOut={() => setInfo(false)}
+                          key={id}
+                        >
                           <Link href={`/collection/${id}`}>
-                            <Card src={columns >= 4 ? images[1] : images[2]} />
+                            <Card
+                              year={year}
+                              name={name}
+                              setCardInfo={setCardInfo}
+                              src={columns >= 4 ? images[1] : images[2]}
+                            />
                           </Link>
-                          <span style={{ color: "black", textDecoration: "none" }}>{name}</span>
                         </div>
                       ))
                       : <div>Картины не найдены</div>
                   }
                 </Grid>
               </Container>
+              <AnimatePresence>
+                {isInfo &&
+                  <motion.div
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 100, opacity: 0 }}
+                    transition={{
+                      type: "keyframes",
+                      duration: .5,
+                    }}
+                    style={{
+                      borderTopRightRadius: 20,
+                      borderTopLeftRadius: 20,
+                      color: "white",
+                      borderBottomRightRadius: 4,
+                      background: "#3f3939eb",
+                      padding: 10,
+                      position: "fixed",
+                      zIndex: 1000,
+                      pointerEvents: "none",
+                      left: "40vh",
+                      width: "50vw",
+                      bottom: 0,
+                      textAlign: "center"
+                    }}
+                  >
+                    <motion.p initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }} transition={{
+                        type: "spring",
+                        delay: .4
+                      }} className="collection__name">{`"${cardInfo?.name}"`}</motion.p>
+                    <motion.p initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }} transition={{
+                        type: "spring",
+                        delay: .8
+                      }} className="collection__year">{cardInfo?.year && `${cardInfo.year} год`}</motion.p>
+                  </motion.div>
+                }
+              </AnimatePresence>
             </motion.div>
+
           </>
         }
 
@@ -119,6 +168,7 @@ const Collection: FC = observer(() => {
           onClick={getScrollToTop}
         />
       </section>
+
     </Layout>
   );
 });

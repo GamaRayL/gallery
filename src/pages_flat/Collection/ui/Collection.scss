@@ -5,6 +5,7 @@
 
   --fontSize: var(--f-size-80);
   --fontWeight: var(--f-weight-medium);
+  --fontSizeName: var(--f-size-30);
 
   --bgColor: var(--c-gray);
 
@@ -19,6 +20,11 @@
     font-weight: var(--fontWeight);
 
     margin-bottom: var(--marginBTitle);
+  }
+
+  &__name {
+    font-style: italic;
+    font-size: var(--fontSizeName);
   }
 
   &__result {

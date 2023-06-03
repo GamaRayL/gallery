@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { MobxContext } from "pages/_app";
 import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
-import { BiArrowFromLeft, BiArrowFromRight, BiCategory, BiFilter, BiRightArrowAlt, BiRightTopArrowCircle, BiSearch, BiSquare } from "react-icons/bi";
+import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
@@ -60,7 +60,6 @@ const Filter: FC = observer(() => {
   };
 
   const onSelectArtistHandler = (item: IItem) => {
-    console.log(item);
     toggleArtistParam(item.id);
   };
 

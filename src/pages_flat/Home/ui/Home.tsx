@@ -26,7 +26,8 @@ const Home = observer(() => {
       body.style.overflowX = "auto";
       body.style.overflowY = "hidden";
 
-      body.style.background = "#FFCE01";
+      body.style.background = "#DDDDDD";
+
       header.style.position = "fixed";
 
       home.addEventListener("wheel", (event) => {

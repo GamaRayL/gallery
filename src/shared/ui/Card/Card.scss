@@ -16,6 +16,16 @@
     padding-top: var(--paddingTop);
   }
 
+  &__info {
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    border-radius: 10px;
+    padding: 10px;
+    background: white;
+    width: max-content;
+  }
+
   &__image {
     padding: var(--padding);
 

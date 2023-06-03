@@ -66,6 +66,9 @@ export interface ICard {
   children?: ReactNode;
   className?: string;
   src: string;
+  name: string;
+  year: string;
+  setCardInfo: Dispatch<SetStateAction<{ name: string, year: string; } | undefined>>;
   loader?: ((src: ImageLoaderProps) => string);
   onClick?: (event: MouseEvent) => void;
 }

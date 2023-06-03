@@ -1,11 +1,11 @@
 import { GetServerSideProps } from "next";
 import { Collection } from "pages_flat";
-import { collectionService } from "pages_flat/Collection/lib/services";
+import { artworkService } from "pages_flat/Collection/lib/services";
 
 const CollectionPage = () => <Collection />;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const artworks = await collectionService.getAll();
+  const artworks = await artworkService.getAll();
 
   return {
     props: {
