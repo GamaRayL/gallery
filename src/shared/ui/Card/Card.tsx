@@ -13,7 +13,7 @@ const Card: FC<ICard> = ({ children, setCardInfo, year, className, name, onClick
       whileTap={{ scale: 1 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       onClick={onClick}
-      onMouseOver={() => setCardInfo({ name: name, year: year })}
+      onMouseOver={setCardInfo && (() => setCardInfo({ name: name, year: year }))}
     >
       <div className="card__helper">
         <Image

@@ -1,0 +1,11 @@
+.canvas {
+  cursor: auto;
+
+  &_active {
+    cursor: grab;
+  }
+
+  &_active:active {
+    cursor: grabbing;
+  }
+}

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { FC, useContext, useEffect } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { Button, Container } from "shared/ui";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
@@ -7,8 +7,12 @@ import { observer } from "mobx-react-lite";
 import { HomeCard } from "pages_flat/Home/HomeCard";
 import store from "store/store";
 import { Layout } from "widgets";
+import { IArtworksData } from "pages_flat/Collection/lib/types";
+import { MobxContext } from "pages/_app";
+import { IArtworkStore } from "store/artworkStore";
+import Link from "next/link";
 
-const Home = observer(() => {
+const Home: FC = observer(() => {
   const { pathname } = useRouter();
   const { scrollXProgress } = useScroll();
   const scaleX = useSpring(scrollXProgress, {
@@ -16,6 +20,7 @@ const Home = observer(() => {
     damping: 30,
     restDelta: 0.001
   });
+  const { artworks } = useContext(MobxContext) as IArtworkStore;
 
   useEffect(() => {
     const home = document.querySelector(".home") as HTMLDivElement;
@@ -91,9 +96,11 @@ const Home = observer(() => {
                 }}
                 className="card-container"
               >
-                <HomeCard />
-                <HomeCard />
-                <HomeCard />
+                {artworks.slice(148, 152).map((artwork) => (
+                  <Link href={`/collection/${artwork.id}`} key={artwork.id}>
+                    <HomeCard key={artwork.id} image={artwork.images[2]} />
+                  </Link>
+                ))}
               </motion.div>
             }
           </AnimatePresence>

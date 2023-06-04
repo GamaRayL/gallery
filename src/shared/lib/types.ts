@@ -68,7 +68,7 @@ export interface ICard {
   src: string;
   name: string;
   year: string;
-  setCardInfo: Dispatch<SetStateAction<{ name: string, year: string; } | undefined>>;
+  setCardInfo?: Dispatch<SetStateAction<{ name: string, year: string; } | undefined>>;
   loader?: ((src: ImageLoaderProps) => string);
   onClick?: (event: MouseEvent) => void;
 }

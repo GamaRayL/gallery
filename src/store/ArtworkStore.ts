@@ -38,6 +38,8 @@ class ArtworkStore implements IArtworkStore {
   searchParam = "";
   artistParam: number[] = [];
   techniqueParam: string[] = [];
+  artSliced: IArtwork[] = [];
+
 
   constructor () {
     makeAutoObservable(this);
@@ -66,6 +68,10 @@ class ArtworkStore implements IArtworkStore {
       this.techniqueParam.push(name);
     }
   };
+
+  get randomArtworks() {
+    return this.artworks.splice(0, 4);
+  }
 
   get filteredArtworks() {
     return this.artworks.filter((artwork) => {

@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@popmotion/popcorn": "^0.4.4",
     "@react-three/drei": "^9.68.6",
     "@react-three/fiber": "^8.13.0",
     "axios": "^1.4.0",

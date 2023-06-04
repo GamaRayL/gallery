@@ -14,8 +14,9 @@ export interface IArtworksData {
   artworks: IArtwork[];
 }
 
-export interface IArtworkDataSingle {
+export interface IArtworkTistDataSingle {
   artwork: IArtwork;
+  artist: IArtist;
 }
 
 export interface IArtist {

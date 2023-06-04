@@ -6,7 +6,7 @@ import { MobxContext } from "pages/_app";
 import { IArtwork } from "pages_flat/Collection/lib/types";
 import { variants } from "pages_flat/Collection/lib/utils";
 import { FC, useContext, useEffect, useRef, useState } from "react";
-import { RiArrowUpCircleFill} from "react-icons/ri";
+import { RiArrowUpCircleFill } from "react-icons/ri";
 import { Button, Card, Container, Grid } from "shared/ui";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/store";
@@ -97,7 +97,7 @@ const Collection: FC = observer(() => {
                 <Grid columns={columns}>
                   {
                     filteredArtworks.length
-                      ? filteredArtworks.map(({ id, name, images, year }: IArtwork) => (
+                      ? filteredArtworks.map(({ id, name, images, year, artist_id }: IArtwork) => (
                         <div
                           style={{ textAlign: "center" }}
                           onMouseMove={() => setInfo(true)}
@@ -132,7 +132,6 @@ const Collection: FC = observer(() => {
                       borderTopRightRadius: 20,
                       borderTopLeftRadius: 20,
                       color: "white",
-                      borderBottomRightRadius: 4,
                       background: "#3f3939eb",
                       padding: 10,
                       position: "fixed",
@@ -148,7 +147,7 @@ const Collection: FC = observer(() => {
                       animate={{ y: 0, opacity: 1 }} transition={{
                         type: "spring",
                         delay: .4
-                      }} className="collection__name">{`"${cardInfo?.name}"`}</motion.p>
+                      }} className="collection__name">{cardInfo?.name}</motion.p>
                     <motion.p initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }} transition={{
                         type: "spring",

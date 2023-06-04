@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
-import ArtworkStore, { IArtworkStore } from "store/artworkStore";
+import ArtworkStore from "store/artworkStore";
 import "styles/global.scss";
 import { useStore } from "store";
 
@@ -13,7 +13,11 @@ const montserrat = Montserrat({
 export const MobxContext = createContext<ArtworkStore | undefined>(undefined);
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const store: IArtworkStore = useStore(pageProps);
+  let store;
+
+  const initializedStore = useStore(pageProps);
+
+  if (Component.name === "CollectionPage" || Component.name === "HomePage") store = initializedStore;
 
   return (
     <MobxContext.Provider value={store}>
