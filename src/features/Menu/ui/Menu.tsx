@@ -1,8 +1,8 @@
-import { BiSearch } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
+import { BiSearch } from "react-icons/bi";
+import toolsStore from "store/toolsStore";
 import { Button, CustomLink } from "shared/ui";
 import { items } from "features/Menu/lib/items";
-import store from "store/store";
 
 const Menu = observer(() => {
   return (
@@ -19,7 +19,7 @@ const Menu = observer(() => {
         <li className="nav__item">
           <Button
             icon={<BiSearch name="Search" size={20} />}
-            onClick={() => store.toggleSearchOverlay()}
+            onClick={() => toolsStore.toggleSearchOverlay()}
           />
         </li>
       </ul>

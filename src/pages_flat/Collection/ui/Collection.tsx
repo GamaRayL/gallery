@@ -1,24 +1,27 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { observer } from "mobx-react-lite";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { MobxContext } from "pages/_app";
-import { IArtwork } from "pages_flat/Collection/lib/types";
-import { variants } from "pages_flat/Collection/lib/utils";
 import { FC, useContext, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { observer } from "mobx-react-lite";
+import { useRouter } from "next/router";
 import { RiArrowUpCircleFill } from "react-icons/ri";
-import { Button, Card, Container, Grid } from "shared/ui";
+import { AnimatePresence, motion } from "framer-motion";
 import { IArtworkStore } from "store/artworkStore";
-import store from "store/store";
+import store from "store/toolsStore";
+import { MobxContext } from "pages/_app";
+import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";
 import { Filter, Layout } from "widgets";
+import { Button, Card, Container, Grid, Popup } from "shared/ui";
+import { IArtwork } from "types";
 
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();
   const [isInfo, setInfo] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const columns = store.columns;
   const [cardInfo, setCardInfo] = useState<{ name: string; year: string; }>();
   const { filteredArtworks } = useContext(MobxContext) as IArtworkStore;
+
+  const ref = useRef<HTMLDivElement>(null);
+  const columns = store.columns;
+
+  const delay = store.isFilter ? .2 : .6;
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
@@ -35,40 +38,33 @@ const Collection: FC = observer(() => {
 
   }, [pathname]);
 
-  const getCorrectEnd = (value: number) => {
-    const n = value % 10;
-    const n1 = value % 100;
-    if (n1 > 10 && n1 < 20) return `${value} картин`;
-    if (n > 1 && n < 5) return `${value} картины`;
-    if (n === 1) return `${value} картина`;
-    if (value == 0) return `${value} картин`;
-    return `${value} картины`;
-  };
-
   const getScrollToTop = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <Layout title="Коллекция" description="Раздел 'Коллекции' сайта частной галереи. Присутствует фильтр.">
+    <Layout
+      title="Коллекция"
+      description="Раздел 'Коллекции' сайта частной галереи. Присутствует фильтр.">
 
       <section className="collection" ref={ref}>
         <Container>
           <motion.h1
-            variants={variants}
+            className="collection__title"
             initial="hidden"
             animate="visible"
-            className="collection__title">
+            variants={collectionVariants}
+          >
             Коллекция
           </motion.h1>
         </Container>
 
         <motion.section
-          variants={variants}
+          className="collection__filter"
           initial="hidden"
           animate="visible"
           custom={{ delay: .4 }}
-          className="collection__filter"
+          variants={collectionVariants}
         >
           <Filter />
         </motion.section>
@@ -77,89 +73,73 @@ const Collection: FC = observer(() => {
           <>
             <Container>
               <motion.p
-                variants={variants}
+                className="collection__result"
                 initial="hidden"
                 animate="visible"
                 custom={{ delay: .6 }}
-                className="collection__result"
+                variants={collectionVariants}
               >
                 {getCorrectEnd(filteredArtworks.length)}
               </motion.p>
             </Container>
 
             <motion.div
-              variants={variants}
               initial="hidden"
               animate="visible"
-              custom={{ delay: store.isFilter ? .2 : .6, y: -100 }}
+              custom={{ delay: delay, y: -100 }}
+              variants={collectionVariants}
             >
               <Container>
                 <Grid columns={columns}>
                   {
                     filteredArtworks.length
-                      ? filteredArtworks.map(({ id, name, images, year, artist_id }: IArtwork) => (
-                        <div
-                          style={{ textAlign: "center" }}
+                      ? filteredArtworks.map(({ id, name, images, year }: IArtwork) => (
+                        <Link
+                          key={id}
+                          href={`/collection/${id}`}
                           onMouseMove={() => setInfo(true)}
                           onMouseOut={() => setInfo(false)}
-                          key={id}
                         >
-                          <Link href={`/collection/${id}`}>
-                            <Card
-                              year={year}
-                              name={name}
-                              setCardInfo={setCardInfo}
-                              src={columns >= 4 ? images[1] : images[2]}
-                            />
-                          </Link>
-                        </div>
+                          <Card
+                            year={year}
+                            name={name}
+                            setCardInfo={setCardInfo}
+                            src={columns >= 4 ? images[1] : images[2]}
+                          />
+                        </Link>
                       ))
                       : <div>Картины не найдены</div>
                   }
                 </Grid>
               </Container>
-              <AnimatePresence>
-                {isInfo &&
-                  <motion.div
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: 100, opacity: 0 }}
-                    transition={{
-                      type: "keyframes",
-                      duration: .5,
-                    }}
-                    style={{
-                      borderTopRightRadius: 20,
-                      borderTopLeftRadius: 20,
-                      color: "white",
-                      background: "#3f3939eb",
-                      padding: 10,
-                      position: "fixed",
-                      zIndex: 1000,
-                      pointerEvents: "none",
-                      left: "40vh",
-                      width: "50vw",
-                      bottom: 0,
-                      textAlign: "center"
-                    }}
-                  >
-                    <motion.p initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }} transition={{
-                        type: "spring",
-                        delay: .4
-                      }} className="collection__name">{cardInfo?.name}</motion.p>
-                    <motion.p initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }} transition={{
-                        type: "spring",
-                        delay: .8
-                      }} className="collection__year">{cardInfo?.year && `${cardInfo.year} год`}</motion.p>
-                  </motion.div>
-                }
-              </AnimatePresence>
             </motion.div>
-
           </>
         }
+
+        <AnimatePresence>
+          {isInfo &&
+            <Popup>
+              <motion.p
+                className="collection__name"
+                initial="hidden"
+                animate="visible"
+                custom={{ delay: .4, y: 20, type: "spring" }}
+                variants={collectionVariants}
+              >
+                {cardInfo?.name}
+              </motion.p>
+              <motion.p
+                className="collection__year"
+                initial="hidden"
+                animate="visible"
+                custom={{ delay: .6, y: 20, type: "spring" }}
+                variants={collectionVariants}
+              >
+                {cardInfo?.year && `${cardInfo.year} год`}
+              </motion.p>
+            </Popup>
+          }
+        </AnimatePresence>
 
         <Button
           className="collection__btn--up"
@@ -167,7 +147,6 @@ const Collection: FC = observer(() => {
           onClick={getScrollToTop}
         />
       </section>
-
     </Layout>
   );
 });

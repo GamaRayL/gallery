@@ -5,7 +5,7 @@ import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react"
 import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 import { IArtworkStore } from "store/artworkStore";
-import store from "store/store";
+import store from "store/toolsStore";
 import { IItem } from "widgets/Filter/lib/types";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 

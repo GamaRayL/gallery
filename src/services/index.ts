@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IArtist, IArtwork } from "pages_flat/Collection/lib/types";
+import { IArtist, IArtwork } from "types";
 
 const API_URL = 'https://api-omarov.ru';
 

@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Artwork } from "pages_flat";
-import { artworkService } from "pages_flat/Collection/lib/services";
-import { IArtworkTistDataSingle } from "pages_flat/Collection/lib/types";
+import { artworkService } from "services";
 import { ParsedUrlQuery } from "querystring";
+import { IArtworkTistDataSingle } from "types";
 
 const ArtworkPage: NextPage<IArtworkTistDataSingle> = ({ artwork, artist }) => {
   return <Artwork artwork={artwork} artist={artist} />;

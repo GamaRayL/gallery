@@ -2,6 +2,7 @@
   --paddingTCollection: 100px;
   --marginB: 40px;
   --marginBTitle: 60px;
+  --transition: var(--aditional-transition-duration);
 
   --fontSize: var(--f-size-80);
   --fontWeight: var(--f-weight-medium);
@@ -11,6 +12,11 @@
 
   --top: 0;
   --zIndex: 2;
+
+  --btnBottom: 40px;
+  --btnRight: 10px;
+
+  --resultFS: var(--f-size-24);
 
 
   padding-top: var(--paddingTCollection);
@@ -28,7 +34,7 @@
   }
 
   &__result {
-    font-size: 24px;
+    font-size: var(--resultFS);
     margin-bottom: var(--marginB);
   }
 
@@ -44,9 +50,10 @@
 
   &__btn--up {
     position: fixed;
-    bottom: 40px;
-    right: 10px;
-    transition: .2s;
+    bottom: var(--btnBottom);
+    right: var(--btnRight);
+
+    transition: var(--transition);
 
     &:hover {
       transform: translateY(-10px);

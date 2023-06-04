@@ -67,36 +67,6 @@ svg {
   background: var(--c-armadillo);
 }
 
-// a,
-// button {
-//   display: inline-flex;
-//   font-family: inherit;
-//   font-size: 100%;
-//   color: var(--c-light);
-
-//   &:hover {
-//     @media (--hoverable) {
-//       color: var(--c-accent);
-//     }
-//   }
-
-//   @mixin focus-visible {
-//     outline: var(--focus-outline);
-//     outline-offset: var(--focus-outline-offset);
-//   }
-
-//   html.safari &:focus {
-//     @media (--mobile) {
-//       outline: none;
-//     }
-//   }
-// }
-
-// a {
-//   text-underline-offset: 2px;
-//   text-decoration-thickness: from-font;
-// }
-
 svg,
 svg *,
 a,

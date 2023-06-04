@@ -1,0 +1,36 @@
+.popup {
+  --padding: 6px;
+  --textAlign: center;
+  --left: 40vh;
+  --bottom: 0;
+  --borderTLR: 20px;
+  --borderTRR: 20px;
+
+
+  position: fixed;
+  z-index: 1000;
+  left: var(--left);
+  bottom: var(--bottom);
+
+  width: 50vw;
+  padding: var(--padding);
+
+  text-align: var(--textAlign);
+
+  pointer-events: none;
+
+  border-top-left-radius: var(--borderTLR);
+  border-top-right-radius: var(--borderTRR);
+
+  &_top {
+    --top: 0;
+    --borderBLR: 20px;
+    --borderBRR: 20px;
+
+
+    top: var(--top);
+
+    border-bottom-left-radius: var(--borderBLR);
+    border-bottom-right-radius: var(--borderBRR);
+  }
+}

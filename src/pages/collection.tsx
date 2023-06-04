@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
+import { artworkService } from "services";
 import { Collection } from "pages_flat";
-import { artworkService } from "pages_flat/Collection/lib/services";
 
 const CollectionPage = () => <Collection />;
 

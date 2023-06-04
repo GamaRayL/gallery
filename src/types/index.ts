@@ -10,15 +10,6 @@ export interface IArtwork {
   images: string[];
 }
 
-export interface IArtworksData {
-  artworks: IArtwork[];
-}
-
-export interface IArtworkTistDataSingle {
-  artwork: IArtwork;
-  artist: IArtist;
-}
-
 export interface IArtist {
   id: number;
   name: string;
@@ -26,4 +17,13 @@ export interface IArtist {
   begin_date: string;
   end_date: string;
   artworks: IArtwork[];
+}
+
+export interface IArtworksData {
+  artworks: IArtwork[];
+}
+
+export interface IArtworkTistDataSingle {
+  artwork: IArtwork;
+  artist: IArtist;
 }

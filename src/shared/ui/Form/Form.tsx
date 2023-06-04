@@ -3,7 +3,7 @@ import { BiSearch, BiX } from "react-icons/bi";
 import { Button } from "shared/ui";
 import Input from "shared/ui/Input/Input";
 import { motion } from "framer-motion";
-import store from "store/store";
+import store from "store/toolsStore";
 
 const Form = () => {
   const [value, setValue] = useState("");

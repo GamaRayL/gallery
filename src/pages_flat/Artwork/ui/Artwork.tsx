@@ -1,22 +1,22 @@
-import { useRouter } from "next/router";
 import { FC, useEffect } from "react";
-import { Button, Container, Grid } from "shared/ui";
+import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
 import { observer } from "mobx-react-lite";
-import Carousel from "pages_flat/Artwork/ui/Carousel";
-import store from "store/store";
-import { Layout } from "widgets";
-import { IArtworkTistDataSingle } from "pages_flat/Collection/lib/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { BiCube } from "react-icons/bi";
+import store from "store/toolsStore";
+import { Layout } from "widgets";
+import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
+import Carousel from "../Carousel/ui/Carousel";
+import { Button, Container, Grid, Popup } from "shared/ui";
+import { IArtworkTistDataSingle } from "types";
 
-const DynamicArt = dynamic(() => import('../../../widgets/ArtworkScene/ui/ArtworkScene'), {
+const DynamicArt = dynamic(() => import('widgets/ArtworkScene/ui/ArtworkScene'), {
   ssr: false,
 });
 
 const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
   const { pathname } = useRouter();
-
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
@@ -31,9 +31,10 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
   }, [pathname]);
 
   return (
-    <Layout title="Картина" description="Картина и её описание.">
+    <Layout title="Картина" description="Картина с работами автора и её описание.">
       <Container>
         <Grid className="artwork" columns={14}>
+
           <div className="artwork__image-conatiner">
             <DynamicArt art={artwork.images[0]} />
           </div>
@@ -42,8 +43,9 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
             <Button
               className="artwork__tool-btn"
               onClick={() => store.toggleOrbitControls()}
-              icon={<BiCube size={store.isOrbitControls ? 64 : 44} color="white" />}
-            />
+              icon={<BiCube
+                size={store.isOrbitControls ? 64 : 44}
+                color="white" />} />
           </div>
 
           <div className="artwork__description">
@@ -60,46 +62,27 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
               <span className="artwork__value">{artwork.technique ? `${artwork.technique}` : "-"}</span>
             </div>
             <div className="artwork__size">
-              <span className="artwork__property">Размер:</span>
+              <span className="artwork__property">Размер: </span>
               <span className="artwork__value">{artwork.width ? `${artwork.width}х${artwork.height}` : "-"}</span>
             </div>
           </div>
+
           <AnimatePresence>
             {store.isOrbitControls &&
-              <motion.div
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 100, opacity: 0 }}
-                transition={{
-                  type: "keyframes",
-                  duration: .5,
-                }}
-                style={{
-                  borderTopRightRadius: 20,
-                  borderTopLeftRadius: 20,
-                  color: "black",
-                  background: "white",
-                  padding: 6,
-                  position: "fixed",
-                  zIndex: 1000,
-                  pointerEvents: "none",
-                  left: "40vh",
-                  width: "50vw",
-                  bottom: 0,
-                  textAlign: "center"
-                }}
-              >
-                <motion.p initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }} transition={{
-                    type: "spring",
-                    delay: .4
-                  }}
+              <Popup color="black" bgColor="white">
+                <motion.p
+                  variants={infoChildVariants}
+                  initial="hidden"
+                  animate="visible"
                   className="collection__name">
                   Вы в режиме работы с картиной
                 </motion.p>
-              </motion.div>}
+              </Popup>
+            }
           </AnimatePresence>
+
           <Carousel className="artwork__carousel" artworks={artist.artworks} />
+
         </Grid>
       </Container>
     </Layout>

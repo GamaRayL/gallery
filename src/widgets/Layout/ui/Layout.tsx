@@ -5,7 +5,7 @@ import { ILayout } from "widgets/Layout/lib/types";
 import Form from "shared/ui/Form/Form";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
-import store from "store/store";
+import store from "store/toolsStore";
 import { Meta } from "widgets/Layout/Meta";
 const containerVariants = {
   hidden: {

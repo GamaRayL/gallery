@@ -5,7 +5,7 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import { FC, Suspense, useEffect, useRef, useState } from "react";
-import store from "store/store";
+import store from "store/toolsStore";
 import { TextureLoader } from "three";
 import LoadingAnimation from "widgets/ArtworkScene/LoadingAnimation/ui/LoadingAnimation";
 

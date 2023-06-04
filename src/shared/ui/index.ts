@@ -7,3 +7,4 @@ export { default as InputRange } from "./InputRange/InputRange";
 export { default as Grid } from "./Grid/Grid";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as Card } from "./Card/Card";
+export { default as Popup } from "./Popup/Popup";

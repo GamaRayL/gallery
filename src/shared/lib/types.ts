@@ -72,3 +72,10 @@ export interface ICard {
   loader?: ((src: ImageLoaderProps) => string);
   onClick?: (event: MouseEvent) => void;
 }
+
+export interface IPopup {
+  children?: ReactNode;
+  top?: boolean;
+  color?: string;
+  bgColor?: string;
+}
