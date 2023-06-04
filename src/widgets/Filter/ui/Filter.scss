@@ -2,6 +2,7 @@
 
 .filter{
   --brColor: var(--c-black);
+
   --fontSizeBtn: var(--f-size-16);
   --fontWeightBtn: var(--f-weight-medium);
 
@@ -15,12 +16,11 @@
 
   --paddingY: 24px 0;
 
-
   display: grid;
   grid-template-columns: var(--gridTemplateColumns);
 
-  padding: var(--paddingY);
   margin-bottom: 40px;
+  padding: var(--paddingY);
 
   border-bottom: 3px solid var(--brColor);
 
@@ -30,24 +30,40 @@
 
     color: var(--fontColorTotalBtn);
     font-size: var(--fontSizeTotalBtn);
-    font-weight: 200;
+  }
+
+  &__label {
+    --labelFW: var(--f-weight-extraLight);
+
+    font-weight: var(--labelFW);
   }
 
   &__label--total {
-    font-weight: 500;
+    --labelTotalFW: var(--f-weight-semiBold);
+
     transition: ease-in-out .2s;
+    font-weight: var(--labelTotalFW);
   }
 
   &__btn--total {
-    right: 0;
-    bottom: 0;
-    padding: 10px;
-    background-color: black;
+    --btnTotalRight: 0;
+    --btnTotalBottom: 0;
+    --btnTotalPadding: 10px;
+    --btnTotalBgColor: var(--c-black);
+    --btnTotalBgColor: var(--c-black);
+
+    right: var(--btnTotalRight);
+    bottom: var(--btnTotalBottom);
+
+    padding: var(--btnTotalPadding);
+    background-color: var(--btnTotalBgColor);
   }
 
   &__btn--total:hover .filter__label--total {
+    --transformX: translateX(8px);
+
     display: inline-block;
-    transform: translateX(8px);
+    transform: var(--transformX);
   }
 
   &__form {
@@ -60,15 +76,15 @@
 
   &__display {
     display: flex;
-    grid-column: var(--grColDisplay);
     justify-self: center;
     align-items: center;
     gap: var(--gapDisplay);
+    grid-column: var(--grColDisplay);
   }
 
   &__expand {
-    grid-column: var(--grColExpand);
     justify-self: flex-end;
+    grid-column: var(--grColExpand);
   }
 
   &__btn {
@@ -78,5 +94,7 @@
 }
 
 .expand-container {
-  margin-bottom: 40px;
+  --expandMB: 40px;
+
+  margin-bottom: var(--expandMB);
 }

@@ -1,17 +1,26 @@
 .home-card {
+  --height: 600px;
+  --width: 340px;
+  --borderR: 14px;
+
+  --imgHeight: 100%;
+
 
   cursor: pointer;
-  height: 600px;
-  width: 340px;
-  border-radius: 14px;
-  box-shadow: 0 1px 8px 1px black;
   position: relative;
+
+  width: var(--width);
+  height: var(--height);
+
+  box-shadow: 0 1px 8px 1px black;
+  border-radius: var(--borderR);
 
 
   &__image {
     position: relative;
-    border-radius: 14px;
-    height: 100%;
+    height: var(--imgHeight);
+    border-radius: var(--borderR);
+
     overflow: hidden;
     pointer-events: none;
   }

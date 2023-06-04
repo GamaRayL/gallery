@@ -3,6 +3,7 @@
 .checkbox {
   --width: 22px;
   --height: 22px;
+  --gap: 10px;
 
   --widthChecked: 8px;
   --heightChecked: 8px;
@@ -13,15 +14,17 @@
   --borderRadius: 4px;
   --borderRadiusChecked: 2px;
 
-  --fontWeight: var(--f-weight-medium);
   --fontSize: var(--f-size-14);
+  --fontWeight: var(--f-weight-medium);
+
+  --countOpacity: .5;
 
 
   cursor: pointer;
 
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--gap);
 
   &__input {
     display: none;
@@ -29,11 +32,13 @@
 
   &__input:checked + div > .checkbox__icon::after {
     content: "";
+
     display: block;
-    background: var(--color);
-    border-radius: var(--borderRadiusChecked);
     width: var(--widthChecked);
     height: var(--heightChecked);
+
+    background: var(--color);
+    border-radius: var(--borderRadiusChecked);
   }
 
   &__icon {
@@ -42,8 +47,8 @@
     width: var(--width);
     height: var(--height);
 
-    border: var(--borderWidth) solid var(--color);;
     border-radius: var(--borderRadius);
+    border: var(--borderWidth) solid var(--color);;
   }
 
   &__label {
@@ -52,6 +57,6 @@
 
   &__count {
     font-size: var(--fontSize);
-    opacity: 0.5;
+    opacity: var(--countOpacity);
   }
 }

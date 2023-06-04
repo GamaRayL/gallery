@@ -1,41 +1,18 @@
-/* eslint-disable jsx-a11y/alt-text */
-import { OrbitControls } from "@react-three/drei";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import classNames from "classnames";
-import { motion } from "framer-motion";
-import { observer } from "mobx-react-lite";
-import { FC, Suspense, useEffect, useRef, useState } from "react";
-import store from "store/toolsStore";
+import { FC, Suspense, useEffect, useState } from "react";
 import { TextureLoader } from "three";
-import LoadingAnimation from "widgets/ArtworkScene/LoadingAnimation/ui/LoadingAnimation";
+import { observer } from "mobx-react-lite";
+import { OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import classNames from "classnames";
+import store from "store/toolsStore";
+import { ArtObject } from "widgets/ArtworkScene/ArtObject";
+import { LoadingAnimation } from "widgets/ArtworkScene/LoadingAnimation";
+import { IArtworkScene } from "widgets/ArtworkScene/lib/types";
 
-interface IArtObject {
-  texture: object;
-  scaledHeight: number;
-  scaledWidth: number;
-}
-
-const ArtObject: FC<IArtObject> = ({ texture, scaledHeight, scaledWidth, }) => {
-  return (
-    <group>
-      <group scale={[scaledWidth, scaledHeight, 1]}>
-        <mesh scale={[1, 1, 10]}>
-          <boxGeometry args={[1, 1]} />
-          <meshBasicMaterial color="black" />
-        </mesh>
-        <mesh position={[0, 0, 6]}>
-          <planeGeometry args={[1, 1]} />
-          <meshBasicMaterial map={texture} />
-        </mesh>
-      </group>
-    </group>
-  );
-};
-
-const ArtworkScene = observer(({ art }: { art: string; }) => {
+const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
   const [domLoaded, setDomLoaded] = useState(false);
   const container = document.querySelector('.artwork__image-conatiner') as HTMLElement;
-  const [texture, setTexture] = useState<any>(null);
+  const [texture, setTexture] = useState<THREE.Texture | null>(null);
   let containerHeight, containerWidth, scale;
   let scaledWidth = 0;
   let scaledHeight = 0;
@@ -88,12 +65,18 @@ const ArtworkScene = observer(({ art }: { art: string; }) => {
           className={classNames("canvas", {
             "canvas_active": store.isOrbitControls,
           })}
-
-        // style={{ zIndex: 2, width: "100%", height: "100%", objectFit: "contain", position: "absolute" }}
         >
-          <OrbitControls enabled={store.isOrbitControls} minDistance={100} maxDistance={550} />
+          <OrbitControls
+            enabled={store.isOrbitControls}
+            minDistance={100}
+            maxDistance={550}
+          />
           {texture
-            ? <ArtObject texture={texture} scaledWidth={scaledWidth} scaledHeight={scaledHeight} />
+            ? <ArtObject
+              texture={texture}
+              scaledWidth={scaledWidth}
+              scaledHeight={scaledHeight}
+            />
             : <LoadingAnimation />
           }
         </Canvas>

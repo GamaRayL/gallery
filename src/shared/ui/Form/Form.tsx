@@ -1,11 +1,11 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { FC, ChangeEvent, useEffect, useRef, useState } from "react";
 import { BiSearch, BiX } from "react-icons/bi";
-import { Button } from "shared/ui";
-import Input from "shared/ui/Input/Input";
 import { motion } from "framer-motion";
 import store from "store/toolsStore";
+import { Button, Input } from "shared/ui";
+import { formVariants } from "shared/lib/utils";
 
-const Form = () => {
+const Form: FC = () => {
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -22,9 +22,9 @@ const Form = () => {
     <form className="form">
       <div className="form__wrapper">
         <Input
-          inputRef={inputRef}
           size={24}
           value={value}
+          inputRef={inputRef}
           setValue={setValue}
           onChange={onChangeHandler}
         />
@@ -39,13 +39,9 @@ const Form = () => {
       </div>
       <motion.hr
         className="form__line"
-        initial={{ x: 0, opacity: 0 }}
-        animate={{ x: 0, opacity: 1, width: "100%" }}
-        transition={{
-          type: "tween",
-          delay: 0.6,
-          duration: 1,
-        }}
+        initial="hidden"
+        animate="visible"
+        variants={formVariants}
       />
     </form>
   );

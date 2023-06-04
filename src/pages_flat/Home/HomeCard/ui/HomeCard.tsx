@@ -1,22 +1,27 @@
-import { motion } from "framer-motion";
+import { FC, useEffect } from "react";
 import Image from "next/image";
-import { FC } from "react";
-
-interface IHome {
-  image: string;
-}
+import { motion, useAnimation } from "framer-motion";
+import { homeCardVariants } from "pages_flat/Home/HomeCard/lib/utils";
+import { IHome } from "../lib/types";
 
 const HomeCard: FC<IHome> = ({ image }) => {
-
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 1 }}
-      transition={{ type: "tween", stiffness: 400, damping: 17 }}
       className="home-card"
+      whileTap="whileTap"
+      whileHover="whileHover"
+      variants={homeCardVariants}
+      initial="initial"
     >
       <div className="home-card__image">
-        <Image src={image} fill style={{ objectFit: "cover" }} priority sizes="(min-width: 768px) 100vw" alt="Picture" />
+        <Image
+          fill
+          priority
+          src={image}
+          alt="Карточка картины"
+          style={{ objectFit: "cover" }}
+          sizes="(min-width: 768px) 100vw"
+        />
       </div>
     </motion.div>
   );

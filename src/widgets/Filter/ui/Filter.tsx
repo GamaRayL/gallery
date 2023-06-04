@@ -1,13 +1,13 @@
-import classNames from "classnames";
-import { observer } from "mobx-react-lite";
-import { MobxContext } from "pages/_app";
 import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
+import { observer } from "mobx-react-lite";
 import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
-import { Button, Container, Grid, Input, InputRange } from "shared/ui";
+import classNames from "classnames";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/toolsStore";
+import { MobxContext } from "pages/_app";
 import { IItem } from "widgets/Filter/lib/types";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
+import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 
 
 const Filter: FC = observer(() => {
@@ -144,14 +144,13 @@ const Filter: FC = observer(() => {
                 onCheck={onCheckTechniqueHandler}
                 onClick={onSelectTechniqueHandler}
               />
-              {/* <ExpandItem items={uniqueArtists} title="Годы создания"/> */}
             </Grid>
           </Container>
           <Button
+            className="filter__btn--total"
             iconPosition="after"
             justify="flex-end"
             icon={<BiRightArrowAlt size="40" color="white" />}
-            className="filter__btn--total"
             onClick={onClickTotalHandler}
           >
             <span className="filter__label">результат </span>

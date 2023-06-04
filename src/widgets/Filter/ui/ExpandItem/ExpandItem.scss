@@ -1,9 +1,28 @@
 .expand {
-  height: 65vh;
-  overflow-y: auto;
+  --height: 65vh;
+
   --fontSize: var(--f-size-16);
   --fontSizeCount: var(--f-size-14);
+
   --paddingLeft: 10px;
+
+  --scrollW: 10px;
+  --scrollBgBorderBLR: 10px;
+  --scrollTrackBgColor: var(--c-white);
+  --scrollThumbBgColor: var(--c-black);
+  --hoverScrollThumbBgColor: var(--c-gray);
+
+  --btnFS: var(--f-size-22);
+  --btnFW: var(--);
+  --btnPadding: var(0 10px 10px 0)
+
+  --countOpacity: .5;
+
+  --checkBoxPadding: 10px 0;
+
+
+  overflow-y: auto;
+  height: var(--height);
 
   &:nth-of-type(3n+1) {
     grid-column: 1/span 8;
@@ -15,35 +34,29 @@
     grid-column: 19/span 6;
   }
 
-    /* width */
   &::-webkit-scrollbar {
-    width: 10px;
-
-
+    width: var(--scrollW);
   }
 
-  /* Track */
   &::-webkit-scrollbar-track {
-    background: #ffffff;
-    border-bottom-left-radius: 10px;
+    background: var(--scrollTrackBgColor);
+    border-bottom-left-radius: var(--scrollTrackBgBorderBLR);
   }
 
-  /* Handle */
   &::-webkit-scrollbar-thumb {
-    background: #000000;
-    border-bottom-left-radius: 10px;
+    background: var(--scrollThumbBgColor);
+    border-bottom-left-radius: var(--scrollTrackBgBorderBLR);
   }
 
-  /* Handle on hover */
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--hoverScrollThumbBgColor);
   }
 
   &__btn {
-    font-size: 22px;
-    font-weight: 500;
+    font-size: var(--btnFS);
+    font-weight: var(--f-weight-medium);
 
-    padding: 0 10px 10px 0;
+    padding: var(--btnPadding);
   }
 
   &__btn-showAll {
@@ -51,12 +64,12 @@
   }
 
   &__count {
+    opacity: var(--countOpacity);
     font-size: var(--fontSizeCount);
     padding-left: var(--paddingLeft);
-    opacity: 0.5;
   }
 
   &__checkbox {
-    padding: 10px 0;
+    padding: var(--checkBoxPadding);
   }
 }

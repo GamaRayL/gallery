@@ -1,29 +1,28 @@
-import { FC, useState } from "react";
-import { motion } from "framer-motion";
-import { ICard } from "shared/lib/types";
-import classNames from "classnames";
+import { FC } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import classNames from "classnames";
+import { ICard } from "shared/lib/types";
+import { homeCardVariants } from "pages_flat/Home/HomeCard/lib/utils";
 
-const Card: FC<ICard> = ({ children, setCardInfo, year, className, name, onClick, loader, src }) => {
+const Card: FC<ICard> = (props) => {
+  const { children, src, year, className, name, onClick, setCardInfo } = props;
 
   return (
     <motion.div
       className={classNames(className, "card")}
-      whileHover={{ scale: 0.9 }}
-      whileTap={{ scale: 1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
       onClick={onClick}
+      whileTap="whileTap"
+      whileHover="whileHover"
+      variants={homeCardVariants}
       onMouseOver={setCardInfo && (() => setCardInfo({ name: name, year: year }))}
     >
       <div className="card__helper">
         <Image
           className="card__image"
-          // placeholder="blur"
-          // blurDataURL={src}
-          // loader={loader}
           sizes="(min-width: 768px) 100vw"
-          src={src}
           alt="Card"
+          src={src}
           fill
         />
         {children}

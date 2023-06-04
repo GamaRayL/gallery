@@ -10,6 +10,7 @@ import { Layout } from "widgets";
 import { HomeCard } from "../HomeCard";
 import { MobxContext } from "pages/_app";
 import { Button, Container, Grid } from "shared/ui";
+import { homeVariants } from "pages_flat/Home/lib/utils";
 
 const Home: FC = observer(() => {
   const { pathname } = useRouter();
@@ -51,17 +52,16 @@ const Home: FC = observer(() => {
       <Container>
         <section>
           <Grid className="home" columns={2}>
+
             <AnimatePresence>
               {!store.isSearch &&
                 <motion.div
                   className="home__info"
-                  initial={{ x: -10, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -10, opacity: 0 }}
-                  transition={{
-                    type: "tween",
-                    duration: .5,
-                  }}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  custom={{ x: -20 }}
+                  variants={homeVariants}
                 >
                   <h1 className="home__title">
                     Откройте <br /> для себя <br /> галерею картин
@@ -79,33 +79,27 @@ const Home: FC = observer(() => {
                 </motion.div >
               }
             </AnimatePresence>
+
             <AnimatePresence>
               {!store.isSearch &&
                 <motion.div
-                  style={{
-                    display: "flex",
-                    gap: 60,
-                    alignItems: "center",
-                    paddingRight: "220px"
-                  }}
-                  initial={{ x: 300, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 300, opacity: 0 }}
-                  transition={{
-                    type: "tween",
-                    duration: .5,
-                  }}
-                  className="card-container"
+                  className="home__card"
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  variants={homeVariants}
                 >
                   {artworks.slice(148, 152).map((artwork) => (
-                    <Link href={`/collection/${artwork.id}`} key={artwork.id}>
+                    <Link key={artwork.id} href={`/collection/${artwork.id}`} >
                       <HomeCard key={artwork.id} image={artwork.images[2]} />
                     </Link>
                   ))}
                 </motion.div>
               }
             </AnimatePresence>
+
             <motion.div className="home__progress-bar" style={{ scaleX }} />
+
           </Grid>
         </section >
       </Container>

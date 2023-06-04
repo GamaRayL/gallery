@@ -12,7 +12,6 @@ const InputRange: FC<IInputRange> = (props) => {
       max={max || 5}
       value={value || (5 / 2)}
       onChange={onChange}
-    // value={value}
     />
   );
 };

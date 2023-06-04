@@ -1,7 +1,13 @@
 .container {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 84px;
+  --width: 100%;
+  --maxWidth: 1440px;
+  --margin: 0 auto;
+  --padding: 0 84px;
+
+
   position: relative;
+  width: var(--width);
+  max-width: var(--maxWidth);
+  margin: var(--margin);
+  padding: var(--padding);
 }

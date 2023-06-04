@@ -29,8 +29,11 @@
   }
 
   &__name {
-    font-style: italic;
     font-size: var(--fontSizeName);
+  }
+
+  &__year {
+    font-style: italic;
   }
 
   &__result {

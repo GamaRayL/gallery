@@ -1,3 +1,5 @@
+@import "styles/mixins.scss";
+
 .home {
   --height: calc(100vh - 5.5rem);
   --width: fit-content;
@@ -22,6 +24,9 @@
   --pbarHeight: 10px;
   --pbarBgColor: var(--c-dune);
   --pbarTrOrigin: 0%;
+
+  --cardGap: 60px;
+  --cardPR: 220px;
 
 
   width: var(--width);
@@ -66,5 +71,11 @@
     background: var(--c-dune);
 
     transform-origin: var(--pbarTrOrigin);
+  }
+
+  &__card {
+    @include flex;
+    gap: var(--cardGap);
+    padding-right: var(--cardPR);
   }
 }

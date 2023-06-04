@@ -1,24 +1,24 @@
 .link {
   --textColor: var(--c-main-text);
 
-  --height: var(--decoration-height);
   --width: 100%;
   --top: 100%;
   --marginT: 2px;
   --whiteSpace: nowrap;
+  --height: var(--decoration-height);
 
   --weight: var(--f-weight-semiBold);
   --textSize: var(--f-size-14);
 
-  color: var(--textColor);
   text-decoration: none;
+  color: var(--textColor);
 
   &__label {
     position: relative;
 
+    text-transform: uppercase;
     font-size: var(--textSize);
     font-weight: var(--weight);
-    text-transform: uppercase;
 
     white-space: var(--whiteSpace);
 
@@ -29,8 +29,8 @@
         height: var(--height);
         margin-top: var(--marginT);
 
-        top: var(--top);
         position: absolute;
+        top: var(--top);
 
         background: currentColor;
 

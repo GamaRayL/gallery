@@ -1,5 +1,5 @@
-import classNames from "classnames";
 import { CSSProperties, FC } from "react";
+import classNames from "classnames";
 import { IGrid } from "shared/lib/types";
 
 const Grid: FC<IGrid> = (props) => {
