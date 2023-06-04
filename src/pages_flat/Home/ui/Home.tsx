@@ -89,7 +89,7 @@ const Home: FC = observer(() => {
                   exit="hidden"
                   variants={homeVariants}
                 >
-                  {artworks.slice(148, 152).map((artwork) => (
+                  {artworks && artworks.slice(148, 152).map((artwork) => (
                     <Link key={artwork.id} href={`/collection/${artwork.id}`} >
                       <HomeCard key={artwork.id} image={artwork.images[2]} />
                     </Link>

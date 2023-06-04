@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect, useMemo } from "react";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
@@ -13,11 +13,11 @@ const montserrat = Montserrat({
 export const MobxContext = createContext<ArtworkStore | undefined>(undefined);
 
 function MyApp({ Component, pageProps }: AppProps) {
-  let store;
+  const store = useMemo(() => new ArtworkStore(), []);
 
-  const initializedStore = useStore(pageProps);
-
-  if (Component.name === "CollectionPage" || Component.name === "HomePage") store = initializedStore;
+  useEffect(() => {
+    store.hydrate(pageProps);
+  }, [pageProps, store]);
 
   return (
     <MobxContext.Provider value={store}>
