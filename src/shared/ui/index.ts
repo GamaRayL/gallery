@@ -8,3 +8,4 @@ export { default as Grid } from "./Grid/Grid";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as Card } from "./Card/Card";
 export { default as Popup } from "./Popup/Popup";
+export { default as Form } from "./Form/Form";

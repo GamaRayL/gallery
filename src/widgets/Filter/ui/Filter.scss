@@ -75,9 +75,7 @@
   }
 
   &__display {
-    display: flex;
-    justify-self: center;
-    align-items: center;
+    @include flex;
     gap: var(--gapDisplay);
     grid-column: var(--grColDisplay);
   }

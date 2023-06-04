@@ -4,16 +4,19 @@
   --width: 100%;
   --padding: 40px 0;
 
-  @include flex($justify-content: space-between);
+  --logoRight: 180px;
+  --logoTop: 40px;
 
   position: fixed;
 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   width: var(--width);
   padding: var(--padding);
 
   &__logo {
     position: absolute;
-    right: 180px;
-    top: 40px;
+    right: var(--logoRight);
+    top: var(--logoTop);
   }
 }
