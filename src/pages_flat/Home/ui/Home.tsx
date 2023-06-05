@@ -29,21 +29,32 @@ const Home: FC = observer(() => {
     const header = document.querySelector(".header") as HTMLElement;
 
     if (pathname === "/") {
-      body.style.overflowX = "auto";
+      // body.style.overflowX = "auto";
       body.style.overflowY = "hidden";
 
       body.style.background = "#DDDDDD";
 
-      header.style.position = "fixed";
+      // header.style.position = "fixed";
 
-      home.addEventListener("wheel", (event) => {
+      const setScrollStep = (event: any) => {
         if (event.deltaY > 0) {
           window.scrollBy(body.offsetWidth / 4, 0);
         }
         else if (event.deltaY < 0) {
           window.scrollBy(-body.offsetWidth / 4, 0);
         }
-      });
+      };
+
+      if (window.innerWidth > 980) {
+        home.addEventListener("wheel", setScrollStep);
+        body.style.overflowX = "auto";
+      } else {
+        home.removeEventListener("wheel", setScrollStep);
+        // header.style.position = "absolute";
+        home.style.overflowX = "hidden";
+        body.style.overflowY = "auto";
+      }
+
     }
   }, [pathname]);
 
@@ -83,7 +94,7 @@ const Home: FC = observer(() => {
             <AnimatePresence>
               {!store.isSearch &&
                 <motion.div
-                  className="home__card"
+                  className="home__cards"
                   initial="hidden"
                   animate="visible"
                   exit="hidden"

@@ -56,6 +56,7 @@
   &__image-conatiner {
     --conatinerAfterTop: -400px;
 
+    // padding-top: 100px;
     position: relative;
 
     grid-column: var(--containerGridC);
@@ -71,7 +72,7 @@
       position: absolute;
       top: var(--conatinerAfterTop);
 
-      box-shadow: 0 0 20vw 55vw white;
+      box-shadow: 0 0 120px 760px white;
     }
   }
 
@@ -90,6 +91,10 @@
     grid-column: var(--descGridC);
 
     justify-self: var(--descJS);
+  }
+
+  &__popup {
+    justify-self: center;
   }
 
   &__image {
@@ -125,5 +130,69 @@
 
   &__age, &__author, &__author-age {
     text-align: var(--textAlign);
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .artwork {
+    &__image-conatiner {
+      // padding-top: 0;
+    }
+    &__title {
+      font-size: 20px;
+    }
+    &__age {
+      font-size: 10px;
+    }
+    &__author {
+      font-size: 12px;
+    }
+    &__technique, &__size {
+      font-size: 14px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 860px) {
+  .artwork {
+    &__carousel {
+      grid-column: 1/span 14;
+      grid-row: 3;
+    }
+    &__description {
+      grid-column: 1/span 14;
+      justify-self: auto;
+      margin-bottom: 40px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__age {
+      font-size: 14px;
+    }
+    &__author {
+      font-size: 16px;
+    }
+    &__technique, &__size {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .artwork {
+    &__title {
+      font-size: 20px;
+    }
+    &__age {
+      font-size: 10px;
+    }
+    &__author {
+      font-size: 12px;
+    }
+    &__technique, &__size {
+      font-size: 14px;
+    }
   }
 }

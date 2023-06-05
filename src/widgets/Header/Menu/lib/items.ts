@@ -11,7 +11,7 @@ export const items = [
   },
   {
     id: 3,
-    pathname: "/",
+    pathname: "-",
     label: "Виртуал тур"
   },
 ];

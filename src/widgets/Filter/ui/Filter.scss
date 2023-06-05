@@ -9,12 +9,13 @@
   --gridTemplateColumns: repeat(24, 1fr);
 
   --grColField: 1/span 7;
-  --grColDisplay: 9/span 7;
-  --grColExpand: 18/span 7;
+  --grColDisplay: 9/span 8;
+  --grColExpand: 22/span 3;
 
   --gapDisplay: 25px;
 
   --paddingY: 24px 0;
+
 
   display: grid;
   grid-template-columns: var(--gridTemplateColumns);
@@ -48,7 +49,7 @@
   &__btn--total {
     --btnTotalRight: 0;
     --btnTotalBottom: 0;
-    --btnTotalPadding: 10px;
+    --btnTotalPadding: 10px 20px;
     --btnTotalBgColor: var(--c-black);
     --btnTotalBgColor: var(--c-black);
 
@@ -75,9 +76,13 @@
   }
 
   &__display {
-    @include flex;
-    gap: var(--gapDisplay);
+    // @include flex;
+    // gap: var(--gapDisplay);
     grid-column: var(--grColDisplay);
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
 
   &__expand {
@@ -89,10 +94,63 @@
     font-size: var(--fontSizeBtn);
     font-weight: var(--fontWeightBtn);
   }
+
+  &__btn-increase {
+    justify-self: center;
+  }
+
+  &__brn-decrease {
+    justify-self: center;
+  }
 }
 
 .expand-container {
   --expandMB: 40px;
-
+  row-gap: 20px;
   margin-bottom: var(--expandMB);
+}
+
+@media screen and (max-width: 980px) {
+
+}
+
+@media screen and (max-width: 780px) {
+  .filter {
+    row-gap: 20px;
+
+    &__field {
+      grid-column: 1/24;
+    }
+
+    &__display {
+      grid-column: 1/14;
+    }
+
+    &__expand {
+      grid-column: 15/span 10;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .filter {
+    &__display {
+      grid-column: 1/span 16;
+    }
+    &__expand {
+      grid-column: 18/span 7;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .filter {
+    &__display {
+      grid-column: 1/span 24;
+    }
+    &__expand {
+      grid-column: 1/span 24;
+      grid-row: 3;
+    }
+  }
 }

@@ -3,7 +3,6 @@ import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
 import ArtworkStore from "store/artworkStore";
-import { useStore } from "store";
 import "styles/global.scss";
 
 const montserrat = Montserrat({
@@ -16,8 +15,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const store = useMemo(() => new ArtworkStore(), []);
 
   useEffect(() => {
-    store.hydrate(pageProps);
-  }, [pageProps, store]);
+    if (Component.name === "CollectionPage" || Component.name === "HomePage") {
+      store.hydrate(pageProps);
+    }
+  }, [Component.name, pageProps, store]);
+
 
   return (
     <MobxContext.Provider value={store}>

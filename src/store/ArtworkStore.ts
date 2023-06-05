@@ -1,27 +1,27 @@
 import { makeAutoObservable } from "mobx";
-import { IArtwork, IArtworksData } from "pages_flat/Collection/lib/types";
+import { IArtwork, IArtworksData } from "types";
 import { IItem } from "widgets/Filter/lib/types";
 
 export interface IArtist {
-  artist_name: string;
-  artist_id: number;
   count: number;
+  artist_id: number;
+  artist_name: string;
 }
 
 export interface IArtworkStore {
-  artworks: IArtwork[];
   searchParam: string;
+  artworks: IArtwork[];
   artistParam: number[];
   techniqueParam: string[];
 
-  setArtworks(values: IArtwork[]): void;
   setSearchParam(value: string): void;
+  setArtworks(values: IArtwork[]): void;
   toggleArtistParam(value: number): void;
   toggleTechniqueParam(value: string): void;
-  get filteredArtworks(): IArtwork[];
+  get totalArtworks(): number;
   get uniqueArtists(): IItem[];
   get uniqueTechniques(): IItem[];
-  get totalArtworks(): number;
+  get filteredArtworks(): IArtwork[];
   hydrate(value: IArtworksData): void;
 }
 
@@ -34,11 +34,11 @@ function generateRandomNumber(length: number) {
 }
 
 class ArtworkStore implements IArtworkStore {
-  artworks: IArtwork[] = [];
   searchParam = "";
+  artworks: IArtwork[] = [];
   artistParam: number[] = [];
-  techniqueParam: string[] = [];
   artSliced: IArtwork[] = [];
+  techniqueParam: string[] = [];
 
 
   constructor () {
@@ -74,6 +74,7 @@ class ArtworkStore implements IArtworkStore {
   }
 
   get filteredArtworks() {
+    if (!this.artworks) return [];
     return this.artworks.filter((artwork) => {
       const techniqueMarch =
         this.techniqueParam.length === 0 ||
@@ -89,6 +90,7 @@ class ArtworkStore implements IArtworkStore {
   }
 
   get uniqueArtists() {
+    if (!this.artworks) return [];
     const artistMap = new Map<string, IItem>();
     for (const artwork of this.artworks) {
       const artistKey = `${artwork.artist_name}+${artwork.artist_id}`;
@@ -108,6 +110,7 @@ class ArtworkStore implements IArtworkStore {
   }
 
   get uniqueTechniques() {
+    if (!this.artworks) return [];
     const techniqueMap = new Map<string, IItem>();
     for (const artwork of this.artworks) {
       const techniqueKey = artwork.technique;
@@ -124,6 +127,15 @@ class ArtworkStore implements IArtworkStore {
     }
     return Array.from(techniqueMap.values());
   }
+
+  get totalArtworks() {
+    return this.artworks.length;
+  }
+
+  hydrate = (data: IArtworksData) => {
+    if (!data) return;
+    this.setArtworks(data.artworks);
+  };
 
   // get uniqueYears() {
   //   const yearMap = new Map<string, IItem>();
@@ -142,15 +154,6 @@ class ArtworkStore implements IArtworkStore {
   //   }
   //   return Array.from(yearMap.values());
   // }
-
-  get totalArtworks() {
-    return this.artworks.length;
-  }
-
-  hydrate = (data: IArtworksData) => {
-    if (!data) return;
-    this.setArtworks(data.artworks);
-  };
 }
 
 export default ArtworkStore;

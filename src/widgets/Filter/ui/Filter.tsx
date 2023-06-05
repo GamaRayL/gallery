@@ -9,7 +9,6 @@ import { IItem } from "widgets/Filter/lib/types";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
 import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 
-
 const Filter: FC = observer(() => {
   const btnSize = 26;
   const ref = useRef<HTMLDivElement>(null);
@@ -50,11 +49,11 @@ const Filter: FC = observer(() => {
   const onClickScrollHandler = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
     store.toggleFilterOverlay();
-    const body = document.querySelector("body") as HTMLBodyElement;
+    // const body = document.querySelector("body") as HTMLBodyElement;
 
-    body.style.overflowY !== "hidden"
-      ? body.style.overflowY = "hidden"
-      : body.style.overflowY = "auto";
+    // body.style.overflowY !== "hidden"
+    //   ? body.style.overflowY = "hidden"
+    //   : body.style.overflowY = "auto";
 
     !store.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -102,6 +101,7 @@ const Filter: FC = observer(() => {
           </div>
           <div className="filter__display">
             <Button
+              className="filter__brn-decrease"
               icon={<BiSquare size={btnSize} />}
               onClick={onClickDecreaseHandler}
             />
@@ -112,12 +112,14 @@ const Filter: FC = observer(() => {
               onChange={onChangeRangeHandler}
             />
             <Button
+              className="filter__btn-increase"
               icon={<BiCategory size={btnSize} />}
               onClick={onClickIncreaseHandler}
             />
           </div>
           <div className="filter__expand">
             <Button
+              justify="space-between"
               className="filter__btn"
               icon={<BiFilter size={btnSize} />}
               onClick={onClickScrollHandler}

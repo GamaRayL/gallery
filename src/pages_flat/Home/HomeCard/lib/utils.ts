@@ -2,14 +2,14 @@ import { Variants } from "framer-motion";
 
 export const homeCardVariants: Variants = {
   whileTap: () => ({
-    scale: 1
+    scale: 0.95
   }),
 
   whileHover: () => ({
-    scale: 1.05,
+    scale: 0.96,
     opacity: 1,
     transition: {
-      type: "tween",
+      type: "spring",
       damping: 17,
       stiffness: 400,
     },

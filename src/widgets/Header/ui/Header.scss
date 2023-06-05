@@ -4,19 +4,33 @@
   --width: 100%;
   --padding: 40px 0;
 
-  --logoRight: 180px;
-  --logoTop: 40px;
+  // --logoRight: 180px;
+  // --logoTop: 40px;
 
-  position: fixed;
+  position: static;
+  // position: absolute;
+  z-index: 1;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: var(--width);
   padding: var(--padding);
 
+
   &__logo {
-    position: absolute;
-    right: var(--logoRight);
-    top: var(--logoTop);
+    justify-self: flex-end;
+    // position: absolute;
+    // right: var(--logoRight);
+    // top: var(--logoTop);
+  }
+}
+
+
+@media screen and (max-width: 980px) {
+  .header {
+    // position: absolute;
+
+    &__helper {
+    }
   }
 }

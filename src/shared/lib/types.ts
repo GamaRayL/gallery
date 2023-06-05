@@ -21,6 +21,9 @@ export interface IButton {
 export interface ICustomLink {
   pathname: string;
   label: string;
+  disabled?: boolean;
+  className?: string;
+  onClick?: () => void;
 }
 
 export interface IModal {
@@ -78,4 +81,5 @@ export interface IPopup {
   top?: boolean;
   color?: string;
   bgColor?: string;
+  className?: string;
 }

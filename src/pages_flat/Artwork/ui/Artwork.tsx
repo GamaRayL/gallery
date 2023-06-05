@@ -27,7 +27,6 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
 
     body.style.background = "#46413B";
 
-    header.style.position = "absolute";
   }, [pathname]);
 
   return (
@@ -69,7 +68,7 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
 
           <AnimatePresence>
             {store.isOrbitControls &&
-              <Popup color="black" bgColor="white">
+              <Popup className="artwork__popup" color="black" bgColor="white">
                 <motion.p
                   variants={infoChildVariants}
                   initial="hidden"

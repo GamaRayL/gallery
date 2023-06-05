@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useRef, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
@@ -18,7 +18,6 @@ const Collection: FC = observer(() => {
   const [cardInfo, setCardInfo] = useState<{ name: string; year: string; }>();
   const { filteredArtworks } = useContext(MobxContext) as IArtworkStore;
 
-  const ref = useRef<HTMLDivElement>(null);
   const columns = store.columns;
 
   const delay = store.isFilter ? .2 : .6;
@@ -33,21 +32,18 @@ const Collection: FC = observer(() => {
 
       body.style.background = "#DDDDDD";
 
-      header.style.position = "absolute";
     }
 
   }, [pathname]);
 
-  const getScrollToTop = () => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+
 
   return (
     <Layout
       title="Коллекция"
       description="Раздел 'Коллекции' сайта частной галереи. Присутствует фильтр.">
 
-      <section className="collection" ref={ref}>
+      <section className="collection" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         <Container>
           <motion.h1
             className="collection__title"
@@ -88,6 +84,7 @@ const Collection: FC = observer(() => {
               animate="visible"
               custom={{ delay: delay, y: -100 }}
               variants={collectionVariants}
+              style={{ width: "100%" }}
             >
               <Container>
                 <Grid columns={columns}>
@@ -108,7 +105,7 @@ const Collection: FC = observer(() => {
                           />
                         </Link>
                       ))
-                      : <div>Картины не найдены</div>
+                      : <div style={{ whiteSpace: "nowrap" }}>Картины не найдены</div>
                   }
                 </Grid>
               </Container>
@@ -141,11 +138,7 @@ const Collection: FC = observer(() => {
           }
         </AnimatePresence>
 
-        <Button
-          className="collection__btn--up"
-          icon={<RiArrowUpCircleFill size={60} />}
-          onClick={getScrollToTop}
-        />
+
       </section>
     </Layout>
   );

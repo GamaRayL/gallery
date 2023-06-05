@@ -1,18 +1,17 @@
 .popup {
-  --padding: 6px;
+  --padding: 4px 14px;
   --textAlign: center;
   --left: 40vh;
   --bottom: 0;
-  --borderTLR: 20px;
-  --borderTRR: 20px;
-
+  --borderTLR: 10px;
+  --borderTRR: 10px;
 
   z-index: 1000;
   position: fixed;
-  left: var(--left);
+  // left: var(--left);
   bottom: var(--bottom);
 
-  width: 50vw;
+  width: fit-content;
   padding: var(--padding);
 
   text-align: var(--textAlign);

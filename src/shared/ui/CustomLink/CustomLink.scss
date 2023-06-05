@@ -1,5 +1,6 @@
 .link {
   --textColor: var(--c-main-text);
+  --disableColor: var(--c-disable);
 
   --width: 100%;
   --top: 100%;
@@ -12,6 +13,11 @@
 
   text-decoration: none;
   color: var(--textColor);
+
+  &_disable {
+    pointer-events: none;
+    color: var(--disableColor);
+  }
 
   &__label {
     position: relative;

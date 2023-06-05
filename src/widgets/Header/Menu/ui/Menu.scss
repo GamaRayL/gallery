@@ -1,0 +1,45 @@
+@import "styles/mixins.scss";
+
+.nav {
+  &__item {
+    display: flex;
+  }
+
+  &__btn-list {
+    display: none;
+  }
+
+  &__list, &__menu {
+    @include flex-gap(60px);
+    @include reset-list;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .nav {
+    &__item {
+      flex-direction: column;
+      position: relative;
+    }
+    &__link {
+      font-size: 12px;
+    }
+    &__btn-list {
+      display: block;
+    }
+    &__menu {
+      // gap: 20px;
+      display: none;
+    }
+    &__menu_active {
+      display: block;
+      top: 30px;
+      position: absolute;
+    }
+    &__list {
+      gap: 20px;
+      z-index: 1000;
+    }
+  }
+}

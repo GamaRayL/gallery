@@ -13,16 +13,14 @@ const HomeCard: FC<IHome> = ({ image }) => {
       variants={homeCardVariants}
       initial="initial"
     >
-      <div className="home-card__image">
-        <Image
-          fill
-          priority
-          src={image}
-          alt="Карточка картины"
-          style={{ objectFit: "cover" }}
-          sizes="(min-width: 768px) 100vw"
-        />
-      </div>
+      <Image
+        fill
+        priority
+        src={image}
+        alt="Карточка картины"
+        sizes="(min-width: 768px) 100vw"
+        className="home-card__image"
+      />
     </motion.div>
   );
 };

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { IPopup } from "shared/lib/types";
 import classNames from "classnames";
 
-const Popup: FC<IPopup> = ({ children, top, color, bgColor }) => {
+const Popup: FC<IPopup> = ({ children, top, color, bgColor, className }) => {
   const yValue = top ? -100 : 100;
 
   return (
@@ -15,7 +15,7 @@ const Popup: FC<IPopup> = ({ children, top, color, bgColor }) => {
         type: "keyframes",
         duration: .5,
       }}
-      className={classNames("popup", {
+      className={classNames(className, "popup", {
         "popup_top": top
       })}
       style={{
