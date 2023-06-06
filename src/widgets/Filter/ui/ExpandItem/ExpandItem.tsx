@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FC, useState } from "react";
+import { FC, useState, MouseEvent } from "react";
 import { BiChevronDown, BiChevronUp, BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { Button, Checkbox } from "shared/ui";
 import { IExpandItem } from "widgets/Filter/lib/types";
@@ -8,10 +8,10 @@ const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
   const [isShow, setShow] = useState(false);
   const [isShowAll, setShowAll] = useState(false);
 
-  const onClickExpandHandler = (event: any) => {
-    const div = event.currentTarget.closest("div").childNodes[1];
+  const onClickExpandHandler = (event: MouseEvent) => {
+    const div = event.currentTarget?.closest("div")?.children[1] as HTMLElement;
 
-    if (div.style.display == "none") {
+    if (div?.style.display === "none") {
       div.style.display = "block";
       setShow(false);
     } else {

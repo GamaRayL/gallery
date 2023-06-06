@@ -2,14 +2,13 @@ import { FC, useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
-import { RiArrowUpCircleFill } from "react-icons/ri";
 import { AnimatePresence, motion } from "framer-motion";
 import { IArtworkStore } from "store/artworkStore";
 import store from "store/toolsStore";
 import { MobxContext } from "pages/_app";
 import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";
 import { Filter, Layout } from "widgets";
-import { Button, Card, Container, Grid, Popup } from "shared/ui";
+import { Card, Container, Grid, Popup } from "shared/ui";
 import { IArtwork } from "types";
 
 const Collection: FC = observer(() => {
@@ -24,7 +23,6 @@ const Collection: FC = observer(() => {
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
-    const header = document.querySelector(".header") as HTMLElement;
 
     if (pathname == "/collection") {
       body.style.overflowX = "hidden";

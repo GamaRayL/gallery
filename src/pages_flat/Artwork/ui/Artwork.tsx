@@ -20,7 +20,6 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
-    const header = document.querySelector(".header") as HTMLElement;
 
     body.style.overflowX = "hidden";
     body.style.overflowY = "auto";

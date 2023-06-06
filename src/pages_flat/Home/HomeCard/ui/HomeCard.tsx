@@ -1,6 +1,6 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { homeCardVariants } from "pages_flat/Home/HomeCard/lib/utils";
 import { IHome } from "../lib/types";
 

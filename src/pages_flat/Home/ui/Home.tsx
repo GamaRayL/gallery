@@ -26,7 +26,6 @@ const Home: FC = observer(() => {
   useEffect(() => {
     const home = document.querySelector(".home") as HTMLDivElement;
     const body = document.querySelector("body") as HTMLBodyElement;
-    const header = document.querySelector(".header") as HTMLElement;
 
     if (pathname === "/") {
       // body.style.overflowX = "auto";
@@ -36,7 +35,7 @@ const Home: FC = observer(() => {
 
       // header.style.position = "fixed";
 
-      const setScrollStep = (event: any) => {
+      const setScrollStep = (event: WheelEvent) => {
         if (event.deltaY > 0) {
           window.scrollBy(body.offsetWidth / 4, 0);
         }
