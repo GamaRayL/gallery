@@ -4,12 +4,10 @@ import toolsStore from "store/toolsStore";
 import { Button, CustomLink } from "shared/ui";
 import { FC, useState } from "react";
 import { items } from "widgets/Header/Menu/lib/items";
-import { IMenu } from "widgets/Header/Menu/lib/types";
 import classNames from "classnames";
 import { RiCloseLine } from "react-icons/ri";
-import { AnimatePresence, motion } from "framer-motion";
 
-const Menu: FC<IMenu> = observer(({ className }) => {
+const Menu: FC = observer(() => {
   const [isShow, setShow] = useState(false);
 
   const onClickShowHanlder = () => {
