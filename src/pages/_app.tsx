@@ -9,7 +9,7 @@ const montserrat = Montserrat({
   subsets: ["cyrillic"],
 });
 
-export const MobxContext = createContext<ArtworkStore | undefined>(undefined);
+export const MobxContext = createContext<ArtworkStore | null>(null);
 
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useMemo(() => new ArtworkStore(), []);
