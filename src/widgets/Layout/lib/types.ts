@@ -1,4 +1,3 @@
-import { Router } from "next/router";
 import { ReactNode } from "react";
 
 export interface IMeta {

@@ -1,20 +1,20 @@
 .layout {
-
-
   &__btn {
     --btnBottom: 40px;
     --btnRight: 10px;
     --transition: var(--aditional-transition-duration);
+    --transform: translateY(-10px);
 
     position: fixed;
     z-index: 1000;
+    // overflow: overlay;
     bottom: var(--btnBottom);
     right: var(--btnRight);
 
     transition: var(--transition);
 
     &:hover {
-      transform: translateY(-10px);
+      transform: var(--transform);
     }
   }
 }

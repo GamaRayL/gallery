@@ -7,8 +7,7 @@ import { ILayout } from "widgets/Layout/lib/types";
 import { layoutVariants } from "widgets/Layout/lib/utils";
 import { Meta } from "widgets/Layout/Meta";
 import { Button, Container, Form, Modal } from "shared/ui";
-import { RiArrowUpCircleFill, RiArrowUpCircleLine } from "react-icons/ri";
-import { useRouter } from "next/router";
+import { RiArrowUpCircleLine } from "react-icons/ri";
 
 const Layout: FC<ILayout> = observer((props) => {
   const { children, title, description } = props;
@@ -34,12 +33,10 @@ const Layout: FC<ILayout> = observer((props) => {
       <AnimatePresence>
         {store.isSearch &&
           <motion.div
-            initial={{ x: -300, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 0, opacity: 0 }}
-            transition={{
-              type: "tween",
-            }}
+            variants={layoutVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
             <Modal>
               <Container>

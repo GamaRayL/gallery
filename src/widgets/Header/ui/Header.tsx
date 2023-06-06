@@ -1,7 +1,6 @@
-import { FC, useEffect, useState } from "react";
-import { PictureFilled } from "@ant-design/icons";
+import { FC } from "react";
+import Image from "next/image";
 import { Button, Container } from "shared/ui";
-import { useRouter } from "next/router";
 import { Menu } from "widgets/Header/Menu";
 
 const Header: FC = () => {
@@ -11,7 +10,15 @@ const Header: FC = () => {
         <Menu />
         <Button
           className="header__logo"
-          icon={<PictureFilled style={{ fontSize: 60 }} />}
+          icon={
+            <Image
+              src="/logo.svg"
+              width={60}
+              height={60}
+              priority
+              alt="Лого"
+            />
+          }
           href="/"
         />
       </header >

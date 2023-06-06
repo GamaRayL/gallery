@@ -28,14 +28,14 @@ html {
   font-family: 'Montserrat';
 
   margin-right: calc(-1*(100vw - 100%));
+
+  width: 100vw;
 }
 
 body {
   min-width: var(--site-min-width);
   min-height: inherit;
 
-  // overflow-y: hidden;
-  // overflow-x: auto;
   scroll-behavior: smooth;
 
   font: inherit;

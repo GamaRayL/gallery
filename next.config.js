@@ -13,4 +13,5 @@ module.exports = {
   experimental: {
     largePageDataBytes: 128 * 100000,
   },
+  output: "standalone",
 };
