@@ -5,12 +5,12 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { BiRightArrowAlt } from "react-icons/bi";
 import toolsStore from "store/ToolsStore";
-import { IArtworkStore } from "store/ArtworkStore";
 import { Layout } from "widgets";
 import { HomeCard } from "../HomeCard";
 import { MobxContext } from "pages/_app";
 import { Button, Container, Grid } from "shared/ui";
 import { homeVariants } from "pages_flat/Home/lib/utils";
+import { IArtworkStore } from "types";
 
 const Home: FC = observer(() => {
   const { pathname } = useRouter();

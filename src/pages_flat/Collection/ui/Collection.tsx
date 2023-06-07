@@ -3,13 +3,12 @@ import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
-import { IArtworkStore } from "store/ArtworkStore";
 import toolsStore from "store/ToolsStore";
 import { MobxContext } from "pages/_app";
 import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";
 import { Filter, Layout } from "widgets";
 import { Card, Container, Grid, Popup } from "shared/ui";
-import { IArtwork } from "types";
+import { IArtwork, IArtworkStore } from "types";
 
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();

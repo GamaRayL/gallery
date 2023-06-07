@@ -22,7 +22,7 @@
       }
     ]
   },
-  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages_flat/Artwork/ui/Frame.js", "src/pages_flat/Artwork/ui/Frames.js", "src/types/type"],
+  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/types/type"],
   "exclude": ["node_modules"],
   "browserslist": [">0.3%", "not dead"]
 }

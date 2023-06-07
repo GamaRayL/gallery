@@ -1,29 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { IArtwork, IArtworksData } from "types";
+import { IArtwork, IArtworkStore, IArtworksData } from "types";
 import { IItem } from "widgets/Filter/lib/types";
-
-export interface IArtist {
-  count: number;
-  artist_id: number;
-  artist_name: string;
-}
-
-export interface IArtworkStore {
-  searchParam: string;
-  artworks: IArtwork[];
-  artistParam: number[];
-  techniqueParam: string[];
-
-  setSearchParam(value: string): void;
-  setArtworks(values: IArtwork[]): void;
-  toggleArtistParam(value: number): void;
-  toggleTechniqueParam(value: string): void;
-  get totalArtworks(): number;
-  get uniqueArtists(): IItem[];
-  get uniqueTechniques(): IItem[];
-  get filteredArtworks(): IArtwork[];
-  hydrate(value: IArtworksData): void;
-}
 
 function generateRandomNumber(length: number) {
   let result = 1;

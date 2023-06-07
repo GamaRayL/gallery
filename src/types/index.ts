@@ -1,3 +1,5 @@
+import { IItem } from "widgets/Filter/lib/types";
+
 export interface IArtwork {
   id: number;
   name: string;
@@ -26,4 +28,21 @@ export interface IArtworksData {
 export interface IArtworkTistDataSingle {
   artwork: IArtwork;
   artist: IArtist;
+}
+
+export interface IArtworkStore {
+  searchParam: string;
+  artworks: IArtwork[];
+  artistParam: number[];
+  techniqueParam: string[];
+
+  setSearchParam(value: string): void;
+  setArtworks(values: IArtwork[]): void;
+  toggleArtistParam(value: number): void;
+  toggleTechniqueParam(value: string): void;
+  get totalArtworks(): number;
+  get uniqueArtists(): IItem[];
+  get uniqueTechniques(): IItem[];
+  get filteredArtworks(): IArtwork[];
+  hydrate(value: IArtworksData): void;
 }
