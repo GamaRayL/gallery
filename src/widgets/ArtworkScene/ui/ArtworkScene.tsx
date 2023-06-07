@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import classNames from "classnames";
-import toolsStore from "store/ToolsStore";
+import store from "store/ToolsStore";
 import { ArtObject } from "widgets/ArtworkScene/ArtObject";
 import { LoadingAnimation } from "widgets/ArtworkScene/LoadingAnimation";
 import { IArtworkScene } from "widgets/ArtworkScene/lib/types";
@@ -63,11 +63,11 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
           shadows
           camera={{ position: [0, 0, 500] }}
           className={classNames("canvas", {
-            "canvas_active": toolsStore.isOrbitControls,
+            "canvas_active": store.isOrbitControls,
           })}
         >
           <OrbitControls
-            enabled={toolsStore.isOrbitControls}
+            enabled={store.isOrbitControls}
             minDistance={100}
             maxDistance={550}
           />

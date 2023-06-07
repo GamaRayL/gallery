@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { observer } from "mobx-react-lite";
 import { AnimatePresence, motion } from "framer-motion";
 import { BiCube } from "react-icons/bi";
-import toolsStore from "store/ToolsStore";
+import store from "store/ToolsStore";
 import { Layout } from "widgets";
 import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
 import Carousel from "../Carousel/ui/Carousel";
@@ -40,9 +40,9 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
           <div className="artwork__tool">
             <Button
               className="artwork__tool-btn"
-              onClick={() => toolsStore.toggleOrbitControls()}
+              onClick={() => store.toggleOrbitControls()}
               icon={<BiCube
-                size={toolsStore.isOrbitControls ? 64 : 44}
+                size={store.isOrbitControls ? 64 : 44}
                 color="white" />} />
           </div>
 
@@ -66,7 +66,7 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
           </div>
 
           <AnimatePresence>
-            {toolsStore.isOrbitControls &&
+            {store.isOrbitControls &&
               <Popup className="artwork__popup" color="black" bgColor="white">
                 <motion.p
                   variants={infoChildVariants}

@@ -38,6 +38,6 @@ class Store {
   }
 }
 
-const toolsStore = new Store();
+const ToolsStore = new Store();
 
-export default toolsStore;
+export default ToolsStore;
