@@ -4,8 +4,6 @@ import { observer } from "mobx-react-lite";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { BiRightArrowAlt } from "react-icons/bi";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import { Layout } from "widgets";
 import { HomeCard } from "../HomeCard";

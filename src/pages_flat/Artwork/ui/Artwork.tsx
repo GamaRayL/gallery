@@ -4,8 +4,6 @@ import dynamic from 'next/dynamic';
 import { observer } from "mobx-react-lite";
 import { AnimatePresence, motion } from "framer-motion";
 import { BiCube } from "react-icons/bi";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import { Layout } from "widgets";
 import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
