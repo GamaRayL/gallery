@@ -1,3 +1,3 @@
-export interface IHome {
+export interface IHomeCard {
   image: string;
 }

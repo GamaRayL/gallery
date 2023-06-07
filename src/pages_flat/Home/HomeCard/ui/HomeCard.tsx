@@ -2,9 +2,9 @@ import { FC } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { homeCardVariants } from "pages_flat/Home/HomeCard/lib/utils";
-import { IHome } from "../lib/types";
+import { IHomeCard } from "../lib/types";
 
-const HomeCard: FC<IHome> = ({ image }) => {
+const HomeCard: FC<IHomeCard> = ({ image }) => {
   return (
     <motion.div
       className="home-card"
