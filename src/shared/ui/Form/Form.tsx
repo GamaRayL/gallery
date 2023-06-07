@@ -1,7 +1,7 @@
 import { FC, ChangeEvent, useEffect, useRef, useState } from "react";
 import { BiSearch, BiX } from "react-icons/bi";
 import { motion } from "framer-motion";
-import store from "store/ToolsStore";
+import toolsStore from "store/ToolsStore";
 import { Button, Input } from "shared/ui";
 import { formVariants } from "shared/lib/utils";
 
@@ -34,7 +34,7 @@ const Form: FC = () => {
         />
         <Button
           icon={<BiX size={52} />}
-          onClick={() => store.toggleSearchOverlay()}
+          onClick={() => toolsStore.toggleSearchOverlay()}
         />
       </div>
       <motion.hr
