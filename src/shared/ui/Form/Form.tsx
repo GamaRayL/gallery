@@ -1,6 +1,8 @@
 import { FC, ChangeEvent, useEffect, useRef, useState } from "react";
 import { BiSearch, BiX } from "react-icons/bi";
 import { motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import { Button, Input } from "shared/ui";
 import { formVariants } from "shared/lib/utils";
