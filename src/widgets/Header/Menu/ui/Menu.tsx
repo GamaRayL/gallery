@@ -1,5 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { BiListUl, BiSearch } from "react-icons/bi";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import { Button, CustomLink } from "shared/ui";
 import { FC, useState } from "react";

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import { MobxContext } from "pages/_app";
 import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";

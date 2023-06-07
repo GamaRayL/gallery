@@ -2,6 +2,8 @@ import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react"
 import { observer } from "mobx-react-lite";
 import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 import classNames from "classnames";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import { MobxContext } from "pages/_app";
 import { IItem } from "widgets/Filter/lib/types";

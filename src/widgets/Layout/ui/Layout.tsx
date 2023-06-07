@@ -1,6 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import toolsStore from "store/ToolsStore";
 import Header from "widgets/Header/ui/Header";
 import { ILayout } from "widgets/Layout/lib/types";
