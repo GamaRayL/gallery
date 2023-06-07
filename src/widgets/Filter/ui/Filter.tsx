@@ -2,8 +2,8 @@ import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react"
 import { observer } from "mobx-react-lite";
 import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 import classNames from "classnames";
-import { IArtworkStore } from "store/artworkStore";
-import store from "store/toolsStore";
+import { IArtworkStore } from "store/ArtworkStore";
+import store from "store/ToolsStore";
 import { MobxContext } from "pages/_app";
 import { IItem } from "widgets/Filter/lib/types";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";

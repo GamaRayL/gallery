@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
-import store from "store/toolsStore";
+import store from "store/ToolsStore";
 import Header from "widgets/Header/ui/Header";
 import { ILayout } from "widgets/Layout/lib/types";
 import { layoutVariants } from "widgets/Layout/lib/utils";

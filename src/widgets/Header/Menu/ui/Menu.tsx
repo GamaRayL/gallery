@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { BiListUl, BiSearch } from "react-icons/bi";
-import toolsStore from "store/toolsStore";
+import toolsStore from "store/ToolsStore";
 import { Button, CustomLink } from "shared/ui";
 import { FC, useState } from "react";
 import { items } from "widgets/Header/Menu/lib/items";

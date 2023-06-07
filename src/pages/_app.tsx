@@ -2,7 +2,7 @@ import { createContext, useEffect, useMemo } from "react";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
-import ArtworkStore from "store/artworkStore";
+import ArtworkStore from "store/ArtworkStore";
 import "styles/global.scss";
 
 const montserrat = Montserrat({

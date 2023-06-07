@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import classNames from "classnames";
-import store from "store/toolsStore";
+import store from "store/ToolsStore";
 import { ArtObject } from "widgets/ArtworkScene/ArtObject";
 import { LoadingAnimation } from "widgets/ArtworkScene/LoadingAnimation";
 import { IArtworkScene } from "widgets/ArtworkScene/lib/types";
