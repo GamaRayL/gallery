@@ -10,11 +10,11 @@ import { HomeCard } from "../HomeCard";
 import { MobxContext } from "pages/_app";
 import { Button, Container, Grid } from "shared/ui";
 import { homeVariants } from "pages_flat/Home/lib/utils";
-import { IArtworkStore } from "types";
+import { IArtworkStore, IArtworksData } from "types";
 
-const Home: FC = observer(() => {
+const Home: FC<IArtworksData> = observer(({ artworks }) => {
   const { pathname } = useRouter();
-  const { artworks } = useContext(MobxContext) as IArtworkStore;
+  // const { artworks } = useContext(MobxContext) as IArtworkStore;
 
   const { scrollXProgress } = useScroll();
   const scaleX = useSpring(scrollXProgress, {
@@ -99,7 +99,7 @@ const Home: FC = observer(() => {
                   exit="hidden"
                   variants={homeVariants}
                 >
-                  {artworks && artworks.slice(148, 152).map((artwork) => (
+                  {artworks && artworks.map((artwork: any) => (
                     <Link key={artwork.id} href={`/collection/${artwork.id}`} >
                       <HomeCard key={artwork.id} image={artwork.images[2]} />
                     </Link>

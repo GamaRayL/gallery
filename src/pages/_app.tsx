@@ -14,12 +14,15 @@ export const MobxContext = createContext<ArtworkStore | null>(null);
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useMemo(() => new ArtworkStore(), []);
 
-  useEffect(() => {
-    if (Component.name === "CollectionPage" || Component.name === "HomePage") {
-      store.hydrate(pageProps);
-    }
-  }, [Component.name, pageProps, store]);
-
+  store.hydrate(pageProps);
+  console.log(store, "store");
+  // useEffect(() => {
+  //   if (Component.name === "CollectionPage" || Component.name === "HomePage") {
+  //     console.log(pageProps, "pageProps");
+  //     store.hydrate(pageProps);
+  //     console.log(store, "store");
+  //   }
+  // }, [Component.name, pageProps, store]);
 
   return (
     <MobxContext.Provider value={store}>

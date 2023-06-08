@@ -28,7 +28,6 @@ const Collection: FC = observer(() => {
       body.style.overflowY = "auto";
 
       body.style.background = "#DDDDDD";
-
     }
 
   }, [pathname]);
@@ -40,7 +39,8 @@ const Collection: FC = observer(() => {
       title="Коллекция"
       description="Раздел 'Коллекции' сайта частной галереи. Присутствует фильтр.">
 
-      <section className="collection" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <section className="collection"
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         <Container>
           <motion.h1
             className="collection__title"
