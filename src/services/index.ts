@@ -1,9 +1,7 @@
 import axios from "axios";
 import { IArtist, IArtwork } from "types";
 
-const API_URL = 'https://api-omarov.ru';
-
-axios.defaults.baseURL = API_URL;
+axios.defaults.baseURL = process.env.API_URL;
 
 export const artworkService = {
   async getAll() {
