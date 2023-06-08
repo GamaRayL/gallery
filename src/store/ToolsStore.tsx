@@ -1,15 +1,14 @@
 import { makeAutoObservable } from "mobx";
 
-class Store {
-  constructor () {
-    makeAutoObservable(this);
-  }
-
+class ToolsStore {
   isSearch = false;
   isFilter = false;
   isOrbitControls = false;
   columns = 4;
 
+  constructor () {
+    makeAutoObservable(this);
+  }
 
   setColumns(value: number) {
     this.columns = value;
@@ -38,6 +37,6 @@ class Store {
   }
 }
 
-const toolsStore = new Store();
+const toolsStore = new ToolsStore();
 
 export default toolsStore;
