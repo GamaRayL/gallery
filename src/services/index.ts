@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IArtist, IArtwork } from "types";
+require('dotenv').config();
 
 axios.defaults.baseURL = process.env.API_URL;
 
