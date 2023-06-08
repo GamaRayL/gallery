@@ -17,7 +17,6 @@ class ArtworkStore implements IArtworkStore {
   artSliced: IArtwork[] = [];
   techniqueParam: string[] = [];
 
-
   constructor () {
     makeAutoObservable(this);
   }
