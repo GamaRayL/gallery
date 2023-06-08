@@ -1,8 +1,9 @@
 import axios from "axios";
 import { IArtist, IArtwork } from "types";
-require('dotenv').config();
 
-axios.defaults.baseURL = process.env.API_URL;
+const API_URL = 'https://api-omarov.ru';
+
+axios.defaults.baseURL = API_URL;
 
 export const artworkService = {
   async getAll() {
