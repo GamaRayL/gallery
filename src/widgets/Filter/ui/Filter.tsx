@@ -2,7 +2,7 @@ import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react"
 import { observer } from "mobx-react-lite";
 import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 import classNames from "classnames";
-import store from "store/ToolsStore";
+import toolsStore from "store/ToolsStore";
 import { MobxContext } from "pages/_app";
 import { IItem } from "widgets/Filter/lib/types";
 import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
@@ -30,15 +30,15 @@ const Filter: FC = observer(() => {
 
   const onChangeRangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const value = +event.target.value;
-    store.setColumns(value);
+    toolsStore.setColumns(value);
   };
 
   const onClickIncreaseHandler = () => {
-    store.increaseColumns();
+    toolsStore.increaseColumns();
   };
 
   const onClickDecreaseHandler = () => {
-    store.decreaseColumns();
+    toolsStore.decreaseColumns();
   };
 
   const onSubmitSearchArtwork = (event: FormEvent<HTMLFormElement>) => {
@@ -48,14 +48,14 @@ const Filter: FC = observer(() => {
 
   const onClickScrollHandler = () => {
     ref.current?.scrollIntoView({ behavior: 'smooth' });
-    store.toggleFilterOverlay();
+    toolsStore.toggleFilterOverlay();
     // const body = document.querySelector("body") as HTMLBodyElement;
 
     // body.style.overflowY !== "hidden"
     //   ? body.style.overflowY = "hidden"
     //   : body.style.overflowY = "auto";
 
-    !store.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
+    !toolsStore.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const onSelectArtistHandler = (item: IItem) => {
@@ -80,7 +80,7 @@ const Filter: FC = observer(() => {
 
     body.style.overflowY = "auto";
 
-    store.toggleFilterOverlay();
+    toolsStore.toggleFilterOverlay();
   };
 
   return (
@@ -106,7 +106,7 @@ const Filter: FC = observer(() => {
               onClick={onClickDecreaseHandler}
             />
             <InputRange
-              value={store.columns}
+              value={toolsStore.columns}
               min={1}
               max={6}
               onChange={onChangeRangeHandler}
@@ -130,7 +130,7 @@ const Filter: FC = observer(() => {
         </div>
       </Container>
 
-      {store.isFilter &&
+      {toolsStore.isFilter &&
         <div>
           <Container>
             <Grid className="expand-container" columns={23}>

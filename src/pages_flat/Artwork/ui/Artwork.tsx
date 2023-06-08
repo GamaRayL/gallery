@@ -4,10 +4,10 @@ import dynamic from 'next/dynamic';
 import { observer } from "mobx-react-lite";
 import { AnimatePresence, motion } from "framer-motion";
 import { BiCube } from "react-icons/bi";
-import store from "store/ToolsStore";
+import toolsStore from "store/ToolsStore";
 import { Layout } from "widgets";
 import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
-import Carousel from "../Carousel/ui/Carousel";
+import Carousel from "pages_flat/Artwork/Carousel/ui/Carousel";
 import { Button, Container, Grid, Popup } from "shared/ui";
 import { IArtworkTistDataSingle } from "types";
 

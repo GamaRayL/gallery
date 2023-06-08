@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { BiRightArrowAlt } from "react-icons/bi";
-import store from "store/ToolsStore";
+import toolsStore from "store/ToolsStore";
 import { Layout } from "widgets";
 import { HomeCard } from "../HomeCard";
 import { MobxContext } from "pages/_app";
@@ -64,7 +64,7 @@ const Home: FC = observer(() => {
           <Grid className="home" columns={2}>
 
             <AnimatePresence>
-              {!store.isSearch &&
+              {!toolsStore.isSearch &&
                 <motion.div
                   className="home__info"
                   initial="hidden"
@@ -91,7 +91,7 @@ const Home: FC = observer(() => {
             </AnimatePresence>
 
             <AnimatePresence>
-              {!store.isSearch &&
+              {!toolsStore.isSearch &&
                 <motion.div
                   className="home__cards"
                   initial="hidden"

@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { motion, AnimatePresence } from "framer-motion";
-import store from "store/ToolsStore";
+import toolsStore from "store/ToolsStore";
 import Header from "widgets/Header/ui/Header";
 import { ILayout } from "widgets/Layout/lib/types";
 import { layoutVariants } from "widgets/Layout/lib/utils";
@@ -31,7 +31,7 @@ const Layout: FC<ILayout> = observer((props) => {
   return (
     <Meta title={title} description={description}>
       <AnimatePresence>
-        {store.isSearch &&
+        {toolsStore.isSearch &&
           <motion.div
             variants={layoutVariants}
             initial="hidden"
@@ -48,7 +48,7 @@ const Layout: FC<ILayout> = observer((props) => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {!store.isSearch &&
+        {!toolsStore.isSearch &&
           <motion.div
             style={{ marginRight: "calc(-1*(100vw - 100%))" }}
             variants={layoutVariants}

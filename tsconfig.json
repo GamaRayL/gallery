@@ -22,7 +22,18 @@
       }
     ]
   },
-  "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/types/type"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/types/type",
+    "next-env.d.ts",
+    "pages/**/*",
+    "src/**/*",
+    "next.config.js",
+    "src",
+    "public"
+  ],
   "exclude": ["node_modules"],
   "browserslist": [">0.3%", "not dead"]
 }

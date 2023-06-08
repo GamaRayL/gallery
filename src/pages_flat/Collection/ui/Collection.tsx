@@ -3,7 +3,7 @@ import Link from "next/link";
 import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
-import store from "store/ToolsStore";
+import toolsStore from "store/ToolsStore";
 import { MobxContext } from "pages/_app";
 import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";
 import { Filter, Layout } from "widgets";
@@ -16,9 +16,9 @@ const Collection: FC = observer(() => {
   const [cardInfo, setCardInfo] = useState<{ name: string; year: string; }>();
   const { filteredArtworks } = useContext(MobxContext) as IArtworkStore;
 
-  const columns = store.columns;
+  const columns = toolsStore.columns;
 
-  const delay = store.isFilter ? .2 : .6;
+  const delay = toolsStore.isFilter ? .2 : .6;
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
@@ -62,7 +62,7 @@ const Collection: FC = observer(() => {
           <Filter />
         </motion.section>
 
-        {!store.isFilter &&
+        {!toolsStore.isFilter &&
           <>
             <Container>
               <motion.p
