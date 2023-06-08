@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { artworkService } from "services";
 import { Home } from "pages_flat";
-import { IArtwork, IArtworksData } from "types";
+import { IArtworksData } from "types";
 
 const HomePage = ({ artworks }: IArtworksData) => <Home artworks={artworks} />;
 
