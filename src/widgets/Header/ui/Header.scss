@@ -16,15 +16,21 @@
   padding: var(--padding);
 
   &__logo {
-    position: fixed;
+    position: absolute;
     right: 50px;
     top: 50px;
+    justify-self: center;
+
     // position: absolute;
     // right: var(--logoRight);
     // top: var(--logoTop);
+
+    &_home {
+      right: 140px;
+    }
   }
 
-  &__home {
+  &_home {
     position: fixed;
   }
 }
@@ -37,10 +43,11 @@
 @media screen and (max-width: 980px) {
   .header {
     &__logo {
-      position: static;
-      justify-self: center;
+      &_home {
+        position: absolute;
+      }
     }
-    &__home {
+    &_home {
       position: absolute;
     }
   }

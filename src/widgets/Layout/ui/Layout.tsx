@@ -8,9 +8,11 @@ import { layoutVariants } from "widgets/Layout/lib/utils";
 import { Meta } from "widgets/Layout/Meta";
 import { Button, Container, Form, Modal } from "shared/ui";
 import { RiArrowUpCircleLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 const Layout: FC<ILayout> = observer((props) => {
   const { children, title, description } = props;
+  const { pathname } = useRouter();
   const [scroll, setScroll] = useState(0);
 
   const handleScroll = () => {
@@ -60,15 +62,24 @@ const Layout: FC<ILayout> = observer((props) => {
           </motion.div>
         }
       </AnimatePresence>
+      <AnimatePresence>
 
-      {
-        scroll > 600 &&
-        <Button
-          className="layout__btn"
-          icon={<RiArrowUpCircleLine size={60} />}
-          onClick={scrollToTop}
-        />
-      }
+        {
+          scroll > 600 &&
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .4 }}
+          >
+            <Button
+              className="layout__btn"
+              icon={<RiArrowUpCircleLine size={60} />}
+              onClick={scrollToTop}
+            />
+          </motion.div>
+        }
+      </AnimatePresence>
 
       <main>{children}</main>
     </Meta>

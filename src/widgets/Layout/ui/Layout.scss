@@ -1,7 +1,7 @@
 .layout {
   &__btn {
     --btnBottom: 40px;
-    --btnRight: 40px;
+    --btnRight: 22px;
     --transition: var(--aditional-transition-duration);
     --transform: translateY(-10px);
 
@@ -12,6 +12,9 @@
     right: var(--btnRight);
 
     transition: var(--transition);
+
+    background: var(--c-gray);
+    border-radius: 50%;
 
     &:hover {
       transform: var(--transform);

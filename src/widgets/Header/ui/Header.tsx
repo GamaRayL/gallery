@@ -14,7 +14,7 @@ const Header: FC = () => {
     })}>
       <header
         className={classNames("header", {
-          "header__home": pathname == "/"
+          "header_home": pathname == "/"
         })}
       // style={{
       //   position: pathname == "/" ? "fixed" : "static"
@@ -22,7 +22,9 @@ const Header: FC = () => {
       >
         <Menu />
         <Button
-          className="header__logo"
+          className={classNames("header__logo", {
+            "header__logo_home": pathname == "/"
+          })}
           icon={
             <Image
               src="/logo.svg"
