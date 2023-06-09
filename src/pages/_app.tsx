@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo } from "react";
+import { createContext, useMemo } from "react";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
