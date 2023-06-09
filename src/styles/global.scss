@@ -43,6 +43,26 @@ body {
 
   color: var(--c-black);
   background: var(--c-gray);
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--c-gray);
+    border-bottom-right-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--c-dune);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: black;
+  }
 }
 
 #root {
@@ -87,8 +107,8 @@ input {
 
 
 @media (max-width: 980px) {
-  body {
-    // overflow-y: auto;
-    // overflow-x: hidden;
-  }
+  // body {
+  //   // overflow-y: auto;
+  //   // overflow-x: hidden;
+  // }
 }

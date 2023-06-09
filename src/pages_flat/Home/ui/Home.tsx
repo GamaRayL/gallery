@@ -1,39 +1,27 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useRouter } from "next/router";
 import { observer } from "mobx-react-lite";
 import Link from "next/link";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { BiRightArrowAlt } from "react-icons/bi";
 import toolsStore from "store/ToolsStore";
 import { Layout } from "widgets";
 import { HomeCard } from "../HomeCard";
-import { MobxContext } from "pages/_app";
 import { Button, Container, Grid } from "shared/ui";
 import { homeVariants } from "pages_flat/Home/lib/utils";
-import { IArtworkStore, IArtworksData } from "types";
+import { IArtworksData } from "types";
 
 const Home: FC<IArtworksData> = observer(({ artworks }) => {
   const { pathname } = useRouter();
-  // const { artworks } = useContext(MobxContext) as IArtworkStore;
-
-  const { scrollXProgress } = useScroll();
-  const scaleX = useSpring(scrollXProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   useEffect(() => {
     const home = document.querySelector(".home") as HTMLDivElement;
     const body = document.querySelector("body") as HTMLBodyElement;
 
     if (pathname === "/") {
-      // body.style.overflowX = "auto";
       body.style.overflowY = "hidden";
 
       body.style.background = "#DDDDDD";
-
-      // header.style.position = "fixed";
 
       const setScrollStep = (event: WheelEvent) => {
         if (event.deltaY > 0) {
@@ -49,11 +37,9 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
         body.style.overflowX = "auto";
       } else {
         home.removeEventListener("wheel", setScrollStep);
-        // header.style.position = "absolute";
         home.style.overflowX = "hidden";
         body.style.overflowY = "auto";
       }
-
     }
   }, [pathname]);
 
@@ -107,9 +93,6 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
                 </motion.div>
               }
             </AnimatePresence>
-
-            <motion.div className="home__progress-bar" style={{ scaleX }} />
-
           </Grid>
         </section >
       </Container>
