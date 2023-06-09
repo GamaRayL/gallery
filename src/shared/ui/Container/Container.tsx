@@ -1,11 +1,12 @@
 import { FC } from "react";
+import classNames from "classnames";
 import { IContainer } from "shared/lib/types";
 
 const Container: FC<IContainer> = (props) => {
-  const { children } = props;
+  const { children, className } = props;
 
   return (
-    <div className="container">
+    <div className={classNames(className, "container")}>
       {children}
     </div>
   );

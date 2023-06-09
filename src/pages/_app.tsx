@@ -1,4 +1,4 @@
-import { createContext, useMemo } from "react";
+import { createContext, useEffect, useMemo } from "react";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 import NextNProgress from 'nextjs-progressbar';
@@ -14,12 +14,12 @@ export const MobxContext = createContext<ArtworkStore | null>(null);
 function MyApp({ Component, pageProps }: AppProps) {
   const store = useMemo(() => new ArtworkStore(), []);
 
-  store.hydrate(pageProps);
-  // useEffect(() => {
-  //   if (Component.name === "CollectionPage" || Component.name === "HomePage") {
-  //     store.hydrate(pageProps);
-  //   }
-  // }, [Component.name, pageProps, store]);
+  // store.hydrate(pageProps);
+  useEffect(() => {
+    if (Component.name === "CollectionPage" || Component.name === "HomePage") {
+      store.hydrate(pageProps);
+    }
+  }, [Component.name, pageProps, store]);
 
   return (
     <MobxContext.Provider value={store}>

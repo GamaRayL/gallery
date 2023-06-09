@@ -8,7 +8,6 @@ const Meta: FC<IMeta> = ({ children, title, description }) => {
     <>
       <Head>
         <title>{getTitle(title)}</title>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         {description ?
           <>
             <meta name="description" content={description} />

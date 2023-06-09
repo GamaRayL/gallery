@@ -1,9 +1,8 @@
 @import "styles/mixins.scss";
 
 .header {
-  --width: 100%;
+  --width: 100vw;
   --padding: 40px 0;
-
   // --logoRight: 180px;
   // --logoTop: 40px;
 
@@ -16,21 +15,33 @@
   width: var(--width);
   padding: var(--padding);
 
-
   &__logo {
-    justify-self: flex-end;
+    position: fixed;
+    right: 50px;
+    top: 50px;
     // position: absolute;
     // right: var(--logoRight);
     // top: var(--logoTop);
   }
+
+  &__home {
+    position: fixed;
+  }
+}
+
+.header-container {
+  padding-bottom: 140px;
 }
 
 
 @media screen and (max-width: 980px) {
   .header {
-    // position: absolute;
-
-    &__helper {
+    &__logo {
+      position: static;
+      justify-self: center;
+    }
+    &__home {
+      position: absolute;
     }
   }
 }

@@ -55,6 +55,7 @@ export interface IGrid {
 
 export interface IContainer {
   children?: ReactNode;
+  className?: string;
 }
 
 export interface ICheckbox {
