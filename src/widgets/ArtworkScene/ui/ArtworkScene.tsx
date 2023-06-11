@@ -21,16 +21,11 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
     setDomLoaded(true);
 
     const loader = new TextureLoader();
-    loader.load(
-      art,
-      (loadedTexture) => {
-        setTexture(loadedTexture);
-      },
-      undefined,
-      (error) => {
-        console.error('Ошибка загрузки текстуры:', error);
-      }
-    );
+    loader.loadAsync(
+      `http://localhost:5050/_next/image?url=${art}&w=3840&q=75`,
+    )
+      .then(res => setTexture(res))
+      .catch(err => console.log(`Ошибка загрузки в textLoader: ${err}`));
   }, [art]);
 
   if (texture && texture.image) {
