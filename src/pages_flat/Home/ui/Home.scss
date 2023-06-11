@@ -107,11 +107,11 @@
 }
 
 @media screen and (max-width: 880px) {
-  .home {
-    &__cards {
-      // justify-content: center;
-    }
-  }
+  // .home {
+  //   // &__cards {
+  //   //   // justify-content: center;
+  //   // }
+  // }
 }
 
 @media screen and (max-width: 760px) {
@@ -142,10 +142,10 @@
     &__title, &__paragraph {
       text-align: center;
     }
-    &__cards {
-      // grid-template-columns: 1fr;
-      // width: 90%;
-      // justify-content: center;
-    }
+    // &__cards {
+    //   // grid-template-columns: 1fr;
+    //   // width: 90%;
+    //   // justify-content: center;
+    // }
   }
 }
