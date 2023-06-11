@@ -12,12 +12,13 @@
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  width: var(--width);
+  // width: var(--width);
+  width: -webkit-fill-available;
   padding: var(--padding);
 
   &__logo {
     position: absolute;
-    right: 50px;
+    right: 20px;
     top: 50px;
     justify-self: center;
 
@@ -26,7 +27,7 @@
     // top: var(--logoTop);
 
     &_home {
-      right: 140px;
+      right: 80px;
     }
   }
 
@@ -49,6 +50,16 @@
     }
     &_home {
       position: absolute;
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .header {
+    &__logo {
+      &_home {
+        right: 40px;
+      }
     }
   }
 }
