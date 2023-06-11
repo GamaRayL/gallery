@@ -18,7 +18,7 @@
 
   &__logo {
     position: absolute;
-    right: 20px;
+    right: 80px;
     top: 50px;
     justify-self: center;
 
@@ -26,9 +26,9 @@
     // right: var(--logoRight);
     // top: var(--logoTop);
 
-    &_home {
-      right: 80px;
-    }
+    // &_home {
+    //   right: 80px;
+    // }
   }
 
   &_home {
@@ -37,7 +37,7 @@
 }
 
 .header-container {
-  padding-bottom: 140px;
+  padding-bottom: 160px;
 }
 
 

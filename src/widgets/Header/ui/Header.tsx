@@ -13,12 +13,10 @@ const Header: FC = () => {
       "header-container": pathname == "/"
     })}>
       <header
-        className={classNames("header", {
-          "header_home": pathname == "/"
-        })}
-      // style={{
-      //   position: pathname == "/" ? "fixed" : "static"
-      // }}
+        className="header"
+        style={{
+          position: pathname == "/" ? "fixed" : "static"
+        }}
       >
         <Menu />
         <Button
