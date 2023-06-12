@@ -12,7 +12,7 @@ import { IArtworkScene } from "widgets/ArtworkScene/lib/types";
 const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
   const [domLoaded, setDomLoaded] = useState(false);
   const container = document.querySelector('.artwork__image-conatiner') as HTMLElement;
-  const [texture, setTexture] = useState<THREE.Texture | null>(null);
+  const { texture } = toolsStore;
   let containerHeight, containerWidth, scale;
   let scaledWidth = 0;
   let scaledHeight = 0;
@@ -24,7 +24,7 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
     loader.loadAsync(
       `https://gallery-omarov.vercel.app/_next/image?url=${art}&w=3840&q=75`,
     )
-      .then(res => setTexture(res))
+      .then(res => toolsStore.setTexture(res))
       .catch(err => console.log(`Ошибка загрузки в textLoader: ${err}`));
   }, [art]);
 

@@ -4,6 +4,7 @@ class ToolsStore {
   isSearch = false;
   isFilter = false;
   isOrbitControls = false;
+  texture = null as THREE.Texture | null;
   columns = 4;
 
   constructor () {
@@ -12,6 +13,10 @@ class ToolsStore {
 
   setColumns(value: number) {
     this.columns = value;
+  }
+
+  setTexture(value: THREE.Texture | null) {
+    this.texture = value;
   }
 
   toggleSearchOverlay() {
