@@ -18,10 +18,10 @@ const DynamicArt = dynamic(() => import('widgets/ArtworkScene/ui/ArtworkScene'),
 const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
   const { pathname } = useRouter();
 
-  toolsStore.setTexture(null);
-
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
+
+    toolsStore.setTexture(null);
 
     body.style.overflowX = "hidden";
     body.style.overflowY = "auto";
