@@ -4,12 +4,14 @@ import { useFrame } from "@react-three/fiber";
 import { Box, Cone, Sphere } from "@react-three/drei";
 
 const LoadingAnimation = () => {
-  const meshRef = useRef<Mesh>(null);
+  const meshRefBox = useRef<Mesh>(null);
+  const meshRefSphere = useRef<Mesh>(null);
+  const meshRefCone = useRef<Mesh>(null);
 
   useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.04;
-      meshRef.current.rotation.x += 0.04;
+    if (meshRefBox.current) {
+      meshRefBox.current.rotation.y += 0.04;
+      meshRefBox.current.rotation.x += 0.04;
     }
   });
 
@@ -26,7 +28,7 @@ const LoadingAnimation = () => {
         <Cone receiveShadow scale={[40, 40, 40]}>
           <meshStandardMaterial color="orange" />
         </Cone>
-        <Box receiveShadow ref={meshRef} scale={[40, 40, 40]} position={[100, 0, 0]}>
+        <Box receiveShadow ref={meshRefBox} scale={[40, 40, 40]} position={[100, 0, 0]}>
           <meshStandardMaterial color="#363431" />
         </Box>
       </group>

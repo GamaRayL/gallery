@@ -10,6 +10,7 @@ import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
 import Carousel from "pages_flat/Artwork/Carousel/ui/Carousel";
 import { Button, Container, Grid, Popup } from "shared/ui";
 import { IArtworkTistDataSingle } from "types";
+import { Loader } from "pages_flat/Artwork/Loader";
 
 const DynamicArt = dynamic(() => import('widgets/ArtworkScene/ui/ArtworkScene'), {
   ssr: false,
@@ -37,6 +38,7 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
         <Grid className="artwork" columns={14}>
 
           <div className="artwork__image-conatiner">
+            {!toolsStore.texture && <Loader />}
             <DynamicArt art={artwork.images[0]} />
           </div>
 

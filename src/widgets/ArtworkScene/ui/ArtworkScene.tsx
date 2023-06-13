@@ -67,12 +67,11 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
             maxDistance={550}
           />
           {texture
-            ? <ArtObject
+            && <ArtObject
               texture={texture}
               scaledWidth={scaledWidth}
               scaledHeight={scaledHeight}
             />
-            : <LoadingAnimation />
           }
         </Canvas>
       </Suspense >
