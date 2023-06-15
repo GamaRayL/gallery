@@ -56,7 +56,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
-                  custom={{ x: -20 }}
+                  custom={{ x: -40 }}
                   variants={homeVariants}
                 >
                   <h1 className="home__title">
@@ -83,6 +83,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
+                  custom={{ x: 140 }}
                   variants={homeVariants}
                 >
                   {artworks && artworks.map((artwork: any) => (

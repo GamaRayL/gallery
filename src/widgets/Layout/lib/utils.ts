@@ -4,7 +4,7 @@ export const getTitle = (title: string) => `${title} | Галерея`;
 
 export const layoutVariants: Variants = {
   hidden: {
-    y: -300,
+    y: -50,
     opacity: 0,
     transition: {
       duration: .5,
@@ -16,9 +16,5 @@ export const layoutVariants: Variants = {
     transition: {
       duration: .5,
     }
-  },
-  exit: {
-    x: 300,
-    opacity: 0,
   }
 };

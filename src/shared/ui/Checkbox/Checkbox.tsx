@@ -11,7 +11,6 @@ const Checkbox: FC<ICheckbox> = (props) => {
       className={classNames(className, "checkbox")}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ type: "tween" }}
       onClick={onClick}
     >
       <input

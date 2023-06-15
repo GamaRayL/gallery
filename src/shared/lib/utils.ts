@@ -24,9 +24,8 @@ export const formVariants: Variants = {
   visible: () => ({
     opacity: 1,
     transition: {
-      type: "tween",
-      delay: .6,
-      duration: 1,
+      delay: .2,
+      duration: .6,
     },
   }),
 };

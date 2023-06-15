@@ -47,7 +47,6 @@ const Layout: FC<ILayout> = observer((props) => {
             variants={layoutVariants}
             initial="hidden"
             animate="visible"
-            exit="exit"
           >
             <Header />
           </motion.div>

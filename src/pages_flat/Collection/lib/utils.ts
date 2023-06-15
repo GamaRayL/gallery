@@ -5,7 +5,7 @@ export const collectionVariants: Variants = {
     y: custom.y,
     opacity: 0
   }),
-  visible: (custom = { delay: .4, type: "tween" }) => ({
+  visible: (custom = { delay: .4 }) => ({
     y: 0,
     opacity: 1,
     transition: {
