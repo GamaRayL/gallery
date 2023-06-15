@@ -1,8 +1,10 @@
 .canvas {
   cursor: auto;
+  pointer-events: none !important;
 
   &_active {
     cursor: grab;
+    pointer-events: auto !important;
   }
 
   &_active:active {

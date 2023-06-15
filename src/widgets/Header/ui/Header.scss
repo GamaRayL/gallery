@@ -43,11 +43,15 @@
 
 @media screen and (max-width: 980px) {
   .header {
-    &__logo {
-      &_home {
-        position: absolute;
-      }
-    }
+    // position: absolute;
+    // &__logo {
+    //   &_home {
+    //     position: absolute;
+    //   }
+    // }
+    // &_home {
+    //   position: absolute;
+    // }
     &_home {
       position: absolute;
     }
