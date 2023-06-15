@@ -6,9 +6,12 @@ import { FC, useState } from "react";
 import { items } from "widgets/Header/Menu/lib/items";
 import classNames from "classnames";
 import { RiCloseLine } from "react-icons/ri";
+import { useRouter } from "next/router";
 
 const Menu: FC = observer(() => {
   const [isShow, setShow] = useState(false);
+  const { pathname } = useRouter();
+  console.log(pathname);
 
   const onClickShowHanlder = () => {
     setShow(!isShow);
@@ -25,6 +28,7 @@ const Menu: FC = observer(() => {
           />
           <ul className={classNames("nav__menu", {
             "nav__menu_active": isShow,
+            "nav__menu_art": pathname == "/collection/[id]"
           })}>
             {items.map((item) => (
               <li key={item.id} >

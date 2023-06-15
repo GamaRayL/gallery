@@ -40,16 +40,16 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
           <div className="artwork__image-conatiner">
             {!toolsStore.texture && <Loader />}
             <DynamicArt art={artwork.images[0]} />
+            <div className="artwork__tool">
+              <Button
+                className="artwork__tool-btn"
+                onClick={() => toolsStore.toggleOrbitControls()}
+                icon={<BiCube
+                  size={toolsStore.isOrbitControls ? 64 : 44}
+                  color="white" />} />
+            </div>
           </div>
 
-          <div className="artwork__tool">
-            <Button
-              className="artwork__tool-btn"
-              onClick={() => toolsStore.toggleOrbitControls()}
-              icon={<BiCube
-                size={toolsStore.isOrbitControls ? 64 : 44}
-                color="white" />} />
-          </div>
 
           <div className="artwork__description">
             <h1 className="artwork__title">{artwork.name}</h1>

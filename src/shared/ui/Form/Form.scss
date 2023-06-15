@@ -2,7 +2,7 @@
 
 .form {
   padding: 40px 0;
-  
+
   &__wrapper {
     @include flex($justify-content: space-between);
     padding: 0 0 20px 0;

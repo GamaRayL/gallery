@@ -11,8 +11,8 @@
 
   --fontSizeTitle: var(--f-size-30);
 
-  --toolTop: 600px;
-  --toolRight: 60px;
+  // --toolTop: 600px;
+  // --toolRight: 60px;
 
   --containerMB: 60px;
   --containerHeight: 85vh;
@@ -43,8 +43,8 @@
   &__tool {
     z-index: 4;
     position: absolute;
-    right: var(--toolRight);
-    top: var(--toolTop);
+    right: 0;
+    bottom: 10vh;
 
     transition: var(--transition);
 

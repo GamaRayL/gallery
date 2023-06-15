@@ -20,7 +20,13 @@ const Form: FC = () => {
 
   return (
     <form className="form">
-      <div className="form__wrapper">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+        variants={formVariants}
+        className="form__wrapper"
+      >
         <Input
           size={24}
           value={value}
@@ -36,7 +42,7 @@ const Form: FC = () => {
           icon={<BiX size={52} />}
           onClick={() => toolsStore.toggleSearchOverlay()}
         />
-      </div>
+      </motion.div>
       <motion.hr
         className="form__line"
         initial="hidden"

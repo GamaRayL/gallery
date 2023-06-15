@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Button, Container } from "shared/ui";
 import { Menu } from "widgets/Header/Menu";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const Header: FC = () => {
   const { pathname } = useRouter();
@@ -12,13 +13,14 @@ const Header: FC = () => {
     <Container className={classNames({
       "header-container": pathname == "/"
     })}>
+
       <header
         className={classNames("header", {
           "header_home": pathname == "/"
         })}
-        // style={{
-        //   position: pathname == "/" ? "fixed" : "static"
-        // }}
+      // style={{
+      //   position: pathname == "/" ? "fixed" : "static"
+      // }}
       >
         <Menu />
         <Button
@@ -31,7 +33,7 @@ const Header: FC = () => {
               width={60}
               height={60}
               priority
-              style={{outline: "none"}}
+              style={{ outline: "none" }}
               alt="Лого"
             />
           }

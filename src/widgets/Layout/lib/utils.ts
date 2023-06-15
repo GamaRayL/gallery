@@ -1,6 +1,8 @@
+import { Variants } from "framer-motion";
+
 export const getTitle = (title: string) => `${title} | Галерея`;
 
-export const layoutVariants = {
+export const layoutVariants: Variants = {
   hidden: {
     y: -300,
     opacity: 0,

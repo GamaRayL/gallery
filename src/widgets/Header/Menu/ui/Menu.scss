@@ -31,15 +31,20 @@
     &__menu {
       // gap: 20px;
       display: none;
+      background: var(--c-gray);
     }
     &__menu_active {
       display: block;
       top: 30px;
       position: absolute;
+      z-index: 1;
+    }
+    &__menu_art {
+      background: var(--c-white);
     }
     &__list {
       gap: 20px;
-      z-index: 1000;
+      // z-index: 1000;
     }
   }
 }

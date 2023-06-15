@@ -32,27 +32,18 @@ const Layout: FC<ILayout> = observer((props) => {
 
   return (
     <Meta title={title} description={description}>
-      <AnimatePresence>
-        {toolsStore.isSearch &&
-          <motion.div
-            variants={layoutVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            <Modal>
-              <Container>
-                <Form />
-              </Container>
-            </Modal>
-          </motion.div>
-        }
-      </AnimatePresence>
+      {toolsStore.isSearch &&
+        <Modal>
+          <Container>
+            <Form />
+          </Container>
+        </Modal>
+      }
 
       <AnimatePresence>
         {!toolsStore.isSearch &&
           <motion.div
-            style={{ marginRight: "calc(-1*(100vw - 100%))" }}
+            // style={{ marginRight: "calc(-1*(100vw - 100%))" }}
             variants={layoutVariants}
             initial="hidden"
             animate="visible"
@@ -81,7 +72,14 @@ const Layout: FC<ILayout> = observer((props) => {
         }
       </AnimatePresence>
 
-      <main>{children}</main>
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: .4 }}
+      >
+        {children}
+      </motion.main>
     </Meta>
   );
 });
