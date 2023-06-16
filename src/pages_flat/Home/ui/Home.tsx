@@ -37,7 +37,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
         body.style.overflowX = "auto";
       } else {
         home.removeEventListener("wheel", setScrollStep);
-        home.style.overflowX = "hidden";
+        // home.style.overflowX = "hidden";
         body.style.overflowY = "auto";
       }
     }
