@@ -45,7 +45,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
 
   return (
     <Layout title="Главная" description="Главная страница частной галереи Омара Муртузалиевича.">
-      <Container>
+      <Container className="home-container">
         <section>
           <Grid className="home" columns={2}>
 
