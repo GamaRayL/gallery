@@ -37,7 +37,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
         body.style.overflowX = "auto";
       } else {
         home.removeEventListener("wheel", setScrollStep);
-        // home.style.overflowX = "hidden";
+        home.style.overflowX = "hidden";
         body.style.overflowY = "auto";
       }
     }
@@ -45,7 +45,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
 
   return (
     <Layout title="Главная" description="Главная страница частной галереи Омара Муртузалиевича.">
-      <Container className="home-container">
+      <Container className="home">
         <section>
           <Grid className="home" columns={2}>
 
