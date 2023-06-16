@@ -1,9 +1,19 @@
+@import "styles/media.scss";
+
 .home-card {
-  --height: 600px;
   --width: 340px;
+  --height: 600px;
   --borderR: 14px;
 
-  --imgHeight: 100%;
+  --helperHeight: 100%;
+
+  --tabletWidth: 100%;
+  --mobileSHeight: 400px;
+
+
+  --imgObjPos: center 80%;
+
+
 
   cursor: pointer;
   position: relative;
@@ -11,13 +21,13 @@
   width: var(--width);
   height: var(--height);
 
-  box-shadow: 0 1px 8px 1px black;
   border-radius: var(--borderR);
+  box-shadow: 0 1px 8px 1px black;
 
 
   &__helper {
     position: relative;
-    height: var(--imgHeight);
+    height: var(--helperHeight);
     border-radius: var(--borderR);
 
     overflow: hidden;
@@ -26,23 +36,22 @@
 
   &__image {
     object-fit: cover;
-    border-radius: 14px;
-    object-position: center 80%;
     pointer-events: none;
+    border-radius: var(--borderR);
+    object-position: var(--imgObjPos);
   }
 }
 
 
-@media screen and (max-width: 980px) {
+// Медиа
+@media screen and ($tablet) {
   .home-card {
-    width: 100%;
-    // background-color: var(--c-armadillo);
+    width: var(--tabletWidth);
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and ($mobile-s) {
   .home-card {
-    width: 100%;
-    height: 400px;
+    height: var(--mobileSHeight);
   }
 }

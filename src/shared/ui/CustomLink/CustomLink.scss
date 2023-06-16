@@ -1,15 +1,15 @@
 .link {
-  --textColor: var(--c-main-text);
-  --disableColor: var(--c-disable);
-
-  --width: 100%;
   --top: 100%;
+  --width: 100%;
   --marginT: 2px;
   --whiteSpace: nowrap;
   --height: var(--decoration-height);
 
-  --weight: var(--f-weight-semiBold);
+  --textColor: var(--c-main-text);
+  --disableColor: var(--c-disable);
+
   --textSize: var(--f-size-14);
+  --weight: var(--f-weight-semiBold);
 
   text-decoration: none;
   color: var(--textColor);
@@ -35,8 +35,8 @@
         height: var(--height);
         margin-top: var(--marginT);
 
-        position: absolute;
         top: var(--top);
+        position: absolute;
 
         background: currentColor;
 

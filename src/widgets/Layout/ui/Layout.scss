@@ -1,20 +1,20 @@
 .layout {
   &__btn {
-    --btnBottom: 80px;
     --btnRight: 22px;
-    --transition: var(--aditional-transition-duration);
+    --btnBottom: 80px;
+    --borderRadius: 50%;
     --transform: translateY(-10px);
+    --transition: var(--aditional-transition-duration);
 
-    position: fixed;
     z-index: 1000;
-    // overflow: overlay;
+    position: fixed;
     bottom: var(--btnBottom);
     right: var(--btnRight);
 
     transition: var(--transition);
 
     background: var(--c-gray);
-    border-radius: 50%;
+    border-radius: var(--borderRadius);
 
     &:hover {
       transform: var(--transform);

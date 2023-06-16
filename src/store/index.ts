@@ -1,6 +1,6 @@
-import { enableStaticRendering } from "mobx-react-lite";
-import ArtworkStore from "store/ArtworkStore";
 import { IArtworksData } from "types";
+import ArtworkStore from "store/ArtworkStore";
+import { enableStaticRendering } from "mobx-react-lite";
 
 // включить статический рендеринг только на сервере
 enableStaticRendering(typeof window === "undefined");

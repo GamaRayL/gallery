@@ -1,9 +1,9 @@
-import { createContext, useEffect, useMemo } from "react";
+import "styles/global.scss";
 import { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
-import NextNProgress from 'nextjs-progressbar';
 import ArtworkStore from "store/ArtworkStore";
-import "styles/global.scss";
+import NextNProgress from 'nextjs-progressbar';
+import { createContext, useMemo } from "react";
 
 const montserrat = Montserrat({
   subsets: ["cyrillic"],
@@ -15,11 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const store = useMemo(() => new ArtworkStore(), []);
 
   store.hydrate(pageProps);
-  // useEffect(() => {
-  //   if (Component.name === "CollectionPage" || Component.name === "HomePage") {
-  //     store.hydrate(pageProps);
-  //   }
-  // }, [Component.name, pageProps, store]);
 
   return (
     <MobxContext.Provider value={store}>

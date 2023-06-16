@@ -35,9 +35,9 @@
   }
 
   &__image {
-    padding: var(--padding);
-
     object-fit: contain;
     pointer-events: none;
+    
+    padding: var(--padding);
   }
 }

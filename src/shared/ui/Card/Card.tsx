@@ -10,20 +10,20 @@ const Card: FC<ICard> = (props) => {
 
   return (
     <motion.div
-      className={classNames(className, "card")}
       onClick={onClick}
       whileTap="whileTap"
       whileHover="whileHover"
       variants={homeCardVariants}
+      className={classNames(className, "card")}
       onMouseOver={setCardInfo && (() => setCardInfo({ name: name, year: year }))}
     >
       <div className="card__helper">
         <Image
+          fill
+          src={src}
+          alt="Card"
           className="card__image"
           sizes="(min-width: 768px) 100vw"
-          alt="Card"
-          src={src}
-          fill
         />
         {children}
       </div>

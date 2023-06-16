@@ -1,12 +1,12 @@
-import { CSSProperties, FC, useEffect, useRef, useState } from "react";
 import { BiEraser } from "react-icons/bi";
 import { IInput } from "shared/lib/types";
 import Button from "shared/ui/Button/Button";
+import { CSSProperties, FC, useEffect, useRef, useState } from "react";
 
 const Input: FC<IInput> = (props) => {
-  const { value, inputRef, setValue, onChange, size, placeholder } = props;
-  const pRef = useRef<HTMLParagraphElement>(null);
   const [width, setWidth] = useState("320px");
+  const pRef = useRef<HTMLParagraphElement>(null);
+  const { value, inputRef, setValue, onChange, size, placeholder } = props;
 
   useEffect(() => {
     if (pRef.current !== null) {
@@ -30,28 +30,28 @@ const Input: FC<IInput> = (props) => {
     <div className="input-wrapper">
       <input
         type="text"
+        value={value}
+        ref={inputRef}
+        className="input"
+        onChange={onChange}
         style={{
           "--width": `${width}`,
           "--f-size": `${size}px`
         } as CSSProperties}
-        className="input"
         placeholder={placeholder || "Поиск"}
-        ref={inputRef}
-        value={value}
-        onChange={onChange}
       >
       </input>
       <p
-        className="input-helper"
         ref={pRef}
+        className="input-helper"
         style={{ "--f-size": `${size}px` } as CSSProperties}
       >
         {value}
       </p>
       {value
         && <Button
-          icon={<BiEraser size={size} opacity={0.3} />}
           onClick={onClickHandler}
+          icon={<BiEraser size={size} opacity={0.3} />}
         />}
     </div>
   );

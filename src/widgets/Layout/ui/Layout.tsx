@@ -1,19 +1,18 @@
-import { FC, useEffect, useState } from "react";
-import { observer } from "mobx-react-lite";
-import { motion, AnimatePresence } from "framer-motion";
-import toolsStore from "store/ToolsStore";
-import Header from "widgets/Header/ui/Header";
-import { ILayout } from "widgets/Layout/lib/types";
-import { layoutVariants } from "widgets/Layout/lib/utils";
-import { Meta } from "widgets/Layout/Meta";
-import { Button, Container, Form, Modal } from "shared/ui";
-import { RiArrowUpCircleLine } from "react-icons/ri";
 import { useRouter } from "next/router";
+import toolsStore from "store/ToolsStore";
+import { Meta } from "widgets/Layout/Meta";
+import { observer } from "mobx-react-lite";
+import Header from "widgets/Header/ui/Header";
+import { FC, useEffect, useState } from "react";
+import { ILayout } from "widgets/Layout/lib/types";
+import { RiArrowUpCircleLine } from "react-icons/ri";
+import { motion, AnimatePresence } from "framer-motion";
+import { layoutBtnVariants, layoutVariants } from "widgets/Layout/lib/utils";
+import { Button, Container, Form, Modal } from "shared/ui";
 
 const Layout: FC<ILayout> = observer((props) => {
-  const { children, title, description } = props;
-  const { pathname } = useRouter();
   const [scroll, setScroll] = useState(0);
+  const { children, title, description } = props;
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -43,28 +42,27 @@ const Layout: FC<ILayout> = observer((props) => {
       <AnimatePresence>
         {!toolsStore.isSearch &&
           <motion.div
-            // style={{ marginRight: "calc(-1*(100vw - 100%))" }}
-            variants={layoutVariants}
             initial="hidden"
             animate="visible"
+            variants={layoutVariants}
           >
             <Header />
           </motion.div>
         }
       </AnimatePresence>
+
       <AnimatePresence>
-        {
-          scroll > 600 &&
+        {scroll > 600 &&
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: .4 }}
+            exit="hidden"
+            initial="hidden"
+            animate="visible"
+            variants={layoutBtnVariants}
           >
             <Button
+              onClick={scrollToTop}
               className="layout__btn"
               icon={<RiArrowUpCircleLine size={60} />}
-              onClick={scrollToTop}
             />
           </motion.div>
         }

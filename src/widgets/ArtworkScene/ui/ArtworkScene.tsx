@@ -1,18 +1,18 @@
-import { FC, Suspense, useEffect, useState } from "react";
-import { TextureLoader } from "three";
-import { observer } from "mobx-react-lite";
-import { OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
 import classNames from "classnames";
+import { TextureLoader } from "three";
 import toolsStore from "store/ToolsStore";
+import { observer } from "mobx-react-lite";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { FC, Suspense, useEffect, useState } from "react";
 import { ArtObject } from "widgets/ArtworkScene/ArtObject";
-import { LoadingAnimation } from "widgets/ArtworkScene/LoadingAnimation";
 import { IArtworkScene } from "widgets/ArtworkScene/lib/types";
 
 const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
-  const [domLoaded, setDomLoaded] = useState(false);
   const container = document.querySelector('.artwork__image-conatiner') as HTMLElement;
+  const [domLoaded, setDomLoaded] = useState(false);
   const { texture } = toolsStore;
+
   let containerHeight, containerWidth, scale;
   let scaledWidth = 0;
   let scaledHeight = 0;
@@ -62,9 +62,9 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
           })}
         >
           <OrbitControls
-            enabled={toolsStore.isOrbitControls}
             minDistance={100}
             maxDistance={550}
+            enabled={toolsStore.isOrbitControls}
           />
           {texture
             && <ArtObject

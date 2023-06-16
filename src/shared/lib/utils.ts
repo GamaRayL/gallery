@@ -29,3 +29,21 @@ export const formVariants: Variants = {
     },
   }),
 };
+
+export const popupVariants: Variants = {
+  hidden: (custom = { y: 0 }) => ({
+    y: custom.y,
+    opacity: 0,
+    transition: {
+      duration: .5
+    }
+  }),
+
+  visible: () => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: .5,
+    },
+  }),
+};

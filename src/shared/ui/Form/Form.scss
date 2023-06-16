@@ -1,20 +1,28 @@
 @import "styles/mixins.scss";
 
 .form {
-  padding: 40px 0;
+  --height: 3px;
+
+  --marginR: 14px;
+  --padding: 40px 0;
+  --wrapperPD: 0 0 20px 0;
+
+  --borderRadius: 50%;
+
+  padding: var(--padding);
 
   &__wrapper {
+    padding: var(--wrapperPD);
     @include flex($justify-content: space-between);
-    padding: 0 0 20px 0;
   }
 
   &__btn_search {
-    margin-right: 14px;
+    margin-right: var(--marginR);
   }
 
   &__line {
-    height: 3px;
-    border-radius: 50%;
+    height: var(--height);
     background: var(--c-black);
+    border-radius: var(--borderRadius);
   }
 }

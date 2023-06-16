@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FC, useState, MouseEvent } from "react";
 import { BiChevronDown, BiChevronUp, BiDownArrow, BiUpArrow } from "react-icons/bi";
 import { Button, Checkbox } from "shared/ui";
+import { expandVariants } from "widgets/Filter/ExpandItem/lib/utils";
 import { IExpandItem } from "widgets/Filter/lib/types";
 
 const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
@@ -24,20 +25,17 @@ const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
     <div className="expand">
       <Button
         className="expand__btn"
-        icon={isShow ? <BiUpArrow size={22} /> : <BiDownArrow size={22} />}
         justify="space-between"
         onClick={onClickExpandHandler}
+        icon={isShow ? <BiUpArrow size={22} /> : <BiDownArrow size={22} />}
       >
         {title}
         <span className="expand__count">{items.length}</span>
       </Button>
       <motion.div
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{
-          type: "spring",
-          delay: .4,
-        }}
+        initial="hidden"
+        animate="visible"
+        variants={expandVariants}
       >
         {items
           .slice(0, isShowAll ? -1 : 4)
@@ -54,8 +52,8 @@ const ExpandItem: FC<IExpandItem> = ({ items, title, onCheck, onClick }) => {
         }
         <Button
           className="expand__btn-showAll"
-          icon={isShowAll ? <BiChevronUp size={28} /> : <BiChevronDown size={28} />}
           onClick={() => setShowAll(!isShowAll)}
+          icon={isShowAll ? <BiChevronUp size={28} /> : <BiChevronDown size={28} />}
         >
           Показать все
         </Button>

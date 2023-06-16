@@ -1,20 +1,20 @@
 import { FC } from 'react';
+import classNames from "classnames";
 import { motion } from "framer-motion";
 import { IPopup } from "shared/lib/types";
-import classNames from "classnames";
+import { popupVariants } from "shared/lib/utils";
 
-const Popup: FC<IPopup> = ({ children, top, color, bgColor, className }) => {
+const Popup: FC<IPopup> = (props) => {
+  const { children, top, color, bgColor, className } = props;
   const yValue = top ? -100 : 100;
 
   return (
     <motion.div
-      initial={{ y: yValue, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: yValue, opacity: 0 }}
-      transition={{
-        type: "keyframes",
-        duration: .5,
-      }}
+      exit="hidden"
+      initial="hidden"
+      animate="visible"
+      custom={{ y: yValue }}
+      variants={popupVariants}
       className={classNames(className, "popup", {
         "popup_top": top
       })}

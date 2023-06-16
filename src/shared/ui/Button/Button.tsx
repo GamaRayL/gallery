@@ -1,30 +1,33 @@
-import { CSSProperties, FC, useMemo } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import { IButton } from "shared/lib/types";
+import { CSSProperties, FC, useMemo } from "react";
 
 const Button: FC<IButton> = (props) => {
   const {
-    children,
+    icon,
+    title,
+    justify,
     onClick,
+    children,
     className,
     ariaLabel,
-    title,
-    icon,
-    justify,
-    iconPosition = "after",
-    type = "button",
     href = "",
+    type = "button",
+    isDisabled = false,
     isTransparent = true,
-    isDisabled = false
+    iconPosition = "after",
   } = props;
+
   const isLink = Boolean(href);
 
   const bodyMarkup = useMemo(() => {
     return (
       <span
         className="button__body"
-        style={{ "--justify": `${justify || "normal"}` } as CSSProperties}
+        style={{
+          "--justify": `${justify || "normal"}`
+        } as CSSProperties}
       >
         {(icon && iconPosition === "before") && icon}
         {children && <span className="button__label">{children}</span>}
@@ -39,8 +42,8 @@ const Button: FC<IButton> = (props) => {
       "button--transparent": isTransparent,
     }),
     title,
-    ["aria-label"]: ariaLabel,
     onClick: onClick,
+    ["aria-label"]: ariaLabel,
   };
 
   return isLink

@@ -1,20 +1,22 @@
+@import "styles/media.scss";
+
 .container {
   --width: 100%;
-  --maxWidth: 1440px;
   --margin: 0 auto;
   --padding: 0 84px;
+  --maxWidth: 1440px;
 
   --tabletPadding: 0 24px;
 
 
   position: relative;
   width: var(--width);
-  max-width: var(--maxWidth);
   margin: var(--margin);
   padding: var(--padding);
+  max-width: var(--maxWidth);
 }
 
-@media screen and (max-width: 760px) {
+@media screen and ($mobile) {
   .container {
     padding: var(--tabletPadding);
   }

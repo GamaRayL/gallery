@@ -1,11 +1,11 @@
 import { makeAutoObservable } from "mobx";
 
 class ToolsStore {
+  columns = 4;
   isSearch = false;
   isFilter = false;
   isOrbitControls = false;
   texture = null as THREE.Texture | null;
-  columns = 4;
 
   constructor () {
     makeAutoObservable(this);

@@ -1,18 +1,25 @@
 .loader {
+  --borderRadius: 14px;
+
+  --strokeWidth: .4px;
+  --colorStroke: var(--c-black);
+
+  --objFit: contain;
+
+  fill: transparent;
+  position: absolute;
+
   width: var(--size);
   height: var(--size);
 
-  fill: transparent;
-
-  position: absolute;
-
-  object-fit: cover;
-  border-radius: 14px;
+  object-fit: var(--objFit);
+  border-radius: var(--borderRadius);
 }
 
 .loader path {
   stroke: var(--c-black);
-  stroke-width: 0.4px;
+  stroke-width: var(--strokeWidth);
+
   animation: dashArray 4s ease-out infinite,
     dashOffset 4s linear infinite;
 }

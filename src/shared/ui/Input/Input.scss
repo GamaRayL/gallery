@@ -1,9 +1,9 @@
 .input {
-  --inputWidth: var(--width);
   --wrapperWidth: 100%;
-  --fontSize: var(--f-size);
   --bgColor: transperent;
   --placeholderOpacity: 0.3;
+  --fontSize: var(--f-size);
+  --inputWidth: var(--width);
 
   --hoverPlaceholderOpacity: 1;
 
@@ -23,11 +23,11 @@
   }
 
   &-helper {
-    --fontWeight: var(--f-weight-regular);
     --fontSize: var(--f-size);
+    --fontWeight: var(--f-weight-regular);
 
-    font-weight: var(--fontWeight);
     font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
 
   }
 }

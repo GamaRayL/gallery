@@ -1,14 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { IArtwork, IArtworkStore, IArtworksData } from "types";
 import { IItem } from "widgets/Filter/lib/types";
-
-function generateRandomNumber(length: number) {
-  let result = 1;
-  for (let i = 0; i < length; i++) {
-    result += Math.floor(Math.random() * 1000);
-  }
-  return result;
-}
+import { IArtwork, IArtworkStore, IArtworksData } from "types";
 
 class ArtworkStore implements IArtworkStore {
   searchParam = "";
@@ -130,6 +122,14 @@ class ArtworkStore implements IArtworkStore {
   //   }
   //   return Array.from(yearMap.values());
   // }
+}
+
+function generateRandomNumber(length: number) {
+  let result = 1;
+  for (let i = 0; i < length; i++) {
+    result += Math.floor(Math.random() * 1000);
+  }
+  return result;
 }
 
 export default ArtworkStore;

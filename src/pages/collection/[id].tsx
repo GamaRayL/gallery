@@ -1,8 +1,8 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Artwork } from "pages_flat";
 import { artworkService } from "services";
 import { ParsedUrlQuery } from "querystring";
 import { IArtworkTistDataSingle } from "types";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 const ArtworkPage: NextPage<IArtworkTistDataSingle> = ({ artwork, artist }) => {
   return <Artwork artwork={artwork} artist={artist} />;
@@ -28,6 +28,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const artwork = await artworkService.getById(String(params?.id));
   const artist = await artworkService.getArtistById(String(artwork.artist_id));
+  
   return {
     props: {
       artwork,

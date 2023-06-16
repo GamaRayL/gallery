@@ -1,34 +1,27 @@
+@import "styles/media.scss";
 @import "styles/mixins.scss";
 
 .header {
-  --width: 100vw;
-  --padding: 50px 0;
-  // --logoRight: 180px;
-  // --logoTop: 40px;
+  --logoTop: 50px;
+  --logoRight: 80px;
+  --logoJustifySelf: center;
 
-  position: static;
-  // position: absolute;
-  z-index: 1;
+  --padding: 50px 0;
+  --width: -webkit-fill-available;
+
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  // width: var(--width);
-  width: -webkit-fill-available;
+  position: static;
+  width: var(--width);
   padding: var(--padding);
+  grid-template-columns: repeat(2, 1fr);
 
   &__logo {
     position: absolute;
-    right: 80px;
-    top: 50px;
-    justify-self: center;
- 
-    // position: absolute;
-    // right: var(--logoRight);
-    // top: var(--logoTop);
+    justify-self: var(--logoJustifySelf);
 
-    // &_home {
-    //   right: 80px;
-    // }
+    top: var(--logoTop);
+    right: var(--logoRight);
   }
 
   &_home {
@@ -37,31 +30,27 @@
 }
 
 .header-container {
-  padding-bottom: 160px;
+  --padding: 0 0 160px 0;
+
+  padding-bottom: var(--padding);
 }
 
 
-@media screen and (max-width: 980px) {
+// Медиа
+@media screen and ($tablet) {
   .header {
-    // position: absolute;
-    // &__logo {
-    //   &_home {
-    //     position: absolute;
-    //   }
-    // }
-    // &_home {
-    //   position: absolute;
-    // }
     &_home {
       position: absolute;
     }
   }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and ($mobile) {
   .header {
+    --logoRight: 40px;
+
     &__logo {
-      right: 40px;
+      right: var(--logoRight);
     }
   }
 }

@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { motion } from "framer-motion";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 import { ICheckbox } from "shared/lib/types";
 
 const Checkbox: FC<ICheckbox> = (props) => {
@@ -8,16 +8,16 @@ const Checkbox: FC<ICheckbox> = (props) => {
 
   return (
     <motion.label
-      className={classNames(className, "checkbox")}
+      onClick={onClick}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      onClick={onClick}
+      className={classNames(className, "checkbox")}
     >
       <input
-        className="checkbox__input"
         type="checkbox"
         name="checkbox"
         defaultChecked={checked}
+        className="checkbox__input"
         onClick={(event) => event.stopPropagation()}
       />
       <div>

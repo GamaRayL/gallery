@@ -1,3 +1,4 @@
+@import "styles/media.scss";
 @import "styles/mixins.scss";
 
 .nav {
@@ -10,41 +11,51 @@
   }
 
   &__list, &__menu {
-    @include flex-gap(60px);
-    @include reset-list;
     align-items: center;
+    @include reset-list;
+    @include flex-gap(60px);
   }
 }
 
-@media screen and (max-width: 760px) {
+
+// Медиа
+@media screen and ($mobile) {
   .nav {
+    --listGap: 20px;
+    --menuActiveTop: 30px;
+    --linkFZ: var(--f-size-12);
+
     &__item {
-      flex-direction: column;
       position: relative;
+      flex-direction: column;
     }
-    &__link {
-      font-size: 12px;
-    }
+
     &__btn-list {
       display: block;
     }
+
+    &__list {
+      gap: var(--listGap);
+    }
+
+    &__link {
+      font-size: var(--linkFZ);
+    }
+
     &__menu {
-      // gap: 20px;
       display: none;
       background: var(--c-gray);
     }
+
     &__menu_active {
-      display: block;
-      top: 30px;
-      position: absolute;
       z-index: 1;
+      display: block;
+      position: absolute;
+      top: var(--menuActiveTop);
     }
+
     &__menu_art {
       background: var(--c-white);
-    }
-    &__list {
-      gap: 20px;
-      // z-index: 1000;
     }
   }
 }

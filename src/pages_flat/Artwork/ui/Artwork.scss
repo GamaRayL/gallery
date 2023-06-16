@@ -1,3 +1,4 @@
+@import "styles/media.scss";
 @import "styles/mixins.scss";
 
 .artwork {
@@ -11,8 +12,6 @@
 
   --fontSizeTitle: var(--f-size-30);
 
-  // --toolTop: 600px;
-  // --toolRight: 60px;
 
   --containerMB: 60px;
   --containerHeight: 85vh;
@@ -21,15 +20,15 @@
   --othersGridR: 2;
   --othersGridC: 1/span 8;
 
-  --descC: var(--c-white);
-  --descJS: flex-end;
-  --descBg: var(--c-dune);
   --descGridR: 2;
-  --descGridC: 9/span 6;
+  --descJS: flex-end;
   --descPadding: 20px;
+  --descGridC: 9/span 6;
+  --descC: var(--c-white);
+  --descBg: var(--c-dune);
 
-  --imgObjFit: contain;
   --imgPEvents: none;
+  --imgObjFit: contain;
 
   --valueFWeight: normal;
 
@@ -37,14 +36,25 @@
 
   --authorMB: 60px;
 
+  --toolRight: 0;
+  --toolBottom: 10vh;
+
+  --conatinerAfterTop: -400px;
 
   padding-bottom: var(--paddingB);
+
+
+  // Медиа
+  --ageFZ: var(--f-size-10);
+  --titleFZ: var(--f-size-20);
+  --authorFZ: var(--f-size-12);
+  --techSizeFZ: var(--f-size-14);
 
   &__tool {
     z-index: 4;
     position: absolute;
-    right: 0;
-    bottom: 10vh;
+    right: var(--toolRight);
+    bottom: var(--toolBottom);
 
     transition: var(--transition);
 
@@ -54,16 +64,13 @@
   }
 
   &__image-conatiner {
-    --conatinerAfterTop: -400px;
-
-    // padding-top: 100px;
+    @include flex;
     position: relative;
 
-    grid-column: var(--containerGridC);
     height: var(--containerHeight);
+    grid-column: var(--containerGridC);
 
     margin-bottom: var(--containerMB);
-    @include flex;
 
     &::after {
       content: "";
@@ -77,17 +84,17 @@
   }
 
   &__carousel {
-    grid-column: var(--othersGridC);
     grid-row: var(--othersGridR);
+    grid-column: var(--othersGridC);
   }
 
   &__description {
-    box-shadow: 0 0 10px 1px black;
     color: var(--descC);
     background-color: var(--descBg);
+    box-shadow: 0 0 10px 1px black;
 
-    padding: var(--descPadding);
     grid-row: var(--descGridR);
+    padding: var(--descPadding);
     grid-column: var(--descGridC);
 
     justify-self: var(--descJS);
@@ -97,26 +104,13 @@
     justify-self: center;
   }
 
-  &__image {
-    object-fit: var(--imgObjFit);
-    pointer-events: var(--imgPEvents);
-  }
-
   &__value {
     font-weight: var(--valueFWeight);
   }
 
-  &__technique, &__size{
-    @include flex($justify-content: space-between);
-
-    gap: var(--gap);
-
-    font-weight: var(--fontWeight);
-    margin-bottom: var(--marginB);
-  }
-
-  &__title {
-    font-size: var(--fontSizeTitle);
+  &__image {
+    object-fit: var(--imgObjFit);
+    pointer-events: var(--imgPEvents);
   }
 
   &__age {
@@ -124,75 +118,105 @@
   }
 
   &__author {
-    margin-bottom: var(--authorMB);
     opacity: var(--opacity);
+    margin-bottom: var(--authorMB);
+  }
+
+  &__title {
+    font-size: var(--fontSizeTitle);
   }
 
   &__age, &__author, &__author-age {
     text-align: var(--textAlign);
   }
+
+  &__technique, &__size{
+    gap: var(--gap);
+
+    margin-bottom: var(--marginB);
+    font-weight: var(--fontWeight);
+
+    @include flex($justify-content: space-between);
+  }
 }
 
-@media screen and (max-width: 980px) {
+// Медиа
+@media screen and ($tablet) {
   .artwork {
-    &__image-conatiner {
-      // padding-top: 0;
-    }
-    &__title {
-      font-size: 20px;
-    }
     &__age {
-      font-size: 10px;
+      font-size: var(--ageFZ);
     }
+
+    &__title {
+      font-size: var(--titleFZ);
+    }
+
     &__author {
-      font-size: 12px;
+      font-size: var(--authorFZ);
     }
+
     &__technique, &__size {
-      font-size: 14px;
+      font-size: var(--techSizeFZ);
     }
   }
 }
 
-
-@media screen and (max-width: 860px) {
+@media screen and ($tablet-s) {
   .artwork {
-    &__carousel {
-      grid-column: 1/span 14;
-      grid-row: 3;
+    --descMB: 40px;
+    --carouselGridRow: 3;
+    --gridColumn: 1/span 14;
+    --ageFZ: var(--f-size-14);
+    --titleFZ: var(--f-size-24);
+    --authorFZ: var(--f-size-16);
+    --techSizeFZ: var(--f-size-18);
+
+
+    &__age {
+      font-size: var(--ageFZ);
     }
+
+    &__title {
+      font-size: var(--titleFZ);
+    }
+
+    &__author {
+      font-size: var(--authorFZ);
+    }
+
+    &__technique, &__size {
+      font-size: var(--techSizeFZ);
+    }
+
     &__description {
-      grid-column: 1/span 14;
       justify-self: auto;
-      margin-bottom: 40px;
+      margin-bottom: var(--descMB);
+      grid-column: var(--gridColumn);
     }
-    &__title {
-      font-size: 24px;
-    }
-    &__age {
-      font-size: 14px;
-    }
-    &__author {
-      font-size: 16px;
-    }
-    &__technique, &__size {
-      font-size: 18px;
+
+    &__carousel {
+      grid-column: var(--gridColumn);
+      grid-row: var(--carouselGridRow);
     }
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and ($mobile-xxs) {
   .artwork {
-    &__title {
-      font-size: 20px;
-    }
     &__age {
-      font-size: 10px;
+      font-size: var(--ageFZ);
     }
+
+    &__title {
+      font-size: var(--titleFZ);
+    }
+
     &__author {
-      font-size: 12px;
+      font-size: var(--authorFZ);
     }
+
     &__technique, &__size {
-      font-size: 14px;
+      font-size: var(--techSizeFZ);
     }
   }
 }

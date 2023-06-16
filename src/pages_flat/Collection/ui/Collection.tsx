@@ -1,63 +1,58 @@
-import { FC, useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { observer } from "mobx-react-lite";
 import { useRouter } from "next/router";
-import { AnimatePresence, motion } from "framer-motion";
-import toolsStore from "store/ToolsStore";
-import { MobxContext } from "pages/_app";
-import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";
 import { Filter, Layout } from "widgets";
-import { Card, Container, Grid, Popup } from "shared/ui";
+import { MobxContext } from "pages/_app";
+import toolsStore from "store/ToolsStore";
+import { observer } from "mobx-react-lite";
 import { IArtwork, IArtworkStore } from "types";
+import { AnimatePresence, motion } from "framer-motion";
+import { Card, Container, Grid, Popup } from "shared/ui";
+import { FC, useContext, useEffect, useState } from "react";
+import { collectionVariants, getCorrectEnd } from "pages_flat/Collection/lib/utils";
 
 const Collection: FC = observer(() => {
   const { pathname } = useRouter();
   const [isInfo, setInfo] = useState(false);
-  const [cardInfo, setCardInfo] = useState<{ name: string; year: string; }>();
   const { filteredArtworks } = useContext(MobxContext) as IArtworkStore;
+  const [cardInfo, setCardInfo] = useState<{ name: string; year: string; }>();
 
   const columns = toolsStore.columns;
-
   const delay = toolsStore.isFilter ? .2 : .6;
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
 
     if (pathname == "/collection") {
-      body.style.overflowX = "hidden";
       body.style.overflowY = "auto";
+      body.style.overflowX = "hidden";
 
       body.style.background = "#DDDDDD";
     }
-
   }, [pathname]);
-
-
 
   return (
     <Layout
       title="Коллекция"
       description="Раздел 'Коллекции' сайта частной галереи. Присутствует фильтр.">
 
-      <section className="collection"
-        style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <section className="collection">
         <Container>
           <motion.h1
-            className="collection__title"
             initial="hidden"
             animate="visible"
             variants={collectionVariants}
+            className="collection__title"
           >
             Коллекция
           </motion.h1>
         </Container>
 
         <motion.section
-          className="collection__filter"
           initial="hidden"
           animate="visible"
           custom={{ delay: .4 }}
           variants={collectionVariants}
+          className="collection__filter"
         >
           <Filter />
         </motion.section>
@@ -66,11 +61,11 @@ const Collection: FC = observer(() => {
           <>
             <Container>
               <motion.p
-                className="collection__result"
                 initial="hidden"
                 animate="visible"
                 custom={{ delay: .6 }}
                 variants={collectionVariants}
+                className="collection__result"
               >
                 {getCorrectEnd(filteredArtworks.length)}
               </motion.p>
@@ -79,9 +74,8 @@ const Collection: FC = observer(() => {
             <motion.div
               initial="hidden"
               animate="visible"
-              custom={{ delay: delay, y: -100 }}
               variants={collectionVariants}
-              style={{ width: "100%" }}
+              custom={{ delay: delay, y: -100 }}
             >
               <Container>
                 <Grid columns={columns}>
@@ -102,7 +96,7 @@ const Collection: FC = observer(() => {
                           />
                         </Link>
                       ))
-                      : <div style={{ whiteSpace: "nowrap" }}>Картины не найдены</div>
+                      : <div className="collection__not-found">Картины не найдены</div>
                   }
                 </Grid>
               </Container>
@@ -114,27 +108,26 @@ const Collection: FC = observer(() => {
           {isInfo &&
             <Popup>
               <motion.p
-                className="collection__name"
                 initial="hidden"
                 animate="visible"
-                custom={{ delay: .4, y: 20, type: "spring" }}
+                className="collection__name"
                 variants={collectionVariants}
+                custom={{ delay: .4, y: 20, type: "spring" }}
               >
                 {cardInfo?.name}
               </motion.p>
               <motion.p
-                className="collection__year"
                 initial="hidden"
                 animate="visible"
-                custom={{ delay: .6, y: 20, type: "spring" }}
+                className="collection__year"
                 variants={collectionVariants}
+                custom={{ delay: .6, y: 20, type: "spring" }}
               >
                 {cardInfo?.year && `${cardInfo.year} год`}
               </motion.p>
             </Popup>
           }
         </AnimatePresence>
-
 
       </section>
     </Layout>

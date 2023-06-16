@@ -1,33 +1,54 @@
+@import "styles/media.scss";
 @import "styles/mixins.scss";
 
 .filter{
-  --brColor: var(--c-black);
-
-  --fontSizeBtn: var(--f-size-16);
-  --fontWeightBtn: var(--f-weight-medium);
-
-  --gridTemplateColumns: repeat(24, 1fr);
+  --paddingY: 24px 0;
+  --margin: 0 0 40px 0;
+  --alignItems: center;
 
   --grColField: 1/span 7;
   --grColDisplay: 9/span 8;
   --grColExpand: 22/span 3;
 
-  --gapDisplay: 25px;
+  --brColor: var(--c-black);
 
-  --paddingY: 24px 0;
+  --fontSizeBtn: var(--f-size-16);
+  --fontWeightBtn: var(--f-weight-medium);
+
+  --gap: 10px;
+  --rowGap: 20px;
+  --gridTemplateColumns: repeat(24, 1fr);
 
 
   display: grid;
   grid-template-columns: var(--gridTemplateColumns);
 
-  margin-bottom: 40px;
+  margin: var(--margin);
   padding: var(--paddingY);
 
   border-bottom: 3px solid var(--brColor);
 
-  &__label, &__label--total {
-    --fontSizeTotalBtn: var(--f-size-30);
+
+  &__field {
+    grid-column: var(--grColField);
+  }
+
+  &__btn_total {
+    --btnTotalRight: 0;
+    --btnTotalBottom: 0;
+    --btnTotalPadding: 10px 20px;
+    --btnTotalBgColor: var(--c-black);
+
+    right: var(--btnTotalRight);
+    bottom: var(--btnTotalBottom);
+
+    padding: var(--btnTotalPadding);
+    background-color: var(--btnTotalBgColor);
+  }
+
+  &__label, &__label_total {
     --fontColorTotalBtn: var(--c-white);
+    --fontSizeTotalBtn: var(--f-size-30);
 
     color: var(--fontColorTotalBtn);
     font-size: var(--fontSizeTotalBtn);
@@ -39,28 +60,14 @@
     font-weight: var(--labelFW);
   }
 
-  &__label--total {
+  &__label_total {
     --labelTotalFW: var(--f-weight-semiBold);
 
     transition: ease-in-out .2s;
-    font-weight: var(--labelTotalFW);
+    font-weight: var(--f-weight-semiBold);
   }
 
-  &__btn--total {
-    --btnTotalRight: 0;
-    --btnTotalBottom: 0;
-    --btnTotalPadding: 10px 20px;
-    --btnTotalBgColor: var(--c-black);
-    --btnTotalBgColor: var(--c-black);
-
-    right: var(--btnTotalRight);
-    bottom: var(--btnTotalBottom);
-
-    padding: var(--btnTotalPadding);
-    background-color: var(--btnTotalBgColor);
-  }
-
-  &__btn--total:hover .filter__label--total {
+  &__btn_total:hover .filter__label_total {
     --transformX: translateX(8px);
 
     display: inline-block;
@@ -71,18 +78,12 @@
     @include flex($justify-content: space-between);
   }
 
-  &__field {
-    grid-column: var(--grColField);
-  }
-
   &__display {
-    // @include flex;
-    // gap: var(--gapDisplay);
-    grid-column: var(--grColDisplay);
     display: grid;
-    align-items: center;
+    gap: var(--gap);
+    align-items: var(--alignItems);
+    grid-column: var(--grColDisplay);
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
   }
 
   &__expand {
@@ -95,62 +96,50 @@
     font-weight: var(--fontWeightBtn);
   }
 
-  &__btn-increase {
-    justify-self: center;
-  }
-
-  &__brn-decrease {
+  &__btn-increase, &__btn-decrease {
     justify-self: center;
   }
 }
 
+
 .expand-container {
+  --rowGap: 20px;
   --expandMB: 40px;
-  row-gap: 20px;
+
+  row-gap: var(--rowGap);
   margin-bottom: var(--expandMB);
 }
 
-@media screen and (max-width: 980px) {
 
-}
-
-@media screen and (max-width: 780px) {
+// Медиа
+@media screen and ($mobile) {
   .filter {
-    row-gap: 20px;
+    row-gap: var(--rowGap);
+
+    --fieldGC: 1/span 25;
+    --displayGC: 1/span 14;
+    --expandGC: 15/span 10;
 
     &__field {
-      grid-column: 1/24;
-    }
-
-    &__display {
-      grid-column: 1/14;
+      grid-column: var(--fieldGC);
     }
 
     &__expand {
-      grid-column: 15/span 10;
+      grid-column: var(--expandGC);
+    }
+
+    &__display {
+      grid-column: var(--displayGC);
     }
   }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and ($mobile-xs) {
   .filter {
-    &__display {
-      grid-column: 1/span 16;
-    }
-    &__expand {
-      grid-column: 18/span 7;
-    }
-  }
-}
+    --displayGC: 1/span 24;
 
-@media screen and (max-width: 480px) {
-  .filter {
     &__display {
-      grid-column: 1/span 24;
-    }
-    &__expand {
-      grid-column: 1/span 24;
-      grid-row: 3;
+      grid-column: var(--displayGC);
     }
   }
 }

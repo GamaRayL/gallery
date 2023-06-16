@@ -1,6 +1,6 @@
 @mixin flex-gap($gap) {
-  display: flex;
   gap: $gap;
+  display: flex;
 }
 
 @mixin reset-list {
@@ -25,20 +25,20 @@
 
   text-align: left;
 
-  background-color: transparent;
   border: 0;
   box-shadow: none;
+  background-color: transparent;
 
   appearance: none;
-}
-
-@mixin flex($display: flex, $justify-content: center) {
-  display: $display;
-  justify-content: $justify-content;
-  align-items: center;
 }
 
 @mixin square($size: 100%) {
   width: $size;
   height: $size;
+}
+
+@mixin flex($display: flex, $justify-content: center) {
+  display: $display;
+  align-items: center;
+  justify-content: $justify-content;
 }

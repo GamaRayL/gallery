@@ -3,21 +3,21 @@ import { IItem } from "widgets/Filter/lib/types";
 export interface IArtwork {
   id: number;
   name: string;
-  technique: string;
+  year: string;
   width: number;
   height: number;
-  year: string;
-  artist_id: number;
-  artist_name: string;
   images: string[];
+  artist_id: number;
+  technique: string;
+  artist_name: string;
 }
 
 export interface IArtist {
   id: number;
   name: string;
   gender: string;
-  begin_date: string;
   end_date: string;
+  begin_date: string;
   artworks: IArtwork[];
 }
 
@@ -26,8 +26,8 @@ export interface IArtworksData {
 }
 
 export interface IArtworkTistDataSingle {
-  artwork: IArtwork;
   artist: IArtist;
+  artwork: IArtwork;
 }
 
 export interface IArtworkStore {
@@ -36,13 +36,13 @@ export interface IArtworkStore {
   artistParam: number[];
   techniqueParam: string[];
 
-  setSearchParam(value: string): void;
-  setArtworks(values: IArtwork[]): void;
-  toggleArtistParam(value: number): void;
-  toggleTechniqueParam(value: string): void;
   get totalArtworks(): number;
   get uniqueArtists(): IItem[];
   get uniqueTechniques(): IItem[];
   get filteredArtworks(): IArtwork[];
   hydrate(value: IArtworksData): void;
+  setSearchParam(value: string): void;
+  setArtworks(values: IArtwork[]): void;
+  toggleArtistParam(value: number): void;
+  toggleTechniqueParam(value: string): void;
 }

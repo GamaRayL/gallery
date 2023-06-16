@@ -1,17 +1,16 @@
-import { observer } from "mobx-react-lite";
-import { BiListUl, BiSearch } from "react-icons/bi";
-import toolsStore from "store/ToolsStore";
-import { Button, CustomLink } from "shared/ui";
-import { FC, useState } from "react";
-import { items } from "widgets/Header/Menu/lib/items";
 import classNames from "classnames";
-import { RiCloseLine } from "react-icons/ri";
+import { FC, useState } from "react";
 import { useRouter } from "next/router";
+import toolsStore from "store/ToolsStore";
+import { observer } from "mobx-react-lite";
+import { RiCloseLine } from "react-icons/ri";
+import { Button, CustomLink } from "shared/ui";
+import { BiListUl, BiSearch } from "react-icons/bi";
+import { items } from "widgets/Header/Menu/lib/items";
 
 const Menu: FC = observer(() => {
-  const [isShow, setShow] = useState(false);
   const { pathname } = useRouter();
-  console.log(pathname);
+  const [isShow, setShow] = useState(false);
 
   const onClickShowHanlder = () => {
     setShow(!isShow);
@@ -23,8 +22,8 @@ const Menu: FC = observer(() => {
         <li className="nav__item">
           <Button
             className="nav__btn-list"
-            icon={isShow ? <RiCloseLine size={24} /> : <BiListUl size={24} />}
             onClick={() => setShow(!isShow)}
+            icon={isShow ? <RiCloseLine size={24} /> : <BiListUl size={24} />}
           />
           <ul className={classNames("nav__menu", {
             "nav__menu_active": isShow,
@@ -33,10 +32,10 @@ const Menu: FC = observer(() => {
             {items.map((item) => (
               <li key={item.id} >
                 <CustomLink
-                  onClick={onClickShowHanlder}
-                  className="nav__link"
                   label={item.label}
+                  className="nav__link"
                   pathname={item.pathname}
+                  onClick={onClickShowHanlder}
                   disabled={item.pathname == "-"}
                 />
               </li>
@@ -50,7 +49,7 @@ const Menu: FC = observer(() => {
           />
         </li>
       </ul>
-    </nav >
+    </nav>
   );
 });
 

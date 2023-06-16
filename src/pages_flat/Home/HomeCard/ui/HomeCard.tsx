@@ -1,30 +1,30 @@
-import { FC, useState } from "react";
 import Image from "next/image";
+import { FC, useState } from "react";
 import { motion } from "framer-motion";
-import { homeCardVariants } from "pages_flat/Home/HomeCard/lib/utils";
+import { Placeholder } from "shared/ui";
 import { IHomeCard } from "../lib/types";
-import { Placeholder } from "pages_flat/Artwork/Placeholder";
+import { homeCardVariants } from "pages_flat/Home/HomeCard/lib/utils";
 
 const HomeCard: FC<IHomeCard> = ({ image }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
     <motion.div
-      className="home-card"
+      initial="initial"
       whileTap="whileTap"
+      className="home-card"
       whileHover="whileHover"
       variants={homeCardVariants}
-      initial="initial"
     >
-      {isLoading && <Placeholder sizePercent="100"/>}
+      {isLoading && <Placeholder sizePercent="100" />}
       <Image
         fill
+        src={image}
         placeholder="empty"
         blurDataURL={image}
-        src={image}
         alt="Карточка картины"
-        sizes="(min-width: 768px) 100vw"
         className="home-card__image"
+        sizes="(min-width: 768px) 100vw"
         onLoad={() => setIsLoading(false)}
       />
     </motion.div>

@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { FC } from "react";
+import Head from "next/head";
 import { IMeta } from "widgets/Layout/lib/types";
 import { getTitle } from "widgets/Layout/lib/utils";
 

@@ -1,10 +1,9 @@
 import { FC } from "react";
 import Image from "next/image";
 import classNames from "classnames";
-import { Button, Container } from "shared/ui";
-import { Menu } from "widgets/Header/Menu";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { Menu } from "widgets/Header/Menu";
+import { Button, Container } from "shared/ui";
 
 const Header: FC = () => {
   const { pathname } = useRouter();
@@ -18,26 +17,22 @@ const Header: FC = () => {
         className={classNames("header", {
           "header_home": pathname == "/"
         })}
-      // style={{
-      //   position: pathname == "/" ? "fixed" : "static"
-      // }}
       >
         <Menu />
         <Button
+          href="/"
+          icon={
+            <Image
+              priority
+              alt="Лого"
+              width={60}
+              height={60}
+              src="/images/logo.svg"
+            />
+          }
           className={classNames("header__logo", {
             "header__logo_home": pathname == "/"
           })}
-          icon={
-            <Image
-              src="/images/logo.svg"
-              width={60}
-              height={60}
-              priority
-              style={{ outline: "none" }}
-              alt="Лого"
-            />
-          }
-          href="/"
         />
       </header >
     </Container >

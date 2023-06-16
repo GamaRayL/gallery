@@ -8,6 +8,7 @@ const Carousel: FC<ICarousel> = ({ className, artworks }) => {
 
   return (
     <Grid className={classnames(className)}>
+
       {artworks.map(artwork => {
         return (
           <Link key={artwork.id} href={`/collection/${artwork.id}`} >
@@ -15,6 +16,7 @@ const Carousel: FC<ICarousel> = ({ className, artworks }) => {
           </Link>
         );
       })}
+
     </Grid>
   );
 };

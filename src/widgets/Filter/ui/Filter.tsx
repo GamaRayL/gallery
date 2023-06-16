@@ -1,36 +1,44 @@
-import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
-import { observer } from "mobx-react-lite";
-import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 import classNames from "classnames";
-import toolsStore from "store/ToolsStore";
-import { MobxContext } from "pages/_app";
-import { IItem } from "widgets/Filter/lib/types";
-import { ExpandItem } from "widgets/Filter/ui/ExpandItem";
-import { Button, Container, Grid, Input, InputRange } from "shared/ui";
 import { IArtworkStore } from "types";
+import { MobxContext } from "pages/_app";
+import toolsStore from "store/ToolsStore";
+import { observer } from "mobx-react-lite";
+import { IItem } from "widgets/Filter/lib/types";
+import { ExpandItem } from "widgets/Filter/ExpandItem";
+import { Button, Container, Grid, Input, InputRange } from "shared/ui";
+import { ChangeEvent, FC, FormEvent, useContext, useRef, useState } from "react";
+import { BiCategory, BiFilter, BiRightArrowAlt, BiSearch, BiSquare } from "react-icons/bi";
 
 const Filter: FC = observer(() => {
   const btnSize = 26;
   const ref = useRef<HTMLDivElement>(null);
   const [value, setValue] = useState("");
   const {
+    artistParam,
+    uniqueArtists,
+    techniqueParam,
     setSearchParam,
+    filteredArtworks,
+    uniqueTechniques,
     toggleArtistParam,
     toggleTechniqueParam,
-    uniqueArtists,
-    uniqueTechniques,
-    artistParam,
-    techniqueParam,
-    filteredArtworks
   } = useContext(MobxContext) as IArtworkStore;
 
-  const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.currentTarget.value);
+
+  const onClickTotalHandler = () => {
+    const body = document.querySelector("body") as HTMLBodyElement;
+
+    body.style.overflowY = "auto";
+
+    toolsStore.toggleFilterOverlay();
   };
 
-  const onChangeRangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = +event.target.value;
-    toolsStore.setColumns(value);
+  const onClickScrollHandler = () => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    toolsStore.toggleFilterOverlay();
+
+    !toolsStore.isFilter &&
+      window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const onClickIncreaseHandler = () => {
@@ -41,46 +49,34 @@ const Filter: FC = observer(() => {
     toolsStore.decreaseColumns();
   };
 
-  const onSubmitSearchArtwork = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSearchParam(value);
-  };
-
-  const onClickScrollHandler = () => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
-    toolsStore.toggleFilterOverlay();
-    // const body = document.querySelector("body") as HTMLBodyElement;
-
-    // body.style.overflowY !== "hidden"
-    //   ? body.style.overflowY = "hidden"
-    //   : body.style.overflowY = "auto";
-
-    !toolsStore.isFilter && window.scrollTo({ top: 0, behavior: 'smooth' });
+  const onCheckArtistHandler = (item: IItem) => {
+    return artistParam.includes(item.id);
   };
 
   const onSelectArtistHandler = (item: IItem) => {
     toggleArtistParam(item.id);
   };
 
-  const onSelectTechniqueHandler = (item: IItem) => {
-    toggleTechniqueParam(item.label);
-  };
-
-
-  const onCheckArtistHandler = (item: IItem) => {
-    return artistParam.includes(item.id);
-  };
-
   const onCheckTechniqueHandler = (item: IItem) => {
     return techniqueParam.includes(item.label);
   };
 
-  const onClickTotalHandler = () => {
-    const body = document.querySelector("body") as HTMLBodyElement;
+  const onSelectTechniqueHandler = (item: IItem) => {
+    toggleTechniqueParam(item.label);
+  };
 
-    body.style.overflowY = "auto";
+  const onSubmitSearchArtwork = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSearchParam(value);
+  };
 
-    toolsStore.toggleFilterOverlay();
+  const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.currentTarget.value);
+  };
+
+  const onChangeRangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = +event.target.value;
+    toolsStore.setColumns(value);
   };
 
   return (
@@ -90,9 +86,9 @@ const Filter: FC = observer(() => {
           <div className="filter__field">
             <form className="filter__form" onSubmit={onSubmitSearchArtwork}>
               <Input
+                size={18}
                 value={value}
                 setValue={setValue}
-                size={18}
                 placeholder="Найти картину"
                 onChange={onChangeInputHandler}
               />
@@ -101,28 +97,28 @@ const Filter: FC = observer(() => {
           </div>
           <div className="filter__display">
             <Button
-              className="filter__brn-decrease"
-              icon={<BiSquare size={btnSize} />}
+              className="filter__btn-decrease"
               onClick={onClickDecreaseHandler}
+              icon={<BiSquare size={btnSize} />}
             />
             <InputRange
-              value={toolsStore.columns}
               min={1}
               max={6}
+              value={toolsStore.columns}
               onChange={onChangeRangeHandler}
             />
             <Button
               className="filter__btn-increase"
-              icon={<BiCategory size={btnSize} />}
               onClick={onClickIncreaseHandler}
+              icon={<BiCategory size={btnSize} />}
             />
           </div>
           <div className="filter__expand">
             <Button
               justify="space-between"
               className="filter__btn"
-              icon={<BiFilter size={btnSize} />}
               onClick={onClickScrollHandler}
+              icon={<BiFilter size={btnSize} />}
             >
               Фильтр
             </Button>
@@ -149,14 +145,14 @@ const Filter: FC = observer(() => {
             </Grid>
           </Container>
           <Button
-            className="filter__btn--total"
-            iconPosition="after"
             justify="flex-end"
-            icon={<BiRightArrowAlt size="40" color="white" />}
+            iconPosition="after"
             onClick={onClickTotalHandler}
+            className="filter__btn_total"
+            icon={<BiRightArrowAlt size="40" color="white" />}
           >
             <span className="filter__label">результат </span>
-            <span className="filter__label--total">{filteredArtworks.length}</span>
+            <span className="filter__label_total">{filteredArtworks.length}</span>
           </Button>
         </div>
       }

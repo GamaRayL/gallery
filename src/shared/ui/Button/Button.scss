@@ -3,26 +3,27 @@
 .button {
   --width: 100%;
   --paddingX: 16px;
-  --textColor: var(--c-white);
   --bgColor: var(--c-black);
+  --textColor: var(--c-white);
   --borderRadius: var(--border-radius);
 
   --iconOffsetX: 8px;
 
+  transition: none;
 
   @include reset-button;
   @include flex(inline-flex);
-  transition: none;
 
-  position: relative;
+  cursor: pointer;
   overflow: hidden;
-  width: var(--width);
+  position: relative;
   text-decoration: none;
+  will-change: transform;
+
+  width: var(--width);
   color: var(--textColor);
   background-color: var(--bgColor);
   border-radius: var(--borderRadius);
-  will-change: transform;
-  cursor: pointer;
 
   &--only-icon {
     --width: auto;
@@ -30,19 +31,19 @@
   }
 
   &--transparent {
-    --textColor: var(--c-black);
     --bgColor: transparent;
-  }
-
-  &__body {
-    @include flex($justify-content: var(--justify));
-    @include square;
-
-    position: relative;
-    column-gap: var(--iconOffsetX);
+    --textColor: var(--c-black);
   }
 
   &__label {
     color: var(--textColor);
+  }
+
+  &__body {
+    position: relative;
+    column-gap: var(--iconOffsetX);
+
+    @include square;
+    @include flex($justify-content: var(--justify));
   }
 }

@@ -1,6 +1,6 @@
 .input-range {
-  --bgColor: var(--c-black);
   --borderRadius: 5px;
+  --bgColor: var(--c-black);
 
   --height: 3px;
   --widthThumb: 12px;
@@ -12,8 +12,8 @@
   --transition: .1s;
 
 
-  appearance: none;
   cursor: pointer;
+  appearance: none;
 
   height: var(--height);
 

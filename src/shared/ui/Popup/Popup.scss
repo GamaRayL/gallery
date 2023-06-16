@@ -1,9 +1,9 @@
 .popup {
-  --padding: 4px 14px;
-  --textAlign: center;
   --bottom: 0;
   --borderTLR: 10px;
   --borderTRR: 10px;
+  --padding: 4px 14px;
+  --textAlign: center;
 
   z-index: 1000;
   position: fixed;
@@ -23,7 +23,6 @@
     --top: 0;
     --borderBLR: 20px;
     --borderBRR: 20px;
-
 
     top: var(--top);
 

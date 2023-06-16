@@ -1,30 +1,29 @@
-import { FC, useEffect } from "react";
-import { useRouter } from "next/router";
-import dynamic from 'next/dynamic';
-import { observer } from "mobx-react-lite";
-import { AnimatePresence, motion } from "framer-motion";
-import { BiCube } from "react-icons/bi";
-import toolsStore from "store/ToolsStore";
 import { Layout } from "widgets";
-import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
-import Carousel from "pages_flat/Artwork/Carousel/ui/Carousel";
-import { Button, Container, Grid, Popup } from "shared/ui";
+import dynamic from 'next/dynamic';
+import { FC, useEffect } from "react";
+import { BiCube } from "react-icons/bi";
+import { useRouter } from "next/router";
+import { Placeholder } from "shared/ui";
+import toolsStore from "store/ToolsStore";
+import { observer } from "mobx-react-lite";
 import { IArtworkTistDataSingle } from "types";
-import { Placeholder } from "pages_flat/Artwork/Placeholder";
+import { AnimatePresence, motion } from "framer-motion";
+import { Button, Container, Grid, Popup } from "shared/ui";
+import Carousel from "pages_flat/Artwork/Carousel/ui/Carousel";
+import { infoChildVariants } from "pages_flat/Artwork/lib/utils";
 
 const DynamicArt = dynamic(() => import('widgets/ArtworkScene/ui/ArtworkScene'), {
   ssr: false,
 });
 
 const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
-  const { pathname, asPath } = useRouter();
+  const { asPath } = useRouter();
 
   useEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
 
     toolsStore.setTexture(null);
 
-    console.log(asPath);
     body.style.overflowX = "hidden";
     body.style.overflowY = "auto";
 

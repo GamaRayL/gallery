@@ -1,9 +1,9 @@
-import { FC, ChangeEvent, useEffect, useRef, useState } from "react";
-import { BiSearch, BiX } from "react-icons/bi";
-import { AnimatePresence, motion } from "framer-motion";
-import toolsStore from "store/ToolsStore";
+import { motion } from "framer-motion";
 import { Button, Input } from "shared/ui";
+import toolsStore from "store/ToolsStore";
+import { BiSearch, BiX } from "react-icons/bi";
 import { formVariants } from "shared/lib/utils";
+import { FC, ChangeEvent, useEffect, useRef, useState } from "react";
 
 const Form: FC = () => {
   const [value, setValue] = useState("");
@@ -21,9 +21,9 @@ const Form: FC = () => {
   return (
     <form className="form">
       <motion.div
+        exit="hidden"
         initial="hidden"
         animate="visible"
-        exit="hidden"
         variants={formVariants}
         className="form__wrapper"
       >
@@ -44,10 +44,10 @@ const Form: FC = () => {
         />
       </motion.div>
       <motion.hr
-        className="form__line"
+        exit="hidden"
         initial="hidden"
         animate="visible"
-        exit="hidden"
+        className="form__line"
         variants={formVariants}
       />
     </form>
