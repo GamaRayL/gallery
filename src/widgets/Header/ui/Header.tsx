@@ -29,7 +29,7 @@ const Header: FC = () => {
           })}
           icon={
             <Image
-              src="/logo.svg"
+              src="/images/logo.svg"
               width={60}
               height={60}
               priority

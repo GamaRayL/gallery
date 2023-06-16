@@ -18,7 +18,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
     const home = document.querySelector(".home") as HTMLDivElement;
     const body = document.querySelector("body") as HTMLBodyElement;
 
-    if (pathname === "/") {
+    if (pathname == "/") {
       body.style.overflowY = "hidden";
 
       body.style.background = "#DDDDDD";

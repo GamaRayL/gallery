@@ -53,7 +53,6 @@ const Layout: FC<ILayout> = observer((props) => {
         }
       </AnimatePresence>
       <AnimatePresence>
-
         {
           scroll > 600 &&
           <motion.div
@@ -71,14 +70,9 @@ const Layout: FC<ILayout> = observer((props) => {
         }
       </AnimatePresence>
 
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: .4 }}
-      >
+      <main>
         {children}
-      </motion.main>
+      </main>
     </Meta>
   );
 });
