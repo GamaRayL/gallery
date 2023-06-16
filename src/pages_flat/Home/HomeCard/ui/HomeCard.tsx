@@ -16,7 +16,7 @@ const HomeCard: FC<IHomeCard> = ({ image }) => {
       <Image
         fill
         placeholder="blur"
-        blurDataURL={image}
+        blurDataURL="/images/Loading_icon.gif"
         src={image}
         alt="Карточка картины"
         sizes="(min-width: 768px) 100vw"
