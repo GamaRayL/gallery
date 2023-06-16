@@ -2,39 +2,39 @@
 
 .home {
   // --width: fit-content;
-  // --align: center;
-  // // --height: calc(100vh - 5.5rem);
-  // width: 100%;
+  --align: center;
+  // --height: calc(100vh - 5.5rem);
+  width: 100%;
 
 
-  // --lineHeight: 1;
-  // --fontSizeT: var(--f-size-60);
-  // --fontSizeP: var(--f-size-20);
-  // --fontWeight: var(--f-weight-medium);
-  // --fontWeightB: var(--f-weight-medium);
+  --lineHeight: 1;
+  --fontSizeT: var(--f-size-60);
+  --fontSizeP: var(--f-size-20);
+  --fontWeight: var(--f-weight-medium);
+  --fontWeightB: var(--f-weight-medium);
 
-  // --transformX: translateX(4px);
+  --transformX: translateX(4px);
 
-  // --infoWidth: 44vw;
-  // --infoPT: 80px;
-  // --infoGap: 40px;
-  // --infoFlexD: column;
+  --infoWidth: 44vw;
+  --infoPT: 80px;
+  --infoGap: 40px;
+  --infoFlexD: column;
 
-  // --pbarLeft: 0;
-  // --pbarRight: 0;
-  // --pbarBottom: 0;
-  // --pbarHeight: 10px;
-  // --pbarTrOrigin: 0%;
-  // --pbarBgColor: var(--c-dune);
+  --pbarLeft: 0;
+  --pbarRight: 0;
+  --pbarBottom: 0;
+  --pbarHeight: 10px;
+  --pbarTrOrigin: 0%;
+  --pbarBgColor: var(--c-dune);
 
-  // --cardGap: 60px;
-  // --cardPR: 220px;
+  --cardGap: 60px;
+  --cardPR: 220px;
 
 
-  // // width: var(--width);
-  // // height: var(--height);
-  // align-items: var(--align);
-  // align-content: var(--align);
+  // width: var(--width);
+  // height: var(--height);
+  align-items: var(--align);
+  align-content: var(--align);
 
   // padding-top: 145px;
 
@@ -137,4 +137,11 @@
     //   // justify-content: center;
     // }
   }
+}
+
+@media screen and (max-width: 420px) {
+.home-container {
+  display: flex;
+  justify-content: center;
+}
 }
