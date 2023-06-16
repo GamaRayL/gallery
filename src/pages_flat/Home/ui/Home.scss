@@ -4,6 +4,8 @@
   // --width: fit-content;
   --align: center;
   // --height: calc(100vh - 5.5rem);
+  width: 100%;
+
 
   --lineHeight: 1;
   --fontSizeT: var(--f-size-60);
@@ -89,12 +91,11 @@
 @media screen and (max-width: 980px) {
   .home {
     grid-template-columns: 1fr;
-
     &__cards {
       grid-template-columns: 1fr;
       // justify-self: center;
       // padding: 0 0 60px 0;
-      padding: 0 14px 40px 8px;
+      padding: 0 14px 40px 14px;
     }
 
     &__info {
