@@ -71,12 +71,15 @@
 // Медиа
 @media screen and ($tablet) {
   .home {
-    --padding: 0;
     --width: 100%;
+    --paddingB: 40px;
+    --infoPadding: 0;
     --cardsPD: 0 14px;
-    --margin: 0 0 40px 0;
+    --infoMargin: 0 0 40px 0;
 
     --gridTempColumns: 1fr;
+
+    padding-bottom: var(--paddingB);
 
     grid-template-columns: var(--gridTempColumns);
 
@@ -87,8 +90,8 @@
 
     &__info {
       width: var(--width);
-      margin: var(--margin);
-      padding: var(--padding);
+      margin: var(--infoMargin);
+      padding: var(--infoPadding);
     }
   }
 }
@@ -110,11 +113,11 @@
 
 @media screen and ($mobile-s) {
   .home {
+    --textAlign: center;
+
     --titleFZ: var(--f-size-32);
     --buttonFZ: var(--f-size-12);
     --paragraphFZ: var(--f-size-10);
-
-    --textAlign: center;
 
     &__title {
       font-size: var(--titleFZ);
