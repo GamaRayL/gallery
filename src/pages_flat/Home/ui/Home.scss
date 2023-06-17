@@ -21,7 +21,7 @@
 
   --cardsGap: 60px;
   --cardsPR: 220px;
-  --cardsPd: 0 40px 0 0;
+  --cardsPD: 0 40px 0 0;
 
 
   width: var(--width);
@@ -60,7 +60,7 @@
     display: grid;
     gap: var(--cardsGap);
 
-    padding: var(--cardsPd);
+    padding: var(--cardsPD);
     padding-right: var(--cardsPR);
 
     grid-template-columns: repeat(4, 1fr);
@@ -71,7 +71,8 @@
 // Медиа
 @media screen and ($tablet) {
   .home {
-    --padding: 0;
+    --infoPD: 0;
+    --cardsPD: 0 14px;
     --width: 100%;
     --margin: 0 0 40px 0;
 
@@ -80,14 +81,14 @@
     grid-template-columns: var(--gridTempColumns);
 
     &__cards {
-      padding: var(--padding);
+      padding: var(--cardsPD);
       grid-template-columns: var(--gridTempColumns);
     }
 
     &__info {
       width: var(--width);
       margin: var(--margin);
-      padding: var(--padding);
+      padding: var(--infoPD);
     }
   }
 }
@@ -109,17 +110,11 @@
 
 @media screen and ($mobile-s) {
   .home {
-    --width: 100%;
-
     --titleFZ: var(--f-size-32);
     --buttonFZ: var(--f-size-12);
     --paragraphFZ: var(--f-size-10);
 
     --textAlign: center;
-
-    &__info {
-      width: var(--width);
-    }
 
     &__title {
       font-size: var(--titleFZ);
