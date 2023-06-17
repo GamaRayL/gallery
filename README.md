@@ -8,7 +8,7 @@ Next JS, Typescript, Three JS, React-three, SCSS
 
 ## Описание
 
-- Страницы сайта: Home/Collection/Artwork[id]
+Страницы сайта: Home/Collection/Artwork[id]
 
 ##### Сollection
 
