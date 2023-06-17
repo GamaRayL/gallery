@@ -20,4 +20,12 @@
       transform: var(--transform);
     }
   }
+
+  &__notification {
+    --fontSize: var(--f-size-18);
+    --fontWeight: var(--f-weight-semiBold);
+
+    font-size: var(--fontSize);
+    font-weight: var(--fontWeight);
+  }
 }

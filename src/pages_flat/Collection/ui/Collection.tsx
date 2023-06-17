@@ -106,7 +106,7 @@ const Collection: FC = observer(() => {
 
         <AnimatePresence>
           {isInfo &&
-            <Popup>
+            <Popup className="collection__popup">
               <motion.p
                 initial="hidden"
                 animate="visible"

@@ -19,9 +19,8 @@ const HomeCard: FC<IHomeCard> = ({ image }) => {
       {isLoading && <Placeholder sizePercent="100" />}
       <Image
         fill
+        priority
         src={image}
-        placeholder="empty"
-        blurDataURL={image}
         alt="Карточка картины"
         className="home-card__image"
         sizes="(min-width: 768px) 100vw"

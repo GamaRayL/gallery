@@ -1,14 +1,13 @@
-import { useRouter } from "next/router";
 import toolsStore from "store/ToolsStore";
 import { Meta } from "widgets/Layout/Meta";
 import { observer } from "mobx-react-lite";
 import Header from "widgets/Header/ui/Header";
 import { FC, useEffect, useState } from "react";
 import { ILayout } from "widgets/Layout/lib/types";
-import { RiArrowUpCircleLine } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
-import { layoutBtnVariants, layoutVariants } from "widgets/Layout/lib/utils";
 import { Button, Container, Form, Modal } from "shared/ui";
+import { RiArrowUpCircleLine, RiFileMarkFill } from "react-icons/ri";
+import { layoutBtnVariants, layoutVariants, notificationVariants } from "widgets/Layout/lib/utils";
 
 const Layout: FC<ILayout> = observer((props) => {
   const [scroll, setScroll] = useState(0);
@@ -18,16 +17,16 @@ const Layout: FC<ILayout> = observer((props) => {
     setScroll(window.scrollY);
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scroll]);
-
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scroll]);
 
   return (
     <Meta title={title} description={description}>
@@ -35,6 +34,16 @@ const Layout: FC<ILayout> = observer((props) => {
         <Modal>
           <Container>
             <Form />
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={notificationVariants}
+              className="layout__notification">
+
+              <RiFileMarkFill size={24} />
+              <span>! - Поиск по содержимому сайта планируется в будущем</span>
+
+            </motion.div>
           </Container>
         </Modal>
       }

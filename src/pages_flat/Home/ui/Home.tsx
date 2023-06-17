@@ -49,7 +49,7 @@ const Home: FC<IArtworksData> = observer(({ artworks }) => {
       <Container>
         <section>
           <Grid className="home" columns={2}>
-            
+
             <AnimatePresence>
               {!toolsStore.isSearch &&
                 <motion.div

@@ -30,3 +30,15 @@ export const layoutBtnVariants: Variants = {
     }
   }
 };
+
+export const notificationVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: .6,
+    }
+  }
+};

@@ -71,9 +71,9 @@
 // Медиа
 @media screen and ($tablet) {
   .home {
-    --infoPD: 0;
-    --cardsPD: 0 14px;
+    --padding: 0;
     --width: 100%;
+    --cardsPD: 0 14px;
     --margin: 0 0 40px 0;
 
     --gridTempColumns: 1fr;
@@ -88,7 +88,7 @@
     &__info {
       width: var(--width);
       margin: var(--margin);
-      padding: var(--infoPD);
+      padding: var(--padding);
     }
   }
 }

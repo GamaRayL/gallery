@@ -1,12 +1,12 @@
-@import "styles/var.scss";
+@import "styles/vars.scss";
 @import "styles/mixins.scss";
 @import "styles/index.scss";
 
 * {
   margin: 0;
-  padding: 0;
   border: 0;
   outline: 0;
+  padding: 0;
   box-sizing: border-box;
 
   &::before,
@@ -87,15 +87,15 @@ svg {
   background: var(--c-armadillo);
 }
 
+a,
 svg,
 svg *,
-a,
-button,
-input,
-textarea,
 label,
-::before,
+input,
+button,
+textarea,
 ::after,
+::before,
 ::placeholder {
   transition: var(--base-transition-duration);
 }

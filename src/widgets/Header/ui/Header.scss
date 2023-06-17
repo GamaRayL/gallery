@@ -7,14 +7,14 @@
   --logoJustifySelf: center;
 
   --padding: 50px 0;
-  --width: -webkit-fill-available;
-
 
   display: grid;
-  position: static;
-  width: var(--width);
   padding: var(--padding);
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+
+  &_home {
+    position: fixed;
+  }
 
   &__logo {
     position: absolute;
@@ -22,10 +22,6 @@
 
     top: var(--logoTop);
     right: var(--logoRight);
-  }
-
-  &_home {
-    position: fixed;
   }
 }
 
@@ -39,18 +35,37 @@
 // Медиа
 @media screen and ($tablet) {
   .header {
+    --width: 100%;
+    --paddingLeft: 84px;
+
+    --gridTC: repeat(3, 1fr);
+
+    width: var(--width);
+
     &_home {
       position: absolute;
+      padding-left: var(--paddingLeft);
     }
   }
+
+  .header-container{
+    display: grid;
+    grid-template-columns: var(--gridTC);
+  }
 }
+
 
 @media screen and ($mobile) {
   .header {
     --logoRight: 40px;
+    --paddingLeft: 24px;
 
     &__logo {
       right: var(--logoRight);
+    }
+
+    &_home {
+      padding-left: var(--paddingLeft);
     }
   }
 }
