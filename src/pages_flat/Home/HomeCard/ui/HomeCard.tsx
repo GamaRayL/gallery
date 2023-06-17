@@ -19,7 +19,6 @@ const HomeCard: FC<IHomeCard> = ({ image }) => {
       {isLoading && <Placeholder sizePercent="100" />}
       <Image
         fill
-        priority
         src={image}
         alt="Карточка картины"
         className="home-card__image"
