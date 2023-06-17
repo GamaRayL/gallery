@@ -27,7 +27,7 @@
 
 ##### В целом
 
-- Понравилась работа с `Three JS`, `Next JS`, `Typescript`
+- Понравилась работа с `Three JS`, `Framer-motion`, `Next JS`, `Typescript`
   p.s присутствует адаптивная вёрстка
 
 ## Дополнительно
