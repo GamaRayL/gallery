@@ -6,7 +6,7 @@ import { GetServerSideProps } from "next";
 const HomePage = ({ artworks }: IArtworksData) => <Home artworks={artworks} />;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const artworks = (await artworkService.getAll()).slice(148, 152);
+  const artworks = (await artworkService.getArtistById(String(56))).artworks.slice(5, 9);
 
   return {
     props: {
