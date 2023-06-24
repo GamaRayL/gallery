@@ -9,6 +9,7 @@ module.exports = {
   images: {
     domains: ["res.cloudinary.com", "api-omarov.ru"],
     minimumCacheTTL: 90,
+    // unoptimized: true,
   },
   experimental: {
     largePageDataBytes: 128 * 100000,
