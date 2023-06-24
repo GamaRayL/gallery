@@ -22,6 +22,7 @@ const Card: FC<ICard> = (props) => {
           fill
           src={src}
           alt="Card"
+          unoptimized
           className="card__image"
           sizes="(min-width: 768px) 100vw"
         />
