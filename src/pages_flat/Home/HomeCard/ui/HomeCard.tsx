@@ -20,6 +20,7 @@ const HomeCard: FC<IHomeCard> = ({ image }) => {
       <Image
         fill
         priority
+        unoptimized
         src={image}
         alt="Карточка картины"
         className="home-card__image"
