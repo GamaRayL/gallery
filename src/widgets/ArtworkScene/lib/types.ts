@@ -1,3 +1,3 @@
 export interface IArtworkScene {
-  art: string;
+  url: string;
 }

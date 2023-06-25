@@ -8,7 +8,7 @@ import { FC, Suspense, useEffect, useState } from "react";
 import { ArtObject } from "widgets/ArtworkScene/ArtObject";
 import { IArtworkScene } from "widgets/ArtworkScene/lib/types";
 
-const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
+const ArtworkScene: FC<IArtworkScene> = observer(({ url }) => {
   const container = document.querySelector('.artwork__image-conatiner') as HTMLElement;
   const [domLoaded, setDomLoaded] = useState(false);
   const { texture } = toolsStore;
@@ -22,11 +22,11 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ art }) => {
 
     const loader = new TextureLoader();
     loader.loadAsync(
-      `https://gallery-omarov.vercel.app/_next/image?url=${art}&w=3840&q=75`,
+      `https://gallery-omarov.vercel.app/_next/image?url=${url}&w=3840&q=100&no-optimize=true`,
     )
       .then(res => toolsStore.setTexture(res))
       .catch(err => console.log(`Ошибка загрузки в textLoader: ${err}`));
-  }, [art]);
+  }, [url]);
 
   if (texture && texture.image) {
     const image = texture.image;

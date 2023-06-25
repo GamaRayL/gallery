@@ -38,7 +38,7 @@ const Artwork: FC<IArtworkTistDataSingle> = observer(({ artwork, artist }) => {
 
           <div className="artwork__image-conatiner">
             {!toolsStore.texture && <Placeholder />}
-            <DynamicArt art={artwork.images[0]} />
+            <DynamicArt url={artwork.images[0]} />
 
             <div className="artwork__tool">
               <Button
