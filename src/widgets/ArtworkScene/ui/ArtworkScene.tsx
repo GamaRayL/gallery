@@ -22,7 +22,7 @@ const ArtworkScene: FC<IArtworkScene> = observer(({ url }) => {
 
     const loader = new TextureLoader();
     loader.loadAsync(
-      `https://gallery-omarov.vercel.app/_next/image?url=${url}&w=3840&q=100&no-optimize=true`,
+      `https://gallery-omarov.vercel.app/_next/image?url=${url}&w=3840&q=100`,
     )
       .then(res => toolsStore.setTexture(res))
       .catch(err => console.log(`Ошибка загрузки в textLoader: ${err}`));
